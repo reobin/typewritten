@@ -1,5 +1,15 @@
-# set left prompt
-PROMPT='%{$fg[blue]%}%n@%m > '
+# Distinguish between normal and root user
+if [[ ${UID} -eq 0 ]]; then
+    local user_host='%{$fg[red]%}%n@%m %{$reset_color%}'
+    local user_symbol='%{$fg[red]%}$ %{$reset_color%}'
+else
+    local user_host='%{$fg[magenta]%}%n@%m %{$reset_color%}'
+    local user_symbol='%{$fg[blue]%}> %{$reset_color%}'
+fi
+
+# set left prompt (multiline)
+PROMPT="${user_host}
+${user_symbol}"
 
 # set right prompt
 RPROMPT='%{$fg[magenta]%}%c$(git_prompt_info)%{$reset_color%} $(git_prompt_status)%{$reset_color%}'

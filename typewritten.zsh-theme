@@ -1,7 +1,3 @@
-PROMPT='%{$fg[blue]%}> '
-
-RPROMPT='%{$fg[magenta]%}%c$(git_prompt_info)%{$reset_color%} $(git_prompt_status)%{$reset_color%}'
-
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$reset_color%}->%{$fg[magenta]%} "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY=""
@@ -17,9 +13,20 @@ ZSH_THEME_GIT_PROMPT_STASHED="%{$fg_bold[yellow]%} $"
 ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg_bold[blue]%} •|"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[blue]%} |•"
 
-# Prompt cursor fix when exiting vim
+
+local prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
+
+PROMPT="${prompt}"
+
+local directory_path='%{$fg[magenta]%}%c%{$reset_color%}'
+local git_info='%{$fg[magenta]%}$(git_prompt_info)%{$reset_color%} $(git_prompt_status)%{$reset_color%}'
+
+RPROMPT="${directory_path}"
+RPROMPT+="${git_info}"
+
+
+# prompt cursor fix when exiting vim _fix_cursor() {
 _fix_cursor() {
-  echo -ne '\e[3 q'
+  echo -ne "\e[3 q"
 }
 precmd_functions+=(_fix_cursor)
-

@@ -18,6 +18,7 @@ Leaves all the room for what's important.
   - ``#``     &nbsp; — unmerged change(s);
   - ``•|``    — behind of remote branch;
   - ``|•``    — ahead of remote branch;
+- Prompt cursor fix when exiting vim
 
 
 ## Installation
@@ -35,7 +36,7 @@ Set ``ZSH_THEME="typewritten"`` in your ``.zshrc``.
 
 ## Prompt cursor fix when exiting vim
 For some reason, when exiting vim, the cursor doesn't reset to the underline and stays as a box.\
-Add this to your ``.zshrc`` to fix it:
+This fix is added to handle it:
 ```
 _fix_cursor() {
   echo -ne '\e[3 q'

@@ -17,3 +17,9 @@ ZSH_THEME_GIT_PROMPT_STASHED="%{$fg_bold[yellow]%} $"
 ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg_bold[blue]%} •|"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[blue]%} |•"
 
+# Prompt cursor fix when exiting vim
+_fix_cursor() {
+  echo -ne '\e[3 q'
+}
+precmd_functions+=(_fix_cursor)
+

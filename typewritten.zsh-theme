@@ -21,6 +21,10 @@ precmd_functions+=(_fix_cursor)
 
 # Set the left prompt
 if [[ -z ${TYPEWRITTEN_MULTILINE} ]]; then
+  # Set the left prompt (singleline)
+  local user_prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
+  PROMPT="${user_prompt}"
+else
   # Distinction between normal and root user
   if [[ ${UID} -eq 0 ]]; then
     local user_host='%{$fg[red]%}%n@%m %{$reset_color%}'
@@ -31,11 +35,7 @@ if [[ -z ${TYPEWRITTEN_MULTILINE} ]]; then
   fi
   # Set the left prompt (multiline)
   PROMPT="${user_host}
-  ${user_prompt}"
-else
-  # Set the left prompt (singleline)
-  local user_prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
-  PROMPT="${user_prompt}"
+${user_prompt}"
 fi
 
 # Set the return code

@@ -1,3 +1,5 @@
+# Typewritten theme for oh-my-zsh
+
 # Set the git prompt
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$reset_color%}->%{$fg[magenta]%} "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
@@ -19,20 +21,21 @@ _fix_cursor() {
 }
 precmd_functions+=(_fix_cursor)
 
-# Set the left prompt
+# Distinction between single and multiline prompt based on
+# TYPEWRITTEN_MULTILINE variable
 if [[ -z ${TYPEWRITTEN_MULTILINE} ]]; then
-  # Set the left prompt (singleline)
+  # Distinction between normal and root user
   local user_prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
+
+  # Set the left prompt (singleline)
   PROMPT="${user_prompt}"
 else
+  # Get current user and hostname
+  local user_host='%{$fg[magenta]%}%n@%m %{$reset_color%}'
+
   # Distinction between normal and root user
-  if [[ ${UID} -eq 0 ]]; then
-    local user_host='%{$fg[red]%}%n@%m %{$reset_color%}'
-    local user_prompt='%{$fg[red]%}$ %{$reset_color%}'
-  else
-    local user_host='%{$fg[magenta]%}%n@%m %{$reset_color%}'
-    local user_prompt='%{$fg[blue]%}> %{$reset_color%}'
-  fi
+  local user_prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}$ )'
+
   # Set the left prompt (multiline)
   PROMPT="${user_host}
 ${user_prompt}"

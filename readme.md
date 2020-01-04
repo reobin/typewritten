@@ -27,4 +27,4 @@ Clone the repository into your custom oh-my-zsh themes directory:
 $ git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM/themes/typewritten
 ```
 
-Set **ZSH_THEME="typewritten/typewritten"** in your **.zshrc**.
+Set ``ZSH_THEME="typewritten/typewritten"`` in your ``.zshrc``.

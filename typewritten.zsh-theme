@@ -1,3 +1,11 @@
+#      ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ 
+#     ||t |||y |||p |||e |||w |||r |||i |||t |||t |||e |||n ||
+#     ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||
+#     |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+#
+#             A minimal, informative zsh prompt theme
+#
+
 # git status variables
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$reset_color%}-> %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""

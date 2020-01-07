@@ -25,7 +25,7 @@ RPROMPT="${directory_path}"
 RPROMPT+="${git_info}"
 
 
-# prompt cursor fix when exiting vim _fix_cursor() {
+# prompt cursor fix when exiting vim
 _fix_cursor() {
   echo -ne "\e[3 q"
 }

@@ -1,8 +1,8 @@
 # ``>_`` typewritten - a minimal, informative zsh prompt theme
-Leaves all the room for what's important.
 
+Leaves all the room for what's important.
 <img align="center" src="https://raw.githubusercontent.com/reobin/typewritten/master/media/demo.gif" alt="video" />
-  
+
 > Terminal is [iTerm2](https://iterm2.com/) — Font is [FiraCode](https://github.com/tonsky/FiraCode) — Terminal theme is [SpaceCamp](https://github.com/reobin/spacecamp-iterm)
 
 ## Features
@@ -21,26 +21,10 @@ Leaves all the room for what's important.
 - Prompt color changes to red when an error return code is returned
 - Prompt cursor fix when exiting vim
 
-
 ## Installation
-
-Clone the repository into your custom oh-my-zsh themes directory:\
-``git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM/themes/typewritten``\
-\
-\
-Symlink ``typewritten.zsh-theme`` to your oh-my-zsh custom themes directory:\
-``ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes/typewritten.zsh-theme"``\
-\
-\
-Set ``ZSH_THEME="typewritten"`` in your ``.zshrc``.
-
-
-## Prompt cursor fix when exiting vim
-For some reason, when exiting vim, the cursor doesn't reset to the underline and stays as a box.\
-This fix is added to handle it:
+Clone the repository into your custom oh-my-zsh themes directory:
+```shell
+$ git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM/themes/typewritten
 ```
-_fix_cursor() {
-  echo -ne '\e[3 q'
-}
-precmd_functions+=(_fix_cursor)
-```
+
+Set ``ZSH_THEME="typewritten/typewritten"`` in your ``.zshrc``.

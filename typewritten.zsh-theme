@@ -1,4 +1,4 @@
-#      ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ 
+#      ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____
 #     ||t |||y |||p |||e |||w |||r |||i |||t |||t |||e |||n ||
 #     ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||
 #     |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
@@ -24,18 +24,33 @@ ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[blue]%} |•"
 # git status display
 local git_info='$(git_prompt_info) $(git_prompt_status)%{$reset_color%}'
 
+# current user and hostname
+local user_host='%F{180}%}%n@%m %{$reset_color%}'
+
 # default: blue, if return code other than 0: red
 local prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
 
 # current directory display
 local directory_path='%{$fg[magenta]%}%c'
 
-# left prompt definition
-PROMPT="${prompt}"
+# last command return code
+local return_code=' %(?,,%{$fg[magenta]%}RC=%?%{$reset_color%})'
+
+# distinction between single and multiline prompt
+# activate multiline with TYPEWRITTEN_MULTILINE=true
+if [[ -z ${TYPEWRITTEN_MULTILINE} ]]; then
+  # left prompt definition (singleline)
+  PROMPT="${prompt}"
+else
+  # left prompt definition (multiline)
+  PROMPT="${user_host}
+${prompt}"
+fi
 
 # right prompt definition
 RPROMPT="${directory_path}"
 RPROMPT+="${git_info}"
+RPROMPT+="${return_code}"
 
 # prompt cursor fix when exiting vim
 _fix_cursor() {

@@ -22,10 +22,10 @@ ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg_bold[blue]%} •|"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[blue]%} |•"
 
 # git status display
-local git_info='$(git_prompt_info) $(git_prompt_status)%{$reset_color%}'
+local git_info='$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
 
 # current user and hostname
-local user_host='%F{180}%}%n@%m %{$reset_color%}'
+local user_host='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$reset_color%}'
 
 # default: blue, if return code other than 0: red
 local prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
@@ -34,7 +34,7 @@ local prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
 local directory_path='%{$fg[magenta]%}%c'
 
 # last command return code
-local return_code=' %(?,,%{$fg[magenta]%}RC=%?%{$reset_color%})'
+local return_code='%(?,,%{$fg[red]%} RC=%?%{$reset_color%})'
 
 # distinction between single and multiline prompt
 # activate multiline with TYPEWRITTEN_MULTILINE=true

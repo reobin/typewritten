@@ -24,11 +24,11 @@ ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[blue]%} |•"
 # git status display
 local git_info='$(git_prompt_info) $(git_prompt_status)%{$reset_color%}'
 
+# current user and hostname
+local user_host='%{$fg[blue]%}%n@%m %{$reset_color%}'
+
 # default: blue, if return code other than 0: red
 local prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
-
-# current user and hostname
-local user_host='%{$fg[magenta]%}%n@%m %{$reset_color%}'
 
 # current directory display
 local directory_path='%{$fg[magenta]%}%c'

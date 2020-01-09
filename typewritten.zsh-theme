@@ -40,11 +40,11 @@ local return_code=' %(?,,%{$fg[magenta]%}RC=%?%{$reset_color%})'
 # activate multiline with TYPEWRITTEN_MULTILINE=true
 if [[ -z ${TYPEWRITTEN_MULTILINE} ]]; then
   # left prompt definition (singleline)
-  PROMPT="${user_prompt}"
+  PROMPT="${prompt}"
 else
   # left prompt definition (multiline)
   PROMPT="${user_host}
-${user_prompt}"
+${prompt}"
 fi
 
 # right prompt definition

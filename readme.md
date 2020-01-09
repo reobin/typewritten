@@ -41,3 +41,10 @@ Multiline is now supported thanms to [@thbe](https://github.com/thbe). Add this 
 ```shell
 TYPEWRITTEN_MULTILINE=true
 ```
+
+## Screenshots
+Multiline
+<img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/multiline.png" alt="multiline" />
+
+Return code
+<img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/return_code.png" alt="return code" />

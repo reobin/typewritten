@@ -38,13 +38,13 @@ local return_code='%(?,,%{$fg[red]%} RC=%?%{$reset_color%})'
 
 # distinction between single and multiline prompt
 # activate multiline with TYPEWRITTEN_MULTILINE=true
-if [[ -z ${TYPEWRITTEN_MULTILINE} ]]; then
-  # left prompt definition (singleline)
-  PROMPT="${prompt}"
-else
+if [ "$TYPEWRITTEN_MULTILINE" = true ]; then
   # left prompt definition (multiline)
   PROMPT="${user_host}
 ${prompt}"
+else
+  # left prompt definition (singleline)
+  PROMPT="${prompt}"
 fi
 
 # right prompt definition

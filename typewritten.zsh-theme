@@ -53,7 +53,13 @@ RPROMPT+="${git_info}"
 RPROMPT+="${return_code}"
 
 # prompt cursor fix when exiting vim
+local cursor="\e[3 q"
+if [ "$TYPEWRITTEN_CURSOR" = "block" ]; then
+  cursor="\e[1 q"
+elif [ "$TYPEWRITTEN_CURSOR" = "beam" ]; then
+  cursor="\e[5 q"
+fi
 _fix_cursor() {
-  echo -ne "\e[3 q"
+  echo -ne "${cursor}"
 }
 precmd_functions+=(_fix_cursor)

@@ -20,6 +20,7 @@ Leaves all the room for what's important.
   - ``|•``    — ahead of remote branch;
 - Prompt color changes to red when an error return code is\
 returned and code is displayed on the right
+- Cursor customization
 - Multiline support
 - Prompt cursor fix when exiting vim
 
@@ -36,10 +37,17 @@ ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes
 
 Set ``ZSH_THEME="typewritten/typewritten"`` in your ``.zshrc``.
 
+## Cursor option
+Default cursor is ``underscore``, but there is two more options: ``beam`` and ``block``.
+They are both configured by adding the `TYPEWRITTEN_CURSOR` zsh variable to your ``.zshrc``:
+```shell
+export TYPEWRITTEN_CURSOR="beam"
+```
+
 ## Multiline option
 Multiline is now supported thanms to [@thbe](https://github.com/thbe). Add this option to your ``.zshrc``:
 ```shell
-TYPEWRITTEN_MULTILINE=true
+export TYPEWRITTEN_MULTILINE=true
 ```
 
 ## Screenshots

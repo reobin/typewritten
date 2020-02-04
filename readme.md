@@ -45,7 +45,7 @@ export TYPEWRITTEN_CURSOR="beam"
 ```
 
 ## Multiline option
-Multiline is now supported thanms to [@thbe](https://github.com/thbe). Add this option to your ``.zshrc``:
+Multiline is now supported thanks to [@thbe](https://github.com/thbe). Add this option to your ``.zshrc``:
 ```shell
 export TYPEWRITTEN_MULTILINE=true
 ```

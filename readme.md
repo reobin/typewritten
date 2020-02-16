@@ -35,7 +35,7 @@ Symlink ``typewritten.zsh-theme`` to your oh-my-zsh custom themes directory:
 ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes/typewritten.zsh-theme"
 ```
 
-Set ``ZSH_THEME="typewritten/typewritten"`` in your ``.zshrc``.
+Set ``ZSH_THEME="typewritten"`` in your ``.zshrc``.
 
 ## Cursor option
 Default cursor is ``underscore``, but there is two more options: ``beam`` and ``block``.

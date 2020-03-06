@@ -28,7 +28,8 @@ local git_info='$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
 local user_host='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$reset_color%}'
 
 # default: blue, if return code other than 0: red
-local prompt='%(?,%{$fg[blue]%}> ,%{$fg[red]%}> )'
+local prompt_color="%(?,%{$fg[blue]%},%{$fg[red]%})"
+local prompt='${prompt_color}> %{$reset_color%}'
 
 # current directory display
 local directory_path='%{$fg[magenta]%}%c'

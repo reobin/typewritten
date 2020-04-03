@@ -5,6 +5,7 @@ Leaves all the room for what's important.
 
 > Terminal is [iTerm2](https://iterm2.com/) — Font is [FiraCode](https://github.com/tonsky/FiraCode) — Terminal theme is [SpaceCamp](https://github.com/reobin/spacecamp-iterm)
 
+
 ## Features
 - Current directory
 - Current git branch
@@ -24,6 +25,7 @@ returned and code is displayed on the right
 - Prompt layout customization
 - Prompt cursor fix when exiting vim
 
+
 ## Installation
 Clone the repository into your custom oh-my-zsh themes directory:
 ```shell
@@ -37,15 +39,10 @@ ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes
 
 Set ``ZSH_THEME="typewritten"`` in your ``.zshrc``.
 
-## Cursor option
-Default cursor is ``underscore``, but there is two more options: ``beam`` and ``block``.
-They are both configured by adding the `TYPEWRITTEN_CURSOR` zsh variable to your ``.zshrc``:
-```shell
-export TYPEWRITTEN_CURSOR="beam"
-```
 
 ## Prompt layout options
-3 prompt layouts are available. To customize the prompt layout, add define the `TYPEWRITTEN_PROMPT_LAYOUT` variable in your `.zshrc` to one of following values : `singleline`, `multiline`, or `singleline_verbose`.
+3 prompt layouts are available.<br>
+To customize the prompt layout, add define the `TYPEWRITTEN_PROMPT_LAYOUT` variable in your `.zshrc` to one of following values : `singleline`, `multiline`, or `singleline_verbose`.
 
 **singleline (default)**
 ```shell
@@ -63,13 +60,26 @@ user@host
 user@host >
 ```
 
+
+## Cursor options
+Default cursor is ``underscore``, but there is two more options: ``beam`` and ``block``.
+They are both configured by adding the `TYPEWRITTEN_CURSOR` zsh variable to your ``.zshrc``:
+```shell
+export TYPEWRITTEN_CURSOR="beam"
+```
+
+
 ## Contributors
 * [@thbe](https://github.com/thbe)
 * [@erikr](https://github.com/erikr)
 
+
 ## Screenshots
-Multiline
+**Multiline prompt layout**
 <img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/multiline.png" alt="multiline" />
 
-Return code
+**Singleline verbose prompt layout**
+<img src="https://github.com/reobin/typewritten/blob/master/media/singleline_verbose.png?raw=true" alt="singleline verbose" />
+
+**Return code**
 <img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/return_code.png" alt="return code" />

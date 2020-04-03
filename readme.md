@@ -21,7 +21,7 @@ Leaves all the room for what's important.
 - Prompt color changes to red when an error return code is\
 returned and code is displayed on the right
 - Cursor customization
-- Multiline support
+- Prompt layout customization
 - Prompt cursor fix when exiting vim
 
 ## Installation
@@ -44,27 +44,28 @@ They are both configured by adding the `TYPEWRITTEN_CURSOR` zsh variable to your
 export TYPEWRITTEN_CURSOR="beam"
 ```
 
-## Singleline verbose option
-To change the left prompt from:
+## Prompt layout options
+3 prompt layouts are available. To customize the prompt layout, add define the `TYPEWRITTEN_PROMPT_LAYOUT` variable in your `.zshrc` to one of following values : `singleline`, `multiline`, or `singleline_verbose`.
+
+**singleline (default)**
 ```shell
->
+> 
 ```
 
-to
+**multiline**
+```shell
+user@host
+> 
+```
+
+**singleline verbose**
 ```shell
 user@host >
 ```
-add this option to your `.zshrc`:
-```shell
-export TYPEWRITTEN_SINGLELINE_VERBOSE=true
-```
 
-
-## Multiline option
-Multiline is now supported thanks to [@thbe](https://github.com/thbe). Add this option to your ``.zshrc``:
-```shell
-export TYPEWRITTEN_MULTILINE=true
-```
+## Contributors
+* [@thbe](https://github.com/thbe)
+* [@erikr](https://github.com/erikr)
 
 ## Screenshots
 Multiline

@@ -46,14 +46,12 @@ export TYPEWRITTEN_CURSOR="beam"
 
 ## Singleline verbose option
 To change the left prompt from:
-```
-shell
+```shell
 >
 ```
 
 to
-```
-shell
+```shell
 user@host >
 ```
 add this option to your `.zshrc`:

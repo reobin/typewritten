@@ -19,10 +19,10 @@ Leaves all the room for what's important.
   - ``#``     &nbsp; — unmerged change(s);
   - ``•|``    — behind of remote branch;
   - ``|•``    — ahead of remote branch;
+- Prompt layout customization
+- Cursor customization
 - Prompt color changes to red when an error return code is\
 returned and code is displayed on the right
-- Cursor customization
-- Prompt layout customization
 - Prompt cursor fix when exiting vim
 
 

@@ -37,10 +37,6 @@ local directory_path='%{$fg[magenta]%}%c'
 # last command return code
 local return_code='%(?,,%{$fg[red]%} RC=%?%{$reset_color%})'
 
-if [[ -v TYPEWRITTEN_MULTILINE ]]; then
-    echo "typewritten theme: TYPEWRITTEN_MULTILINE is deprecated and \nwill be removed in a future version. Prompt layout is now \ncontrolled via TYPEWRITTEN_PROMPT_LAYOUT in .zshrc."
-fi
-
 # set prompt style to multiline for users who have not yet updated .zshrc
 if [ "$TYPEWRITTEN_MULTILINE" = true ]; then
     TYPEWRITTEN_PROMPT_LAYOUT="multiline"

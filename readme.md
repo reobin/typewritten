@@ -44,6 +44,22 @@ They are both configured by adding the `TYPEWRITTEN_CURSOR` zsh variable to your
 export TYPEWRITTEN_CURSOR="beam"
 ```
 
+## Singleline verbose option
+To change the left prompt from:
+```shell
+>
+```
+
+to
+```shell
+user@host >
+```
+add this option to your `.zshrc`:
+```shell
+export TYPEWRITTEN_SINGLELINE_VERBOSE=true
+```
+
+
 ## Multiline option
 Multiline is now supported thanks to [@thbe](https://github.com/thbe). Add this option to your ``.zshrc``:
 ```shell

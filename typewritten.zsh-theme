@@ -37,15 +37,21 @@ local directory_path='%{$fg[magenta]%}%c'
 # last command return code
 local return_code='%(?,,%{$fg[red]%} RC=%?%{$reset_color%})'
 
-# distinction between single and multiline prompt
-# activate multiline with TYPEWRITTEN_MULTILINE=true
+# set prompt style to multiline for users who have not yet updated .zshrc
 if [ "$TYPEWRITTEN_MULTILINE" = true ]; then
-  # left prompt definition (multiline)
-  PROMPT="${user_host}
+    TYPEWRITTEN_PROMPT_LAYOUT="multiline"
+fi
+
+# set prompt style; default is singleline
+if [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline" ]; then
+    PROMPT="${prompt}"
+elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline_verbose" ]; then
+    PROMPT="${user_host}${prompt}"
+elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "multiline" ]; then
+    PROMPT="${user_host}
 ${prompt}"
 else
-  # left prompt definition (singleline)
-  PROMPT="${prompt}"
+    PROMPT="${prompt}"
 fi
 
 # right prompt definition

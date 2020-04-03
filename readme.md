@@ -39,8 +39,9 @@ ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes
 
 Set ``ZSH_THEME="typewritten"`` in your ``.zshrc``.
 
+## Customization options
 
-## Prompt layout options
+### Prompt layout
 3 prompt layouts are available.<br>
 To customize the prompt layout, add define the `TYPEWRITTEN_PROMPT_LAYOUT` variable in your `.zshrc` to one of following values : `singleline`, `multiline`, or `singleline_verbose`.
 
@@ -61,7 +62,7 @@ user@host >
 ```
 
 
-## Cursor options
+### Cursor
 Default cursor is ``underscore``, but there is two more options: ``beam`` and ``block``.
 They are both configured by adding the `TYPEWRITTEN_CURSOR` zsh variable to your ``.zshrc``:
 ```shell

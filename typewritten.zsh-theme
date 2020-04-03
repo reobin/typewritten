@@ -48,6 +48,16 @@ else
   PROMPT="${prompt}"
 fi
 
+# distinction between singleline and singleline verbose prompt
+# activate multiline with TYPEWRITTEN_SINGLELINE_VERBOSE=true
+if [ "$TYPEWRITTEN_SINGLELINE_VERBOSE" = true ]; then
+  # left prompt definition (singleline verbose)
+  PROMPT="${user_host}${prompt}"
+else
+  # left prompt definition (singleline)
+  PROMPT="${prompt}"
+fi
+
 # right prompt definition
 RPROMPT="${directory_path}"
 RPROMPT+="${git_info}"

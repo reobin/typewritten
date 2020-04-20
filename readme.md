@@ -64,7 +64,7 @@ user@host >
 
 
 ### Prompt symbol
-Default prompt symbole is ``>``. It is entirely customizable with the ``TYPEWRITTEN_SYMBOL`` zsh variable. For example, one could set the symbol as `$` by adding the following line to his ``.zshrc``:
+Default prompt symbol is ``>``. It is entirely customizable with the ``TYPEWRITTEN_SYMBOL`` zsh variable. For example, one could set the symbol as `$` by adding the following line to ``.zshrc``:
 ```shell
 export TYPEWRITTEN_SYMBOL="$"
 ```

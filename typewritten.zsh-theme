@@ -29,7 +29,15 @@ local user_host='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$reset_co
 
 # default: blue, if return code other than 0: red
 local prompt_color="%(?,%{$fg[blue]%},%{$fg[red]%})"
-local prompt='${prompt_color}> %{$reset_color%}'
+
+# default: >
+local prompt_symbol=">"
+
+if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
+    prompt_symbol="$TYPEWRITTEN_SYMBOL"
+fi
+
+local prompt='${prompt_color}${prompt_symbol} %{$reset_color%}'
 
 # current directory display
 local directory_path='%{$fg[magenta]%}%c'

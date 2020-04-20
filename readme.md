@@ -7,6 +7,9 @@ Leaves all the room for what's important.
 
 
 ## Features
+- Prompt layout customization
+- Prompt symbol customization
+- Cursor customization
 - Current directory
 - Current git branch
 - Git status indicators:
@@ -19,8 +22,6 @@ Leaves all the room for what's important.
   - ``#``     &nbsp; — unmerged change(s);
   - ``•|``    — behind of remote branch;
   - ``|•``    — ahead of remote branch;
-- Prompt layout customization
-- Cursor customization
 - Prompt color changes to red when an error return code is\
 returned and code is displayed on the right
 - Prompt cursor fix when exiting vim
@@ -59,6 +60,13 @@ user@host
 **singleline verbose**
 ```shell
 user@host >
+```
+
+
+### Prompt symbol
+Default prompt symbole is ``>``. It is entirely customizable with the ``TYPEWRITTEN_SYMBOL`` zsh variable. For example, one could set the symbol as `$` by adding the following line to his ``.zshrc``:
+```shell
+export TYPEWRITTEN_SYMBOL="$"
 ```
 
 

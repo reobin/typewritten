@@ -62,8 +62,13 @@ else
     PROMPT="${prompt}"
 fi
 
+local right_prompt_prefix="%{$fg[white]%}"
+if [ ! -z "$TYPEWRITTEN_RIGHT_PROMPT_PREFIX" ]; then
+    right_prompt_prefix+="$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
+fi
+
 # right prompt definition
-RPROMPT="${directory_path}"
+RPROMPT="${right_prompt_prefix}${directory_path}"
 RPROMPT+="${git_info}"
 RPROMPT+="${return_code}"
 

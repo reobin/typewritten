@@ -78,6 +78,24 @@ export TYPEWRITTEN_CURSOR="beam"
 ```
 
 
+### Right prompt prefix
+By default, there is no prefix. Right prompt is made of the current directory and it's git repo info.\
+A prefix can be added with the `TYPEWRITTEN_RIGHT_PROMPT_PREFIX` option.\
+For example, by using:
+```shell
+export TYPEWRITTEN_RIGHT_PROMPT_PREFIX="# "
+```
+My right prompt:
+```shell
+> ls              directory -> master (git info)
+```
+Would turn into:
+```shell
+> ls              # directory -> master (git info)
+```
+
+
+
 ## Contributors
 * [@thbe](https://github.com/thbe)
 * [@erikr](https://github.com/erikr)

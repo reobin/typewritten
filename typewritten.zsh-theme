@@ -79,10 +79,23 @@ function _set_right_prompt () {
     RPROMPT="${right_prompt_prefix}"
     local git_root=""
     if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" = true ]; then
-        git_root="$(_get_git_root)"
+        local repo_path=`git rev-parse --show-toplevel` > /dev/null 2>&1
+        local current_directory=`pwd`
+        if [ "${repo_path}" != "" -a "${repo_path}" != "${current_directory}" ]; then
+            local repo_name=`basename ${repo_path}`
+            git_root="$repo_name"
+        fi;
     fi;
     if [ "${git_root}" != "" ]; then
-        RPROMPT+="%{$fg[magenta]%}${git_root}/.../"
+        # check how many directories are between
+        current_nesting=${current_directory//[^\/]}
+        repo_nesting=${repo_path//[^\/]}
+        diff=`expr ${#current_nesting} - ${#repo_nesting}`
+        if [ $diff -eq 1 ]; then
+            RPROMPT+="%{$fg[magenta]%}${git_root}/"
+        else
+            RPROMPT+="%{$fg[magenta]%}${git_root}/.../"
+        fi;
     fi;
     RPROMPT+="${directory_path}"
     RPROMPT+="${git_info}"

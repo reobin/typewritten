@@ -46,8 +46,13 @@ Set ``ZSH_THEME="typewritten"`` in your ``.zshrc``.
 ### Display git root directory
 By default, only the current working directory is displayed on the right. The `TYPEWRITTEN_GIT_RELATIVE_PATH` option can be turned on (`export TYPEWRITTEN_GIT_RELATIVE_PATH=true`) to display the git root directory as well as the current working directory:
 ```shell
+>                 git_repo_root/directory -> master
+```
+or
+```shell
 >                 git_repo_root/.../directory -> master
 ```
+depending on nesting.
 
 ### Prompt layout
 3 prompt layouts are available.<br>

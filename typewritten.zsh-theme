@@ -61,15 +61,6 @@ else
     PROMPT="${prompt}"
 fi
 
-function _get_git_root () {
-    local repo_path=`git rev-parse --show-toplevel` > /dev/null 2>&1
-    local current_directory=`pwd`
-    if [ "${repo_path}" != "" -a "${repo_path}" != "${current_directory}" ]; then
-        local repo_name=`basename ${repo_path}`
-        echo "$repo_name"
-    fi;
-}
-
 function _set_right_prompt () {
     local right_prompt_prefix="%{$fg[white]%}"
     if [ ! -z "$TYPEWRITTEN_RIGHT_PROMPT_PREFIX" ]; then

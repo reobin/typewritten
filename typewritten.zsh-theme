@@ -113,4 +113,6 @@ _fix_cursor() {
     echo -ne "${cursor}"
 }
 
-precmd_functions+=(_fix_cursor _set_right_prompt)
+autoload -U add-zsh-hook
+add-zsh-hook precmd _fix_cursor
+add-zsh-hook precmd _set_right_prompt

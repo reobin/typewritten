@@ -77,8 +77,9 @@ function _set_right_prompt () {
     fi
 
     RPROMPT="${right_prompt_prefix}"
+    local git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
     local git_root=""
-    if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" = true ]; then
+    if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" = true -a "$git_hide_status" != "1" ]; then
         local repo_path=`git rev-parse --show-toplevel` > /dev/null 2>&1
         local current_directory=`pwd`
         if [ "${repo_path}" != "" -a "${repo_path}" != "${current_directory}" ]; then
@@ -98,7 +99,9 @@ function _set_right_prompt () {
         fi;
     fi;
     RPROMPT+="${directory_path}"
-    RPROMPT+="${git_info}"
+    if [ "$git_hide_status" != "1" ]; then
+        RPROMPT+="${git_info}"
+    fi
     RPROMPT+="${return_code}"
 }
 

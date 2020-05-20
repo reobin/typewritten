@@ -113,4 +113,4 @@ _fix_cursor() {
     echo -ne "${cursor}"
 }
 
-precmd_functions=(_fix_cursor _set_right_prompt)
+precmd_functions+=(_fix_cursor _set_right_prompt)

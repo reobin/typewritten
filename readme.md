@@ -5,29 +5,20 @@ Leaves all the room for what's important.
   <img src="./media/typewritten-demo.gif?raw=true" width="100%" alt="Demo" />
 </p>
 
-> Terminal is [iTerm2](https://iterm2.com/) — Font is [FiraCode](https://github.com/tonsky/FiraCode) — Terminal theme is [SpaceCamp](https://github.com/reobin/spacecamp-iterm)
+> Terminal is [iTerm2](https://iterm2.com/) — Font is [JetBrains Mono](https://www.jetbrains.com/lp/mono/) — Terminal theme is [SpaceCamp](https://github.com/reobin/spacecamp-iterm)
 
 
 ## Features
-- Prompt layout customization
-- Prompt symbol customization
-- Cursor customization
 - Current directory
-- Option to display the git root directory as well as the current working directory
 - Current git branch
-- Git status indicators:
-  - ``?``     &nbsp; — untracked change(s);
-  - ``+``     &nbsp; — staged change(s);
-  - ``!``     &nbsp; — file(s) modified in the repo;
-  - ``»``     &nbsp; — renamed file(s);
-  - ``—``     &nbsp; — deleted file(s);
-  - ``$``     &nbsp; — stashed change(s);
-  - ``#``     &nbsp; — unmerged change(s);
-  - ``•|``    — behind of remote branch;
-  - ``|•``    — ahead of remote branch;
-- Prompt color changes to red when an error return code is\
-returned and code is displayed on the right
-- Prompt cursor fix when exiting vim
+- [git status indicators](#git-status-indicators)
+- [Return code](#return-code)
+- [Various customization options](#customization-options)
+  - [Prompt layout](#typewritten_prompt_layout)
+  - [Prompt symbol](#typewritten_symbol)
+  - [Constant display of git home directory](#typewritten_git_relative_path)
+  - [Cursor](#typewritten_cursor)
+  - [Prefix on right prompt](#typewritten_right_prompt_prefix)
 
 
 ## Installation
@@ -43,84 +34,134 @@ ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes
 
 Set ``ZSH_THEME="typewritten"`` in your ``.zshrc``.
 
+
 ## Customization options
 
-### Display git root directory
-By default, only the current working directory is displayed on the right. The `TYPEWRITTEN_GIT_RELATIVE_PATH` option can be turned on (`export TYPEWRITTEN_GIT_RELATIVE_PATH=true`) to display the git root directory as well as the current working directory:
-```shell
->                 git_repo_root/directory -> master
-```
-or
-```shell
->                 git_repo_root/.../directory -> master
-```
-depending on nesting.
+Click on an option's name to see more info.
 
-### Prompt layout
-3 prompt layouts are available.<br>
-To customize the prompt layout, add define the `TYPEWRITTEN_PROMPT_LAYOUT` variable in your `.zshrc` to one of following values : `singleline`, `multiline`, or `singleline_verbose`.
-
-**singleline (default)**
-```shell
-> 
-```
-
-**multiline**
-```shell
-user@host
-> 
-```
-
-**singleline verbose**
-```shell
-user@host >
-```
+| Option | Description | Available options | Default value |
+|---|---|---|---|
+| [`TYPEWRITTEN_PROMPT_LAYOUT`](#typewritten_prompt_layout) | Defines how the prompt is displayed. | `singleline`, `singleline_verbose`, and `multiline` | `singleline` |
+| [`TYPEWRITTEN_SYMBOL`](#typewritten_symbol) | Defines the prompt symbol. | Any string value | `>` |
+| [`TYPEWRITTEN_GIT_RELATIVE_PATH`](#typewritten_git_relative_path) | If `true`, the current git home directory name is always shown next to the current directory name. | `true` or `false` | `false` |
+| [`TYPEWRITTEN_CURSOR`](#typewritten_cursor) | Defines the used cursor. | `underscore`, `beam`, or `block` | `underscore` |
+| [`TYPEWRITTEN_RIGHT_PROMPT_PREFIX`](#typewritten_right_prompt_prefix) | Defines what is displayed just before the right part of the prompt. | Any string | |
 
 
-### Prompt symbol
-Default prompt symbol is ``>``. It is entirely customizable with the ``TYPEWRITTEN_SYMBOL`` zsh variable. For example, one could set the symbol as `$` by adding the following line to ``.zshrc``:
-```shell
-export TYPEWRITTEN_SYMBOL="$"
-```
+### `TYPEWRITTEN_PROMPT_LAYOUT`
+
+**Default single line (`TYPEWRITTEN_PROMPT_LAYOUT="singleline"`)**
+<p align="center">
+  <img src="/media/prompt_layout/default.png" alt="singleline prompt layout" />
+</p>
+
+**Single line - verbose variation (`TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"`)**
+<p align="center">
+  <img src="/media/prompt_layout/singleline_verbose.png" alt="single line verbose prompt layout" />
+</p>
+
+**Multiline (`TYPEWRITTEN_PROMPT_LAYOUT="multiline"`)**
+<p align="center">
+  <img src="/media/prompt_layout/multiline.png" alt="multiline prompt layout" />
+</p>
 
 
-### Cursor
-Default cursor is ``underscore``, but there is two more options: ``beam`` and ``block``.
-They are both configured by adding the `TYPEWRITTEN_CURSOR` zsh variable to your ``.zshrc``:
-```shell
-export TYPEWRITTEN_CURSOR="beam"
-```
+### `TYPEWRITTEN_SYMBOL`
+
+Here are some examples of customized prompt symbols.
+
+**Default arrow (`TYPEWRITTEN_SYMBOL=">"`)**
+<p align="center">
+  <img src="/media/prompt_symbol/default.png" alt="default symbol" />
+</p>
+
+**Octothorp (`TYPEWRITTEN_SYMBOL="#"`)**
+<p align="center">
+  <img src="/media/prompt_symbol/hashtag.png" alt="octothorp symbol" />
+</p>
+
+**Full arrow (`TYPEWRITTEN_SYMBOL="->"`)**
+<p align="center">
+  <img src="/media/prompt_symbol/arrow.png" alt="arrow symbol" />
+</p>
+
+**Dollar sign (`TYPEWRITTEN_SYMBOL="$"`)**
+<p align="center">
+  <img src="/media/prompt_symbol/dollar_sign.png" alt="dollar_sign symbol" />
+</p>
 
 
-### Right prompt prefix
-By default, there is no prefix. Right prompt is made of the current directory and it's git repo info.\
-A prefix can be added with the `TYPEWRITTEN_RIGHT_PROMPT_PREFIX` option.\
-For example, by using:
-```shell
-export TYPEWRITTEN_RIGHT_PROMPT_PREFIX="# "
-```
-My right prompt:
-```shell
-> ls              directory -> master (git info)
-```
-Would turn into:
-```shell
-> ls              # directory -> master (git info)
-```
+### `TYPEWRITTEN_GIT_RELATIVE_PATH`
 
+By default, only the current working directory is displayed on the right. The `TYPEWRITTEN_GIT_RELATIVE_PATH` option can be turned on to display the git root directory as well as the current working directory:
+
+**Default behaviour (`TYPEWRITTEN_GIT_RELATIVE_PATH=false`)**
+<p align="center">
+  <img src="/media/git_root_relative_path/off.png" alt="default path" />
+</p>
+
+**Show git home direcoty (`TYPEWRITTEN_GIT_RELATIVE_PATH=true`)**
+
+`/.../` is displayed when the nesting gets more than one level deep.
+<p align="center">
+  <img src="/media/git_root_relative_path/on.png" alt="show git home directory" />
+</p>
+
+
+### `TYPEWRITTEN_CURSOR`
+
+**Default underscore (`TYPEWRITTEN_CURSOR="underscore"`)**
+<p align="center">
+  <img src="/media/cursor/underscore.png" alt="underscore cursor" />
+</p>
+
+**Beam (`TYPEWRITTEN_CURSOR="beam"`)**
+
+<p align="center">
+  <img src="/media/cursor/beam.png" alt="beam cursor" />
+</p>
+
+**Block (`TYPEWRITTEN_CURSOR="block"`)**
+<p align="center">
+  <img src="/media/cursor/block.png" alt="block cursor" />
+</p>
+
+
+### `TYPEWRITTEN_RIGHT_PROMPT_PREFIX`
+
+**Default no prefix (`TYPEWRITTEN_RIGHT_PROMPT_PREFIX=""`)**
+<p align="center">
+  <img src="/media/right_prompt_prefix/none.png" alt="no right prompt prefix" />
+</p>
+
+**Bash comment prefix (`TYPEWRITTEN_RIGHT_PROMPT_PREFIX="# "`)**
+<p align="center">
+  <img src="/media/right_prompt_prefix/hash_tag.png" alt="bash comment prefix" />
+</p>
+
+
+## More info
+
+### git status indicators
+- ``?``     &nbsp; — untracked change(s);
+- ``+``     &nbsp; — staged change(s);
+- ``!``     &nbsp; — file(s) modified in the repo;
+- ``»``     &nbsp; — renamed file(s);
+- ``—``     &nbsp; — deleted file(s);
+- ``$``     &nbsp; — stashed change(s);
+- ``#``     &nbsp; — unmerged change(s);
+- ``•|``    — behind of remote branch;
+- ``|•``    — ahead of remote branch;
+
+
+### return code
+When an error happens, the prompt symbol changed to a red color, and the return code is displayed on the right.
+<p align="center">
+  <img src="/media/return_code/127.png" alt="127 return code" />
+</p>
 
 
 ## Contributors
 * [@thbe](https://github.com/thbe)
 * [@erikr](https://github.com/erikr)
-
-
-## Screenshots
-**Multiline prompt layout**
-<img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/multiline.png" alt="multiline" />
-
-**Singleline verbose prompt layout**
-<img src="https://github.com/reobin/typewritten/blob/master/media/singleline_verbose.png?raw=true" alt="singleline verbose" />
-
-**Return code**
-<img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/return_code.png" alt="return code" />
+* [@artem-zinnatullin](https://github.com/artem-zinnatullin)

@@ -1,7 +1,9 @@
 # ``>_`` typewritten - a minimal, informative zsh prompt theme
 
 Leaves all the room for what's important.
-<img align="center" src="https://raw.githubusercontent.com/reobin/typewritten/master/media/demo.gif" alt="video" />
+<p align="center">
+  <img src="./media/typewritten-demo.gif?raw=true" width="100%" alt="Demo" />
+</p>
 
 > Terminal is [iTerm2](https://iterm2.com/) — Font is [FiraCode](https://github.com/tonsky/FiraCode) — Terminal theme is [SpaceCamp](https://github.com/reobin/spacecamp-iterm)
 

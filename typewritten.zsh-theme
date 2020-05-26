@@ -7,7 +7,7 @@
 #
 
 # git status variables
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$reset_color%}-> %{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" -> %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""
@@ -31,7 +31,7 @@ local user_host='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$reset_co
 local prompt_color="%(?,%{$fg[blue]%},%{$fg[red]%})"
 
 # current directory display
-local directory_path='%{$fg[magenta]%}%c'
+local directory_path='%{$fg[magenta]%}%c%{$reset_color%}'
 
 # last command return code
 local return_code='%(?,,%{$fg[red]%} RC=%?%{$reset_color%})'
@@ -68,8 +68,9 @@ function _set_right_prompt () {
     fi
 
     RPROMPT="${right_prompt_prefix}"
+    local git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
     local git_root=""
-    if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" = true ]; then
+    if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" = true -a "$git_hide_status" != "1" ]; then
         local repo_path=`git rev-parse --show-toplevel` > /dev/null 2>&1
         local current_directory=`pwd`
         if [ "${repo_path}" != "" -a "${repo_path}" != "${current_directory}" ]; then
@@ -89,7 +90,9 @@ function _set_right_prompt () {
         fi;
     fi;
     RPROMPT+="${directory_path}"
-    RPROMPT+="${git_info}"
+    if [ "$git_hide_status" != "1" ]; then
+        RPROMPT+="${git_info}"
+    fi
     RPROMPT+="${return_code}"
 }
 

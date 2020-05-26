@@ -153,6 +153,11 @@ By default, only the current working directory is displayed on the right. The `T
 - ``•|``    — behind of remote branch;
 - ``|•``    — ahead of remote branch;
 
+Git status can be disabled by setting `git config` value in a repo or globally like so:
+
+```bash
+git config --add oh-my-zsh.hide-status 1
+```
 
 ### return code
 When an error happens, the prompt symbol changed to a red color, and the return code is displayed on the right.

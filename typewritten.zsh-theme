@@ -7,7 +7,7 @@
 #
 
 # git status variables
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$reset_color%}-> %{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" -> %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""
@@ -31,7 +31,7 @@ local user_host='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$reset_co
 local prompt_color="%(?,%{$fg[blue]%},%{$fg[red]%})"
 
 # current directory display
-local directory_path='%{$fg[magenta]%}%c'
+local directory_path='%{$fg[magenta]%}%c%{$reset_color%}'
 
 # last command return code
 local return_code='%(?,,%{$fg[red]%} RC=%?%{$reset_color%})'

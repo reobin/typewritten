@@ -7,7 +7,7 @@
 #
 
 # git status variables
-ZSH_THEME_GIT_PROMPT_PREFIX=" -> %{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[white]%}-> %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""
@@ -22,19 +22,19 @@ ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg_bold[blue]%} •|"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[blue]%} |•"
 
 # git status display
-local git_info='$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
+local git_info='$(git_prompt_info)$(git_prompt_status)'
 
 # current user and hostname
-local user_host='%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}%m %{$reset_color%}'
+local user_host='%{$fg[yellow]%}%n%{$fg[white]%}@%{$fg[yellow]%}%m '
 
 # default: blue, if return code other than 0: red
 local prompt_color="%(?,%{$fg[blue]%},%{$fg[red]%})"
 
 # current directory display
-local directory_path='%{$fg[magenta]%}%c%{$reset_color%}'
+local directory_path='%{$fg[magenta]%}%c'
 
 # last command return code
-local return_code='%(?,,%{$fg[red]%} RC=%?%{$reset_color%})'
+local return_code='%(?,,%{$fg[red]%} RC=%?)'
 
 # default: >
 local prompt_symbol=">"
@@ -43,7 +43,7 @@ if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
     prompt_symbol="$TYPEWRITTEN_SYMBOL"
 fi
 
-local prompt='${prompt_color}${prompt_symbol} %{$reset_color%}'
+local prompt='${prompt_color}${prompt_symbol} '
 
 # set prompt style to multiline for users who have not yet updated .zshrc
 if [ "$TYPEWRITTEN_MULTILINE" = true ]; then
@@ -110,3 +110,5 @@ _fix_cursor() {
 autoload -U add-zsh-hook
 add-zsh-hook precmd _fix_cursor
 add-zsh-hook precmd _set_right_prompt
+
+zle_highlight=( default:fg=white )

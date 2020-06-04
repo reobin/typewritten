@@ -47,6 +47,11 @@ Click on an option's name to see more info.
 | [`TYPEWRITTEN_CURSOR`](#typewritten_cursor) | Defines the used cursor. | `underscore`, `beam`, or `block` | `underscore` |
 | [`TYPEWRITTEN_RIGHT_PROMPT_PREFIX`](#typewritten_right_prompt_prefix) | Defines what is displayed just before the right part of the prompt. | Any string | |
 
+> All of these options are configurable through your `.zshrc` file like this:
+> ```shell
+> export TYPEWRITTEN_PROMPT_LAYOUT="singleline"
+> ```
+
 
 ### `TYPEWRITTEN_PROMPT_LAYOUT`
 

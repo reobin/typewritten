@@ -7,7 +7,7 @@
 #
 
 # git status variables
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[white]%}-> %{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[default]%}-> %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""
@@ -15,7 +15,7 @@ ZSH_THEME_GIT_PROMPT_ADDED="%{$fg_bold[cyan]%} +"
 ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%} !"
 ZSH_THEME_GIT_PROMPT_DELETED="%{$fg_bold[red]%} —"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg_bold[green]%} »"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[white]%} #"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[default]%} #"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[blue]%} ?"
 ZSH_THEME_GIT_PROMPT_STASHED="%{$fg_bold[yellow]%} $"
 ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg_bold[blue]%} •|"
@@ -25,7 +25,7 @@ ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[blue]%} |•"
 local git_info='$(git_prompt_info)$(git_prompt_status)'
 
 # current user and hostname
-local user_host='%{$fg[yellow]%}%n%{$fg[white]%}@%{$fg[yellow]%}%m '
+local user_host='%{$fg[yellow]%}%n%{$fg[default]%}@%{$fg[yellow]%}%m '
 
 # default: blue, if return code other than 0: red
 local prompt_color="%(?,%{$fg[blue]%},%{$fg[red]%})"
@@ -62,7 +62,7 @@ else
 fi
 
 function _set_right_prompt () {
-    local right_prompt_prefix="%{$fg[white]%}"
+    local right_prompt_prefix="%{$fg[default]%}"
     if [ ! -z "$TYPEWRITTEN_RIGHT_PROMPT_PREFIX" ]; then
         right_prompt_prefix+="$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
     fi

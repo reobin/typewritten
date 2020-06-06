@@ -111,4 +111,4 @@ autoload -U add-zsh-hook
 add-zsh-hook precmd _fix_cursor
 add-zsh-hook precmd _set_right_prompt
 
-zle_highlight=( default:fg=white )
+zle_highlight=( default:fg=default )

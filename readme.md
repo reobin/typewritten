@@ -175,3 +175,4 @@ When an error happens, the prompt symbol changed to a red color, and the return 
 * [@thbe](https://github.com/thbe)
 * [@erikr](https://github.com/erikr)
 * [@artem-zinnatullin](https://github.com/artem-zinnatullin)
+* [@nizarmah](https://github.com/nizarmah)

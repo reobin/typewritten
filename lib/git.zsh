@@ -34,9 +34,9 @@ typewritten_is_git_repository() {
 }
 
 typewritten_git_branch() {
-  local t_branch_name="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
-  if [ "$t_branch_name" != "" ]; then
-    echo " %F{default}-> %F{magenta}$t_branch_name"
+  local branch_name="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
+  if [ "$branch_name" != "" ]; then
+    echo " %F{default}-> %F{magenta}$branch_name"
   else
     echo ""
   fi

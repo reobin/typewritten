@@ -10,17 +10,17 @@ export TYPEWRITTEN_ROOT=${${(%):-%x}:A:h}
 source "$TYPEWRITTEN_ROOT/lib/git.zsh"
 
 # default: blue, if return code other than 0: red
-local t_prompt_color="%(?,%F{blue},%F{red})"
-local t_prompt_symbol=">"
+local prompt_color="%(?,%F{blue},%F{red})"
 
+local prompt_symbol=">"
 if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
-    t_prompt_symbol="$TYPEWRITTEN_SYMBOL"
+    prompt_symbol="$TYPEWRITTEN_SYMBOL"
 fi
 
-local t_prompt="$t_prompt_color$t_prompt_symbol %F{default}"
+local typewritten_prompt="$prompt_color$prompt_symbol %F{default}"
 
 # current user and hostname
-local t_user_host="%F{yellow}%n%F{default}@%F{yellow}%m "
+local user_host="%F{yellow}%n%F{default}@%F{yellow}%m "
 
 # set prompt style to multiline for users who have not yet updated .zshrc
 if [ "$TYPEWRITTEN_MULTILINE" = true ]; then
@@ -28,26 +28,26 @@ if [ "$TYPEWRITTEN_MULTILINE" = true ]; then
 fi
 # set prompt style; default is singleline
 if [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline" ]; then
-    PROMPT="$t_prompt"
+    PROMPT="$typewritten_prompt"
 elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline_verbose" ]; then
-    PROMPT="$t_user_host$t_prompt"
+    PROMPT="$user_host$typewritten_prompt"
 elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "multiline" ]; then
-    PROMPT="$t_user_host
-$t_prompt"
+    PROMPT="$user_host
+$typewritten_prompt"
 else
-    PROMPT="$t_prompt"
+    PROMPT="$typewritten_prompt"
 fi
 
 # current directory display
 _set_right_prompt() {
-    local t_directory_path="%c"
-    local t_return_code="%(?,,%F{red} RC=%?)"
+    local directory_path="%c"
+    local return_code="%(?,,%F{red} RC=%?)"
 
-    local t_right_prompt_prefix="%F{default}"
+    local right_prompt_prefix="%F{default}"
     if [ ! -z "$TYPEWRITTEN_RIGHT_PROMPT_PREFIX" ]; then
         right_prompt_prefix+="$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
     fi
-    RPROMPT="${t_right_prompt_prefix}"
+    RPROMPT="${right_prompt_prefix}"
 
     local git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
 
@@ -67,18 +67,18 @@ _set_right_prompt() {
     RPROMPT+="%F{magenta}$git_home_display$t_directory_path"
     RPROMPT+="$git_branch"
     RPROMPT+="$git_status"
-    RPROMPT+="$t_return_code"
+    RPROMPT+="$return_code"
 }
 
 _fix_cursor() {
     # prompt cursor fix when exiting vim
-    local t_cursor="\e[3 q"
+    local cursor="\e[3 q"
     if [ "$TYPEWRITTEN_CURSOR" = "block" ]; then
-        t_cursor="\e[1 q"
+        cursor="\e[1 q"
     elif [ "$TYPEWRITTEN_CURSOR" = "beam" ]; then
-        t_cursor="\e[5 q"
+        cursor="\e[5 q"
     fi
-    echo -ne "$t_cursor"
+    echo -ne "$cursor"
 }
 
 autoload -U add-zsh-hook

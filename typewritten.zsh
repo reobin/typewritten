@@ -6,6 +6,9 @@
 #             A minimal, informative zsh prompt theme
 #
 
+export TYPEWRITTEN_ROOT=${${(%):-%x}:A:h}
+source "$TYPEWRITTEN_ROOT/lib/git.zsh"
+
 # default: blue, if return code other than 0: red
 local t_prompt_color="%(?,%F{blue},%F{red})"
 local t_prompt_symbol=">"
@@ -35,17 +38,8 @@ else
     PROMPT="$t_prompt"
 fi
 
-function t_git_branch() {
-    branch_name="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
-    if [ "$branch_name" != "" ]; then
-        echo " -> $branch_name"
-    else
-        echo ""
-    fi
-}
-
 # current directory display
-function _set_right_prompt () {
+_set_right_prompt() {
     local t_directory_path="%c"
     local t_return_code="%(?,,%F{red} RC=%?)"
 
@@ -57,32 +51,22 @@ function _set_right_prompt () {
 
     local git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
 
-    local git_root=""
-    if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" = true -a "$git_hide_status" != "1" ]; then
-        local repo_path="$(git rev-parse --show-toplevel)" > /dev/null 2>&1
-        local current_directory="$(pwd)"
-        if [ "$repo_path" != "" -a "$repo_path" != "$current_directory" ]; then
-            local repo_name=`basename $repo_path`
-            git_root="$repo_name"
-        fi;
-    fi;
-    if [ "$git_root" != "" ]; then
-        # check how many directories are between
-        local current_nesting="${current_directory//[^\/]}"
-        local repo_nesting="${repo_path//[^\/]}"
-        local diff=`expr ${#current_nesting} - ${#repo_nesting}`
-        if [ $diff -eq 1 ]; then
-            RPROMPT+="$git_root/"
-        else
-            RPROMPT+="$git_root/.../"
-        fi;
-    fi;
+    local git_home_display=""
+    local git_branch=""
+    local git_status=""
 
-    RPROMPT+="$t_directory_path"
-    if [ "$git_hide_status" != "1" ]; then
-        RPROMPT+="$(t_git_branch)"
-        # RPTOMPT+="$(t_git_status)"
+    if [[ "$git_hide_status" != "1" ]] && [[ $(typewritten_is_git_repository) == true ]]; then
+      git_branch="$(typewritten_git_branch)"
+      git_status="$(typewritten_git_status)"
+
+      if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]; then
+        git_home_display="$(typewritten_git_home_display)"
+      fi
     fi
+
+    RPROMPT+="%F{magenta}$git_home_display$t_directory_path"
+    RPROMPT+="$git_branch"
+    RPROMPT+="$git_status"
     RPROMPT+="$t_return_code"
 }
 

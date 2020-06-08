@@ -24,7 +24,8 @@ Leaves all the room for what's important.
 ## Installation
 
 ### Manual
-Clone the repo locally
+if using `oh-my-zsh`, set `ZSH_THEME=""` in your `.zshrc` to disable oh-my-zsh themes.
+
 ```shell
 mkdir -p "$HOME/.zsh"
 git clone https://github.com/reobin/typewritten.git "$HOME/.zsh/typewritten"

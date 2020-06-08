@@ -22,6 +22,22 @@ Leaves all the room for what's important.
 
 
 ## Installation
+
+### Manual
+Clone the repo locally
+```shell
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/reobin/typewritten.git "$HOME/.zsh/typewritten"
+```
+
+Add config to `.zshrc`
+```shell
+fpath+=$HOME/.zsh/typewritten
+autoload -U promptinit; promptinit
+prompt typewritten
+```
+
+### oh-my-zsh
 Clone the repository into your custom oh-my-zsh themes directory:
 ```shell
 git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM/themes/typewritten

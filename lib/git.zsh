@@ -22,11 +22,7 @@ typewritten_git_home_display() {
 }
 
 typewritten_is_git_repository() {
-  # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
-  # Conceptually based on gitcompletion (http://gitweb.hawaga.org.uk/).
-  # Distributed under the GNU General Public License, version 2.0.
-
-  if [ -d .git ] || $(command git rev-parse --git-dir 2> /dev/null); then
+  if $(command git rev-parse --git-dir 2> /dev/null); then
     echo true
   else
     echo false

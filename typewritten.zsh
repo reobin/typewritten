@@ -64,7 +64,7 @@ _set_right_prompt() {
       fi
     fi
 
-    RPROMPT+="%F{magenta}$git_home_display$t_directory_path"
+    RPROMPT+="%F{magenta}$git_home_display$directory_path"
     RPROMPT+="$git_branch"
     RPROMPT+="$git_status"
     RPROMPT+="$return_code"

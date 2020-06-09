@@ -22,10 +22,10 @@ typewritten_git_home_display() {
 }
 
 typewritten_is_git_repository() {
-  if $(command git rev-parse --git-dir 2> /dev/null); then
-    echo true
-  else
+  if [[ "$(command git rev-parse --git-dir 2> /dev/null)" == "" ]]; then
     echo false
+  else
+    echo true
   fi
 }
 

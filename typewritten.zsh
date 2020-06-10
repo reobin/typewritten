@@ -17,7 +17,9 @@ if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
     prompt_symbol="$TYPEWRITTEN_SYMBOL"
 fi
 
-local typewritten_prompt="$prompt_color$prompt_symbol %F{default}"
+local return_code="%(?,,%F{red}%? )"
+
+local typewritten_prompt="$return_code$prompt_color$prompt_symbol %F{default}"
 
 # current user and hostname
 local user_host="%F{yellow}%n%F{default}@%F{yellow}%m "
@@ -41,8 +43,6 @@ fi
 # current directory display
 _set_right_prompt() {
     local directory_path="%c"
-    local return_code="%(?,,%F{red} RC=%?)"
-
     local right_prompt_prefix="%F{default}"
     if [ ! -z "$TYPEWRITTEN_RIGHT_PROMPT_PREFIX" ]; then
         right_prompt_prefix+="$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
@@ -67,7 +67,6 @@ _set_right_prompt() {
     RPROMPT+="%F{magenta}$git_home_display$directory_path"
     RPROMPT+="$git_branch"
     RPROMPT+="$git_status"
-    RPROMPT+="$return_code"
 }
 
 _fix_cursor() {

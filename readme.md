@@ -55,6 +55,14 @@ Set ``ZSH_THEME="typewritten"`` in your ``.zshrc`` file.
 
 Add ``antibody bundle reobin/typewritten`` to your ``.zshrc``.
 
+### [zgen](https://github.com/tarjoilija/zgen)
+
+Add ``zgen load reobin/typewritten typewritten`` to your ``.zshrc``.
+
+### [zim](https://github.com/Eriner/zim)
+
+Add ``zmodule reobin/typewritten --name typewritten`` to your ``.zimrc`` and run ``zimfw install``.
+
 ### [zplug](https://github.com/zplug/zplug)
 
 Add ``zplug reobin/typewritten, as:theme`` to your ``.zshrc``.

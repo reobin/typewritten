@@ -53,11 +53,11 @@ Set ``ZSH_THEME="typewritten"`` in your ``.zshrc`` file.
 
 ### [antibody](https://github.com/getantibody/antibody)
 
-Add `antibody bundle reobin/typewritten` to your `.zshrc`.
+Add ``antibody bundle reobin/typewritten`` to your ``.zshrc``.
 
 ### [zplug](https://github.com/zplug/zplug)
 
-Add `zplug reobin/typewritten, as:theme` to your `.zshrc`.
+Add ``zplug reobin/typewritten, as:theme`` to your ``.zshrc``.
 
 
 ## Customization options

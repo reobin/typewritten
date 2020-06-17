@@ -2,7 +2,7 @@
 
 Leaves all the room for what's important.
 <p align="center">
-  <img src="media/typewritten-demo.gif?raw=true" alt="typewritten zsh prompt demo" />
+  <img src="media/typewritten.gif?raw=true" alt="typewritten zsh prompt demo" />
 </p>
 
 > Terminal is [iTerm2](https://iterm2.com/) — Font is [JetBrains Mono](https://www.jetbrains.com/lp/mono/) — Terminal theme is [SpaceCamp](https://github.com/reobin/spacecamp-iterm)

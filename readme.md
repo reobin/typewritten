@@ -22,6 +22,23 @@ Leaves all the room for what's important.
 
 
 ## Installation
+
+### Manual
+if using `oh-my-zsh`, set `ZSH_THEME=""` in your `.zshrc` to disable oh-my-zsh themes.
+
+```shell
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/reobin/typewritten.git "$HOME/.zsh/typewritten"
+```
+
+Add config to `.zshrc`
+```shell
+fpath+=$HOME/.zsh/typewritten
+autoload -U promptinit; promptinit
+prompt typewritten
+```
+
+### [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 Clone the repository into your custom oh-my-zsh themes directory:
 ```shell
 git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM/themes/typewritten
@@ -33,6 +50,22 @@ ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes
 ```
 
 Set ``ZSH_THEME="typewritten"`` in your ``.zshrc`` file.
+
+### [antibody](https://github.com/getantibody/antibody)
+
+Add ``antibody bundle reobin/typewritten`` to your ``.zshrc``.
+
+### [zgen](https://github.com/tarjoilija/zgen)
+
+Add ``zgen load reobin/typewritten typewritten`` to your ``.zshrc``.
+
+### [zim](https://github.com/Eriner/zim)
+
+Add ``zmodule reobin/typewritten --name typewritten`` to your ``.zimrc`` and run ``zimfw install``.
+
+### [zplug](https://github.com/zplug/zplug)
+
+Add ``zplug reobin/typewritten, as:theme`` to your ``.zshrc``.
 
 
 ## Customization options

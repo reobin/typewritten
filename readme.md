@@ -97,65 +97,60 @@ Click on an option's name to see more info.
 **Default single line (`TYPEWRITTEN_PROMPT_LAYOUT="singleline"`)**
 
 <p align="center">
-  <img src="media/prompt_layout/default.png" alt="singleline prompt layout" />
+  <img src="media/layouts/singline.png" alt="singleline prompt layout" />
 </p>
 
 **Single line - verbose variation (`TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"`)**
 
 <p align="center">
-  <img src="media/prompt_layout/singleline_verbose.png" alt="single line verbose prompt layout" />
+  <img src="media/layouts/singleline_verbose.png" alt="single line verbose prompt layout" />
 </p>
 
 **Multiline (`TYPEWRITTEN_PROMPT_LAYOUT="multiline"`)**
 
 <p align="center">
-  <img src="media/prompt_layout/multiline.png" alt="multiline prompt layout" />
+  <img src="media/layouts/multiline.png" alt="multiline prompt layout" />
 </p>
 
 ### `TYPEWRITTEN_SYMBOL`
 
 Here are some examples of customized prompt symbols.
 
-**Default arrow (`TYPEWRITTEN_SYMBOL=">"`)**
+**Default (`TYPEWRITTEN_SYMBOL="❯"`)**
 
 <p align="center">
-  <img src="media/prompt_symbol/default.png" alt="default symbol" />
-</p>
-
-**Octothorp (`TYPEWRITTEN_SYMBOL="#"`)**
-
-<p align="center">
-  <img src="media/prompt_symbol/hashtag.png" alt="octothorp symbol" />
-</p>
-
-**Full arrow (`TYPEWRITTEN_SYMBOL="->"`)**
-
-<p align="center">
-  <img src="media/prompt_symbol/arrow.png" alt="arrow symbol" />
+  <img src="media/symbols/default.png" alt="default symbol" />
 </p>
 
 **Dollar sign (`TYPEWRITTEN_SYMBOL="$"`)**
 
 <p align="center">
-  <img src="media/prompt_symbol/dollar_sign.png" alt="dollar_sign symbol" />
+  <img src="media/symbols/dollar_sign.png" alt="dollar sign symbol" />
+</p>
+
+**Full arrow (`TYPEWRITTEN_SYMBOL="->"`)**
+
+<p align="center">
+  <img src="media/symbols/arrow.png" alt="arrow symbol" />
 </p>
 
 ### `TYPEWRITTEN_GIT_RELATIVE_PATH`
 
-By default, only the current working directory is displayed on the right. The `TYPEWRITTEN_GIT_RELATIVE_PATH` option can be turned on to display the git root directory as well as the current working directory:
+By default, the git root directory is always displayed no matter how far you are inside it.
+To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELATIVE_PATH` to `false`.
 
-**Default behaviour (`TYPEWRITTEN_GIT_RELATIVE_PATH=false`)**
-
-<p align="center">
-  <img src="media/git_root_relative_path/off.png" alt="default path" />
-</p>
-
-**Show git home direcoty (`TYPEWRITTEN_GIT_RELATIVE_PATH=true`)**
+**Default behaviour (`TYPEWRITTEN_GIT_RELATIVE_PATH=true`)**
 
 `/.../` is displayed when the nesting gets more than one level deep.
 
 <p align="center">
-  <img src="media/git_root_relative_path/on.png" alt="show git home directory" />
+  <img src="media/git_relative_path/git_relative_path.png" alt="default git relative path" />
+</p>
+
+**Hide git home direcoty (`TYPEWRITTEN_GIT_RELATIVE_PATH=false`)**
+
+<p align="center">
+  <img src="media/git_relative_path/git_no_relative_path.png" alt="hide git home directory" />
 </p>
 
 ### `TYPEWRITTEN_CURSOR`
@@ -163,33 +158,27 @@ By default, only the current working directory is displayed on the right. The `T
 **Default underscore (`TYPEWRITTEN_CURSOR="underscore"`)**
 
 <p align="center">
-  <img src="media/cursor/underscore.png" alt="underscore cursor" />
+  <img src="media/cursors/underscore.png" alt="underscore cursor" />
 </p>
 
 **Beam (`TYPEWRITTEN_CURSOR="beam"`)**
 
 <p align="center">
-  <img src="media/cursor/beam.png" alt="beam cursor" />
+  <img src="media/cursors/beam.png" alt="beam cursor" />
 </p>
 
 **Block (`TYPEWRITTEN_CURSOR="block"`)**
 
 <p align="center">
-  <img src="media/cursor/block.png" alt="block cursor" />
+  <img src="media/cursors/block.png" alt="block cursor" />
 </p>
 
 ### `TYPEWRITTEN_RIGHT_PROMPT_PREFIX`
 
-**Default no prefix (`TYPEWRITTEN_RIGHT_PROMPT_PREFIX=""`)**
-
-<p align="center">
-  <img src="media/right_prompt_prefix/none.png" alt="no right prompt prefix" />
-</p>
-
 **Bash comment prefix (`TYPEWRITTEN_RIGHT_PROMPT_PREFIX="# "`)**
 
 <p align="center">
-  <img src="media/right_prompt_prefix/hash_tag.png" alt="bash comment prefix" />
+  <img src="media/right_prompt_prefix.png" alt="bash comment prefix" />
 </p>
 
 ## More info
@@ -203,8 +192,9 @@ By default, only the current working directory is displayed on the right. The `T
 - `—` &nbsp; — deleted file(s);
 - `$` &nbsp; — stashed change(s);
 - `#` &nbsp; — unmerged change(s);
-- `•|` — behind of remote branch;
-- `|•` — ahead of remote branch;
+- `•|` &nbsp; — behind of remote branch;
+- `|•` &nbsp; — ahead of remote branch;
+- `~` &nbsp; — Branches have diverged;
 
 Git status can be disabled by setting `git config` value in a repo or globally like so:
 
@@ -214,10 +204,10 @@ git config --add oh-my-zsh.hide-status 1
 
 ### return code
 
-When an error happens, the prompt symbol changed to a red color, and the return code is displayed on the right.
+When an error happens, the prompt symbol changed to a red color, and the return code is displayed on the left.
 
 <p align="center">
-  <img src="media/return_code/127.png" alt="127 return code" />
+  <img src="media/return_code.png" alt="127 return code" />
 </p>
 
 ## Contributors

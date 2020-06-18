@@ -97,7 +97,7 @@ Click on an option's name to see more info.
 **Default single line (`TYPEWRITTEN_PROMPT_LAYOUT="singleline"`)**
 
 <p align="center">
-  <img src="media/layouts/singline.png" alt="singleline prompt layout" />
+  <img src="media/layouts/singleline.png" alt="singleline prompt layout" />
 </p>
 
 **Single line - verbose variation (`TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"`)**

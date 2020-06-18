@@ -210,9 +210,12 @@ When an error happens, the prompt symbol changed to a red color, and the return 
   <img src="media/return_code.png" alt="127 return code" />
 </p>
 
-## Contributors
+## Credits
+
+A special thanks to all the contributors to this project
 
 - [@thbe](https://github.com/thbe)
 - [@erikr](https://github.com/erikr)
 - [@artem-zinnatullin](https://github.com/artem-zinnatullin)
 - [@nizarmah](https://github.com/nizarmah)
+- [@jletey](https://github.com/jletey)

@@ -36,7 +36,7 @@ _set_left_prompt() {
     if [[ $display_git == true ]]; then
       PROMPT="$BREAK_LINE$(typewritten_git_info_display)$BREAK_LINE$typewritten_prompt"
     else
-      PROMPT="$typewritten_prompt"
+      PROMPT="$BREAK_LINE$typewritten_prompt"
     fi
   elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "pure" ]; then
     local directory_path="%c"

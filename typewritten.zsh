@@ -22,8 +22,13 @@ _set_left_prompt() {
     prompt_symbol="$TYPEWRITTEN_SYMBOL"
   fi
 
+  local virtualenv=""
+  if [[ -n $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+    virtualenv="%F{default}($(basename $VIRTUAL_ENV)) "
+	fi
+
   local return_code="%(?,,%F{red}%? )"
-  local typewritten_prompt="$return_code$prompt_color$prompt_symbol %F{default}"
+  local typewritten_prompt="$virtualenv$return_code$prompt_color$prompt_symbol %F{default}"
   local user_host="%F{yellow}%n%F{default}@%F{yellow}%m "
 
   if [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline" ]; then

@@ -44,14 +44,11 @@ _set_left_prompt() {
       PROMPT="$BREAK_LINE$typewritten_prompt"
     fi
   elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "pure" ]; then
-    local directory_path="%c"
+    local directory_path="%~"
     if [[ $display_git == true ]]; then
-      if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]; then
-        git_home_display="$(typewritten_git_home_display)"
-      fi
-      PROMPT="$BREAK_LINE%F{magenta}$git_home_display$directory_path %F{default}-> $(typewritten_git_info_display)$BREAK_LINE$typewritten_prompt"
+      PROMPT="$BREAK_LINE%F{magenta}$directory_path %F{default}-> $(typewritten_git_info_display)$BREAK_LINE$typewritten_prompt"
     else
-      PROMPT="$BREAK_LINE$directory_path$BREAK_LINE$typewritten_prompt"
+      PROMPT="$BREAK_LINE%F{magenta}$directory_path$BREAK_LINE$typewritten_prompt"
     fi
   else
     PROMPT="$typewritten_prompt"

@@ -159,7 +159,7 @@ To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELA
   <img src="media/git_relative_path/git_relative_path.png" alt="default git relative path" />
 </p>
 
-**Hide git home direcoty (`TYPEWRITTEN_GIT_RELATIVE_PATH=false`)**
+**Hide git home directory (`TYPEWRITTEN_GIT_RELATIVE_PATH=false`)**
 
 <p align="center">
   <img src="media/git_relative_path/git_no_relative_path.png" alt="hide git home directory" />

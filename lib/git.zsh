@@ -32,7 +32,7 @@ typewritten_is_git_repository() {
 typewritten_git_branch() {
   local branch_name="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
   if [ "$branch_name" != "" ]; then
-    echo " %F{default}-> %F{magenta}$branch_name"
+    echo "%F{magenta}$branch_name"
   else
     echo ""
   fi
@@ -101,4 +101,8 @@ typewritten_git_status() {
   fi
 
   echo "$git_status"
+}
+
+typewritten_git_info_display() {
+  echo "$(typewritten_git_branch)$(typewritten_git_status)"
 }

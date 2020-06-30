@@ -78,13 +78,13 @@ Add `zplug reobin/typewritten, as:theme` to your `.zshrc`.
 
 Click on an option's name to see more info.
 
-| Option                                                                | Description                                                                                        | Available options                                   | Default value |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------- |
-| [`TYPEWRITTEN_PROMPT_LAYOUT`](#typewritten_prompt_layout)             | Defines how the prompt is displayed.                                                               | `singleline`, `singleline_verbose`, and `multiline` | `singleline`  |
-| [`TYPEWRITTEN_SYMBOL`](#typewritten_symbol)                           | Defines the prompt symbol.                                                                         | Any string value                                    | `>`           |
-| [`TYPEWRITTEN_GIT_RELATIVE_PATH`](#typewritten_git_relative_path)     | If `true`, the current git home directory name is always shown next to the current directory name. | `true` or `false`                                   | `false`       |
-| [`TYPEWRITTEN_CURSOR`](#typewritten_cursor)                           | Defines the used cursor.                                                                           | `underscore`, `beam`, or `block`                    | `underscore`  |
-| [`TYPEWRITTEN_RIGHT_PROMPT_PREFIX`](#typewritten_right_prompt_prefix) | Defines what is displayed just before the right part of the prompt.                                | Any string                                          |               |
+| Option                                                                | Description                                                                                        | Available options                                                         | Default value |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------- |
+| [`TYPEWRITTEN_PROMPT_LAYOUT`](#typewritten_prompt_layout)             | Defines how the prompt is displayed.                                                               | `singleline`, `half_pure` , `pure`, `singleline_verbose`, and `multiline` | `singleline`  |
+| [`TYPEWRITTEN_SYMBOL`](#typewritten_symbol)                           | Defines the prompt symbol.                                                                         | Any string value                                                          | `>`           |
+| [`TYPEWRITTEN_GIT_RELATIVE_PATH`](#typewritten_git_relative_path)     | If `true`, the current git home directory name is always shown next to the current directory name. | `true` or `false`                                                         | `false`       |
+| [`TYPEWRITTEN_CURSOR`](#typewritten_cursor)                           | Defines the used cursor.                                                                           | `underscore`, `beam`, or `block`                                          | `underscore`  |
+| [`TYPEWRITTEN_RIGHT_PROMPT_PREFIX`](#typewritten_right_prompt_prefix) | Defines what is displayed just before the right part of the prompt.                                | Any string                                                                |               |
 
 > All of these options are configurable through your `.zshrc` file like this:
 >
@@ -98,6 +98,18 @@ Click on an option's name to see more info.
 
 <p align="center">
   <img src="media/layouts/singleline.png" alt="singleline prompt layout" />
+</p>
+
+**Half pure (`TYPEWRITTEN_PROMPT_LAYOUT="half_pure"`)**
+
+<p align="center">
+  <img src="media/layouts/half_pure.png" alt="half pure prompt layout" />
+</p>
+
+**[Pure](https://github.com/sindresorhus/pure) (`TYPEWRITTEN_PROMPT_LAYOUT="pure"`)**
+
+<p align="center">
+  <img src="media/layouts/pure.png" alt="pure prompt layout" />
 </p>
 
 **Single line - verbose variation (`TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"`)**
@@ -212,6 +224,8 @@ When an error happens, the prompt symbol changed to a red color, and the return 
 
 ## Credits
 
+### Contributors
+
 A special thanks to all the contributors to this project
 
 - [@thbe](https://github.com/thbe)
@@ -219,3 +233,7 @@ A special thanks to all the contributors to this project
 - [@artem-zinnatullin](https://github.com/artem-zinnatullin)
 - [@nizarmah](https://github.com/nizarmah)
 - [@jletey](https://github.com/jletey)
+
+### Inspiration
+
+`pure` and `half_pure` layouts are highly inspired by [Pure](https://github.com/sindresorhus/pure)

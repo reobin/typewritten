@@ -1,7 +1,10 @@
-typewritten_git_home_display() {
+_git_home() {
+  local current_directory="$1"
+
+  cd -q $current_directory
+
   local git_home=""
   local repo_path="$(git rev-parse --show-toplevel)" > /dev/null 2>&1
-  local current_directory="$(pwd)"
   if [ "$repo_path" != "" -a "$repo_path" != "$current_directory" ]; then
     local repo_name=`basename $repo_path`
     git_home="$repo_name"
@@ -12,33 +15,33 @@ typewritten_git_home_display() {
     local repo_nesting="${repo_path//[^\/]}"
     local diff=`expr ${#current_nesting} - ${#repo_nesting}`
     if [ $diff -eq 1 ]; then
-      echo "$git_home/"
+     echo "$git_home/"
     else
-      echo "$git_home/.../"
+     echo "$git_home/.../"
     fi;
   else
     echo ""
   fi;
 }
 
-typewritten_is_git_repository() {
-  if [[ "$(command git rev-parse --git-dir 2> /dev/null)" == "" ]]; then
-    echo false
-  else
-    echo true
-  fi
-}
-
-typewritten_git_branch() {
-  local branch_name="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
-  if [ "$branch_name" != "" ]; then
-    echo "%F{magenta}$branch_name"
+_git_info() {
+  local _branch="$(_git_branch $1)"
+  if [[ "$_branch" != "" ]]; then
+    echo "$_branch$(_git_status $1)"
   else
     echo ""
   fi
 }
 
-typewritten_git_status() {
+_git_branch() {
+  cd -q $1
+  $(git rev-parse --is-inside-work-tree) || return ""
+  git rev-parse --abbrev-ref HEAD
+}
+
+_git_status() {
+  cd -q $1
+
   local STATUS=$(command git status --porcelain -b 2> /dev/null)
 
   local git_status=""
@@ -101,8 +104,4 @@ typewritten_git_status() {
   fi
 
   echo "$git_status"
-}
-
-typewritten_git_info_display() {
-  echo "$(typewritten_git_branch)$(typewritten_git_status)"
 }

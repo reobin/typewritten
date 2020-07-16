@@ -1,7 +1,7 @@
 typewritten_git_home_display() {
   local git_home=""
   local repo_path="$(git rev-parse --show-toplevel)" > /dev/null 2>&1
-  local current_directory="$(pwd)"
+  local current_directory="$(pwd -P)"
   if [ "$repo_path" != "" -a "$repo_path" != "$current_directory" ]; then
     local repo_name=`basename $repo_path`
     git_home="$repo_name"

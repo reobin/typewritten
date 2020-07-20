@@ -13,7 +13,6 @@ Leaves all the room for what's important.
 - Current directory
 - Current git branch
 - [git status indicators](#git-status-indicators)
-- [Return code](#return-code)
 - [Various customization options](#customization-options)
   - [Prompt layout](#typewritten_prompt_layout)
   - [Prompt symbol](#typewritten_symbol)
@@ -193,6 +192,18 @@ To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELA
   <img src="media/right_prompt_prefix.png" alt="bash comment prefix" />
 </p>
 
+### `TYPEWRITTEN_DISABLE_RETURN_CODE`
+
+When an error happens, the prompt symbol changed to a red color, and the return code is displayed on the left.
+
+**Default (`TYPEWRITTEN_DISABLE_RETURN_CODE="false"`)**
+
+<p align="center">
+  <img src="media/return_code.png" alt="127 return code" />
+</p>
+
+**Disable (`TYPEWRITTEN_DISABLE_RETURN_CODE="true"`)**
+
 ## More info
 
 ### git status indicators
@@ -213,14 +224,6 @@ Git status can be disabled by setting `git config` value in a repo or globally l
 ```bash
 git config --add oh-my-zsh.hide-status 1
 ```
-
-### return code
-
-When an error happens, the prompt symbol changed to a red color, and the return code is displayed on the left.
-
-<p align="center">
-  <img src="media/return_code.png" alt="127 return code" />
-</p>
 
 ## Credits
 

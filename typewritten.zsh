@@ -31,6 +31,10 @@ _set_left_prompt() {
   local typewritten_prompt="$virtualenv$return_code$prompt_color$prompt_symbol %F{default}"
   local user_host="%F{yellow}%n%F{default}@%F{yellow}%m "
 
+  if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" == true ]; then
+    return_code = '';
+  fi
+
   if [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline" ]; then
     PROMPT="$typewritten_prompt"
   elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline_verbose" ]; then

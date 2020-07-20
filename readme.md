@@ -215,12 +215,12 @@ Git status can be disabled by setting `git config` value in a repo or globally l
 git config --add oh-my-zsh.hide-status 1
 ```
 
-### return code	
+### return code
 
-When an error happens, the prompt symbol changes to a red color, and the return code is displayed on the left.	
+When an error happens, the prompt symbol changes to a red color, and the return code is displayed on the left.
 
-<p align="center">	
-  <img src="media/return_code.png" alt="127 return code" />	
+<p align="center">
+  <img src="media/return_code.png" alt="127 return code" />
 </p>
 
 The return code display can be disbled by setting `TYPEWRITTEN_DISABLE_RETURN_CODE` to `true` in your `.zshrc`

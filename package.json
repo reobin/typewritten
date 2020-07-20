@@ -1,0 +1,38 @@
+{
+  "name": "typewritten",
+  "version": "1.0.2",
+  "description": "A minimal, lightweight, informative zsh prompt theme",
+  "files": [
+    "typewritten.zsh",
+    "async.zsh",
+    "lib",
+    "scripts"
+  ],
+  "scripts": {
+    "postinstall": "./scripts/install.sh",
+    "postuninstall": "./scripts/uninstall.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reobin/typewritten.git"
+  },
+  "keywords": [
+    "typewritten",
+    "zsh",
+    "prompt",
+    "theme",
+    "minimal",
+    "shell",
+    "git",
+    "terminal"
+  ],
+  "author": "Robin Gagnon <me@reobin.dev> (https://reobin.dev)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reobin/typewritten/issues"
+  },
+  "homepage": "https://typewritten.dev",
+  "directories": {
+    "lib": "lib"
+  }
+}

@@ -193,7 +193,6 @@ To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELA
   <img src="media/right_prompt_prefix.png" alt="bash comment prefix" />
 </p>
 
-
 ## More info
 
 ### git status indicators

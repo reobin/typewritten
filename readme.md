@@ -23,6 +23,14 @@ Leaves all the room for what's important.
 
 ## Quick start
 
+### npm
+
+```shell
+npm install -g typewritten
+```
+
+That's it. The script will make the necessary symlinks to `fpath` and set the prompt in your `.zshrc`.
+
 ### Manual
 
 Clone the typewritten repository somewhere you can easily link. I recommend creating a `.zsh` directory at root.
@@ -223,7 +231,6 @@ When an error happens, the prompt symbol changes to a red color, and the return 
 </p>
 
 The return code display can be disbled by setting `TYPEWRITTEN_DISABLE_RETURN_CODE` to `true` in your `.zshrc`
-
 
 ## Credits
 

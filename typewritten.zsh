@@ -28,9 +28,8 @@ _set_left_prompt() {
 	fi
 
   local return_code="%(?,,%F{red}%? )"
-
-  if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" == true ]; then
-    return_code = '';
+  if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
+    return_code=""
   fi
 
   local typewritten_prompt="$virtualenv$return_code$prompt_color$prompt_symbol %F{default}"

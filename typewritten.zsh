@@ -26,8 +26,14 @@ local _prompt_symbol="❯"
 if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
   _prompt_symbol="$TYPEWRITTEN_SYMBOL"
 fi;
+
 local _prompt_color="%(?,%F{blue},%F{red})"
 local _return_code="%(?,,%F{red}%? )"
+if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
+  _prompt_color="%F{blue}"
+  _return_code=""
+fi
+
 _user_host="%F{yellow}%n%F{default}@%F{yellow}%m"
 _prompt="$_prompt_color$_return_code$_prompt_symbol %F{default}"
 

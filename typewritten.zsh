@@ -87,10 +87,11 @@ _prompt_precmd() {
   _git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
 
   if [[ "$_git_hide_status" != "1" ]]; then
+    local current_directory="$(pwd -P)"
     if [[ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]]; then
-      async_job _worker _git_home $PWD
+      async_job _worker _git_home $current_directory
     fi;
-    async_job _worker _git_info $PWD
+    async_job _worker _git_info $current_directory
   fi;
 }
 

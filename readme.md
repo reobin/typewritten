@@ -10,6 +10,7 @@ Leaves all the room for what's important.
 
 ## Features
 
+- Asynchronous git info
 - Current directory
 - Current git branch
 - [git status indicators](#git-status-indicators)
@@ -62,9 +63,12 @@ Symlink `typewritten.zsh-theme` to your oh-my-zsh custom themes directory:
 
 ```shell
 ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes/typewritten.zsh-theme"
+ls -s "$ZSH_CUSTOM/themes/typewritten/async.zsh" "$ZSH_CUSTOM/themes/async"
 ```
 
 Set `ZSH_THEME="typewritten"` in your `.zshrc` file.
+
+Note: If creating the symlinks is a problem, you can skip the step and set `ZSH_THEME="typewritten/typewritten"` instead.
 
 ### [antibody](https://github.com/getantibody/antibody)
 

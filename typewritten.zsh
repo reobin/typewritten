@@ -86,27 +86,30 @@ _prompt_precmd() {
   local _current_directory="$PWD"
   async_worker_eval _worker builtin cd -q $_current_directory
 
-  local _git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
-  if [[ "$_git_toplevel" != $prompt_data[_git_toplevel] ]]; then
-    async_flush_jobs _worker
-    prompt_data[_git_branch]=
-    prompt_data[_git_status]=
-  fi;
-
-  if [[ "$_current_directory" != $prompt_data[_current_directory] ]]; then
-    async_flush_jobs _worker
-    prompt_data[_git_home]=
-  fi;
-
-  prompt_data[_git_toplevel]="$_git_toplevel"
-  prompt_data[_current_directory]="$_current_directory"
-  _git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
+  local _git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
   if [[ "$_git_hide_status" != "1" ]]; then
+    local _git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
+    if [[ "$_git_toplevel" != $prompt_data[_git_toplevel] ]]; then
+      async_flush_jobs _worker
+      prompt_data[_git_branch]=
+      prompt_data[_git_status]=
+    fi;
+
+    if [[ "$_current_directory" != $prompt_data[_current_directory] ]]; then
+      async_flush_jobs _worker
+      prompt_data[_git_home]=
+    fi;
+
+    prompt_data[_git_toplevel]="$_git_toplevel"
+    prompt_data[_current_directory]="$_current_directory"
     if [[ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]]; then
       async_job _worker _git_home $_current_directory $_git_toplevel
     fi;
     async_job _worker _git_branch
     async_job _worker _git_status
+  else
+    prompt_data[_git_branch]=
+    prompt_data[_git_status]=
   fi;
 
   _redraw

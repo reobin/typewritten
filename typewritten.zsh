@@ -15,8 +15,6 @@ async_init
 
 source "$TYPEWRITTEN_ROOT/lib/git.zsh"
 
-typeset -Ag prompt_data
-
 BREAK_LINE="
 "
 
@@ -46,20 +44,21 @@ _redraw() {
   _env_prompt="$_virtualenv$_prompt"
 
   _layout="$TYPEWRITTEN_PROMPT_LAYOUT"
+  _git_info="$prompt_data[_git_branch]$prompt_data[_git_status]"
   if [ "$_layout" = "half_pure" ]; then
-    PROMPT="$BREAK_LINE%F{magenta}$prompt_data[_git_info]$BREAK_LINE$_env_prompt"
+    PROMPT="$BREAK_LINE%F{magenta}_git_info$BREAK_LINE$_env_prompt"
     RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c"
   elif [ "$_layout" = "pure" ]; then
-    local _git_info=""
-    if [ "$prompt_data[_git_info]" != "" ]; then
-      _git_info=" %F{default}-> %F{magenta}$prompt_data[_git_info]"
+    local _git_arrow_info=""
+    if [ "$_git_info" != "" ]; then
+      _git_arrow_info=" %F{default}-> %F{magenta}$_git_info"
     fi;
     PROMPT="$BREAK_LINE%F{magenta}%~%F{magenta}$_git_info$BREAK_LINE$_env_prompt"
     RPROMPT=""
   else
-    local _git_info=""
-    if [ "$prompt_data[_git_info]" != "" ]; then
-      _git_info=" %F{default}-> %F{magenta}$prompt_data[_git_info]"
+    local _git_arrow_info=""
+    if [ "$_git_info" != "" ]; then
+      _git_arrow_info=" %F{default}-> %F{magenta}$_git_info"
     fi;
     if [ "$_layout" = "singleline_verbose" ]; then
       PROMPT="$_user_host $_env_prompt"
@@ -68,7 +67,7 @@ _redraw() {
     else
       PROMPT="$_env_prompt"
     fi;
-    RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c$_git_info"
+    RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c$_git_arrow_info"
   fi;
 
   zle && zle .reset-prompt
@@ -84,15 +83,35 @@ async_start_worker _worker -n
 async_register_callback _worker _prompt_callback
 
 _prompt_precmd() {
-  _git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
+  typeset -Ag prompt_data
 
+  local _current_directory="$PWD"
+  async_worker_eval _worker builtin cd -q $_current_directory
+
+  local _git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
+  if [[ "$_git_toplevel" != $prompt_data[_git_toplevel] ]]; then
+    async_flush_jobs _worker
+    prompt_data[_git_branch]=
+    prompt_data[_git_status]=
+  fi
+
+  if [[ "$_current_directory" != $prompt_data[_current_directory] ]]; then
+    async_flush_jobs _worker
+    prompt_data[_git_home]=
+  fi
+
+  prompt_data[_git_toplevel]="$_git_toplevel"
+  prompt_data[_current_directory]="$_current_directory"
+  _git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
   if [[ "$_git_hide_status" != "1" ]]; then
-    local current_directory="$(pwd -P)"
     if [[ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]]; then
-      async_job _worker _git_home $current_directory
+      async_job _worker _git_home $_current_directory $_git_toplevel
     fi;
-    async_job _worker _git_info $current_directory
+    async_job _worker _git_branch
+    async_job _worker _git_status
   fi;
+
+  _redraw
 }
 
 # prompt cursor fix when exiting vim

@@ -23,6 +23,14 @@ Leaves all the room for what's important.
 
 ## Quick start
 
+### npm
+
+```shell
+npm install -g typewritten
+```
+
+That's it. The script will make the necessary symlinks to `fpath` and set the prompt in your `.zshrc`.
+
 ### Manual
 
 Clone the typewritten repository somewhere you can easily link. I recommend creating a `.zsh` directory at root.
@@ -216,11 +224,13 @@ git config --add oh-my-zsh.hide-status 1
 
 ### return code
 
-When an error happens, the prompt symbol changed to a red color, and the return code is displayed on the left.
+When an error happens, the prompt symbol changes to a red color, and the return code is displayed on the left.
 
 <p align="center">
   <img src="media/return_code.png" alt="127 return code" />
 </p>
+
+The return code display can be disbled by setting `TYPEWRITTEN_DISABLE_RETURN_CODE` to `true` in your `.zshrc`
 
 ## Credits
 
@@ -233,7 +243,9 @@ A special thanks to all the contributors to this project
 - [@artem-zinnatullin](https://github.com/artem-zinnatullin)
 - [@nizarmah](https://github.com/nizarmah)
 - [@jletey](https://github.com/jletey)
+- [@pfandzelter](https://github.com/pfandzelter)
+- [@eleven4y](https://github.com/eleven4y)
 
 ### Inspiration
 
-`pure` and `half_pure` layouts are highly inspired by [Pure](https://github.com/sindresorhus/pure)
+`pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)

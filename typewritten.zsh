@@ -30,7 +30,7 @@ local _return_code="%(?,,%F{red}%? )"
 if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
   _prompt_color="%F{blue}"
   _return_code=""
-fi
+fi;
 
 _user_host="%F{yellow}%n%F{default}@%F{yellow}%m"
 _prompt="$_prompt_color$_return_code$_prompt_symbol %F{default}"
@@ -46,28 +46,26 @@ _redraw() {
   _layout="$TYPEWRITTEN_PROMPT_LAYOUT"
   _git_info="$prompt_data[_git_branch]$prompt_data[_git_status]"
   if [ "$_layout" = "half_pure" ]; then
-    PROMPT="$BREAK_LINE%F{magenta}_git_info$BREAK_LINE$_env_prompt"
+    PROMPT="$BREAK_LINE%F{magenta}$_git_info$BREAK_LINE$_env_prompt"
     RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c"
-  elif [ "$_layout" = "pure" ]; then
-    local _git_arrow_info=""
-    if [ "$_git_info" != "" ]; then
-      _git_arrow_info=" %F{default}-> %F{magenta}$_git_info"
-    fi;
-    PROMPT="$BREAK_LINE%F{magenta}%~%F{magenta}$_git_info$BREAK_LINE$_env_prompt"
-    RPROMPT=""
   else
     local _git_arrow_info=""
     if [ "$_git_info" != "" ]; then
       _git_arrow_info=" %F{default}-> %F{magenta}$_git_info"
     fi;
-    if [ "$_layout" = "singleline_verbose" ]; then
-      PROMPT="$_user_host $_env_prompt"
-    elif [ "$_layout" = "multiline" ]; then
-      PROMPT="$BREAK_LINE$_user_host$BREAK_LINE$_env_prompt"
+    if [ "$_layout" = "pure" ]; then
+      PROMPT="$BREAK_LINE%F{magenta}%~%F{magenta}$_git_arrow_info$BREAK_LINE$_env_prompt"
+      RPROMPT=""
     else
-      PROMPT="$_env_prompt"
+      if [ "$_layout" = "singleline_verbose" ]; then
+        PROMPT="$_user_host $_env_prompt"
+      elif [ "$_layout" = "multiline" ]; then
+        PROMPT="$BREAK_LINE$_user_host$BREAK_LINE$_env_prompt"
+      else
+        PROMPT="$_env_prompt"
+      fi;
+      RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c$_git_arrow_info"
     fi;
-    RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c$_git_arrow_info"
   fi;
 
   zle && zle .reset-prompt
@@ -93,12 +91,12 @@ _prompt_precmd() {
     async_flush_jobs _worker
     prompt_data[_git_branch]=
     prompt_data[_git_status]=
-  fi
+  fi;
 
   if [[ "$_current_directory" != $prompt_data[_current_directory] ]]; then
     async_flush_jobs _worker
     prompt_data[_git_home]=
-  fi
+  fi;
 
   prompt_data[_git_toplevel]="$_git_toplevel"
   prompt_data[_current_directory]="$_current_directory"
@@ -131,6 +129,5 @@ add-zsh-hook precmd _fix_cursor
 add-zsh-hook precmd _prompt_precmd
 
 PROMPT="$_prompt"
-RPROMPT="$_right_prompt_prefix%F{magenta}%c"
 
 zle_highlight=( default:fg=default )

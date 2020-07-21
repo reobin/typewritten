@@ -2,13 +2,13 @@ _git_home() {
   local current_directory="$1"
   local git_toplevel="$2"
   local git_home=""
-  if [ "$git_toplevel" != "" -a "$git_toplevel" != "$1" ]; then
+  if [ "$git_toplevel" != "" -a "$git_toplevel" != "$current_directory" ]; then
     local repo_name=`basename $git_toplevel`
     git_home="$repo_name"
   fi;
   if [ "$git_home" != "" ]; then
     # check how many directories are between
-    local current_nesting="${1//[^\/]}"
+    local current_nesting="${current_directory//[^\/]}"
     local repo_nesting="${git_toplevel//[^\/]}"
     local diff=`expr ${#current_nesting} - ${#repo_nesting}`
     if [ $diff -eq 1 ]; then

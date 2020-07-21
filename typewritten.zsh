@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 #      ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____
 #     ||t |||y |||p |||e |||w |||r |||i |||t |||t |||e |||n ||
 #     ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||
@@ -7,103 +9,110 @@
 #
 
 export TYPEWRITTEN_ROOT=${${(%):-%x}:A:h}
+
+source "$TYPEWRITTEN_ROOT/async.zsh"
+async_init
+
 source "$TYPEWRITTEN_ROOT/lib/git.zsh"
 
 BREAK_LINE="
 "
 
-_set_left_prompt() {
-  local display_git=$1
+_right_prompt_prefix="%F{default}$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
 
-  local prompt_color="%(?,%F{blue},%F{red})"
+local _prompt_symbol="❯"
+if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
+  _prompt_symbol="$TYPEWRITTEN_SYMBOL"
+fi;
 
-  local prompt_symbol=">"
-  if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
-    prompt_symbol="$TYPEWRITTEN_SYMBOL"
-  fi
+local _prompt_color="%(?,%F{blue},%F{red})"
+local _return_code="%(?,,%F{red}%? )"
+if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
+  _prompt_color="%F{blue}"
+  _return_code=""
+fi;
 
-  local virtualenv=""
-  if [[ -n $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    virtualenv="%F{default}($(basename $VIRTUAL_ENV)) "
-	fi
+_user_host="%F{yellow}%n%F{default}@%F{yellow}%m"
+_prompt="$_prompt_color$_return_code$_prompt_symbol %F{default}"
 
-  local return_code="%(?,,%F{red}%? )"
-  if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
-    return_code=""
-    prompt_color="%F{blue}"
-  fi
+_redraw() {
+  local _virtualenv=""
+  if [[ ! -z $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+    _virtualenv="%F{default}($(basename $VIRTUAL_ENV)) "
+  fi;
 
-  local typewritten_prompt="$virtualenv$return_code$prompt_color$prompt_symbol %F{default}"
-  local user_host="%F{yellow}%n%F{default}@%F{yellow}%m "
+  _env_prompt="$_virtualenv$_prompt"
 
-  if [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline" ]; then
-    PROMPT="$typewritten_prompt"
-  elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "singleline_verbose" ]; then
-    PROMPT="$user_host$typewritten_prompt"
-  elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "multiline" ]; then
-    PROMPT="$user_host$BREAK_LINE$typewritten_prompt"
-  elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "half_pure" ]; then
-    if [[ $display_git == true ]]; then
-      PROMPT="$BREAK_LINE$(typewritten_git_info_display)$BREAK_LINE$typewritten_prompt"
-    else
-      PROMPT="$BREAK_LINE$typewritten_prompt"
-    fi
-  elif [ "$TYPEWRITTEN_PROMPT_LAYOUT" = "pure" ]; then
-    local directory_path="%~"
-    if [[ $display_git == true ]]; then
-      PROMPT="$BREAK_LINE%F{magenta}$directory_path %F{default}-> $(typewritten_git_info_display)$BREAK_LINE$typewritten_prompt"
-    else
-      PROMPT="$BREAK_LINE%F{magenta}$directory_path$BREAK_LINE$typewritten_prompt"
-    fi
+  _layout="$TYPEWRITTEN_PROMPT_LAYOUT"
+  _git_info="$prompt_data[_git_branch]$prompt_data[_git_status]"
+  if [ "$_layout" = "half_pure" ]; then
+    PROMPT="$BREAK_LINE%F{magenta}$_git_info$BREAK_LINE$_env_prompt"
+    RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c"
   else
-    PROMPT="$typewritten_prompt"
-  fi
+    local _git_arrow_info=""
+    if [ "$_git_info" != "" ]; then
+      _git_arrow_info=" %F{default}-> %F{magenta}$_git_info"
+    fi;
+    if [ "$_layout" = "pure" ]; then
+      PROMPT="$BREAK_LINE%F{magenta}%~%F{magenta}$_git_arrow_info$BREAK_LINE$_env_prompt"
+      RPROMPT=""
+    else
+      if [ "$_layout" = "singleline_verbose" ]; then
+        PROMPT="$_user_host $_env_prompt"
+      elif [ "$_layout" = "multiline" ]; then
+        PROMPT="$BREAK_LINE$_user_host$BREAK_LINE$_env_prompt"
+      else
+        PROMPT="$_env_prompt"
+      fi;
+      RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c$_git_arrow_info"
+    fi;
+  fi;
+
+  zle && zle .reset-prompt
 }
 
-_set_right_prompt() {
-  local display_git=$1
-  local is_git_info_on_left=$2
-
-  local directory_path="%c"
-  local right_prompt_prefix="%F{default}"
-  if [ ! -z "$TYPEWRITTEN_RIGHT_PROMPT_PREFIX" ]; then
-    right_prompt_prefix+="$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
-  fi
-  RPROMPT="$right_prompt_prefix"
-
-  local git_home_display=""
-  local git_branch=""
-  local git_status=""
-
-  if [[ $display_git == true ]]; then
-    if [ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]; then
-      git_home_display="$(typewritten_git_home_display)"
-    fi
-    RPROMPT+="%F{magenta}$git_home_display$directory_path"
-    if [[ $is_git_info_on_left == false ]]; then
-      RPROMPT+=" %F{default}-> $(typewritten_git_info_display)"
-    fi
-  else
-    RPROMPT+="%F{magenta}$directory_path"
-  fi
+_prompt_callback() {
+  local name=$1 output=$3
+  prompt_data[$name]=$output
+  _redraw
 }
 
-_prompt() {
-  git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
+async_start_worker _worker -n
+async_register_callback _worker _prompt_callback
 
-  display_git=false
-  is_git_info_on_left=false
-  if [[ "$git_hide_status" != "1" ]] && [[ $(typewritten_is_git_repository) == true ]]; then
-    display_git=true
-    if [[ "$TYPEWRITTEN_PROMPT_LAYOUT" == "pure" ]] || [[ "$TYPEWRITTEN_PROMPT_LAYOUT" == "half_pure" ]]; then
-      is_git_info_on_left=true
-    fi
-  fi
+_prompt_precmd() {
+  typeset -Ag prompt_data
 
-  _set_left_prompt $display_git
-  if [[ "$TYPEWRITTEN_PROMPT_LAYOUT" != "pure" ]]; then
-    _set_right_prompt $display_git $is_git_info_on_left
-  fi
+  local _current_directory="$PWD"
+  async_worker_eval _worker builtin cd -q $_current_directory
+
+  local _git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
+  if [[ "$_git_hide_status" != "1" ]]; then
+    local _git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
+    if [[ "$_git_toplevel" != $prompt_data[_git_toplevel] ]]; then
+      async_flush_jobs _worker
+      prompt_data[_git_branch]=
+      prompt_data[_git_status]=
+    fi;
+
+    if [[ "$_current_directory" != $prompt_data[_current_directory] ]]; then
+      async_flush_jobs _worker
+      prompt_data[_git_home]=
+    fi;
+
+    prompt_data[_git_toplevel]="$_git_toplevel"
+    prompt_data[_current_directory]="$_current_directory"
+    if [[ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]]; then
+      async_job _worker _git_home $_current_directory $_git_toplevel
+    fi;
+    async_job _worker _git_branch
+    async_job _worker _git_status
+  else
+    prompt_data[_git_branch]=
+    prompt_data[_git_status]=
+  fi;
+
+  _redraw
 }
 
 # prompt cursor fix when exiting vim
@@ -113,12 +122,15 @@ _fix_cursor() {
     cursor="\e[1 q"
   elif [ "$TYPEWRITTEN_CURSOR" = "beam" ]; then
     cursor="\e[5 q"
-  fi
+  fi;
   echo -ne "$cursor"
 }
 
-autoload -U add-zsh-hook
+zmodload zsh/zle
+autoload -Uz add-zsh-hook
 add-zsh-hook precmd _fix_cursor
-add-zsh-hook precmd _prompt
+add-zsh-hook precmd _prompt_precmd
+
+PROMPT="$_prompt"
 
 zle_highlight=( default:fg=default )

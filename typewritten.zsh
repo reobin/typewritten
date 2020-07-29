@@ -13,10 +13,26 @@ export TYPEWRITTEN_ROOT=${${(%):-%x}:A:h}
 source "$TYPEWRITTEN_ROOT/async.zsh"
 async_init
 
+source "$TYPEWRITTEN_ROOT/lib/colors.zsh"
 source "$TYPEWRITTEN_ROOT/lib/git.zsh"
 
 BREAK_LINE="
 "
+
+# TODO Implement these color options
+# symbol
+# symbol_error
+# right_prompt_prefix
+# host
+# host_user_connector
+# user
+# prompt
+# virtualenv
+# branch
+# current_directory
+# git home
+# all status elements
+# arrow
 
 _right_prompt_prefix="%F{default}$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
 
@@ -25,10 +41,10 @@ if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
   _prompt_symbol="$TYPEWRITTEN_SYMBOL"
 fi;
 
-local _prompt_color="%(?,%F{blue},%F{red})"
-local _return_code="%(?,,%F{red}%? )"
+local _prompt_color="%(?,%F{$colors[prompt]},%F{$colors[error]})"
+local _return_code="%(?,,%F{$colors[error]}%? )"
 if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
-  _prompt_color="%F{blue}"
+  _prompt_color="%F{$colors[prompt]}"
   _return_code=""
 fi;
 

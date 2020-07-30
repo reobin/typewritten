@@ -59,13 +59,17 @@ The documentation is separated into two parts:
 - [Prompt customization](https://github.com/reobin/typewritten/wiki/Prompt-customization), everything to do with how and where the info is displayed
 - [Prompt color customization](https://github.com/reobin/typewritten/wiki/Prompt-color-customization), set a custom color for any of the prompt sections
 
+**Example of 3 customized typewritten prompts**
+
 <p align="center">
-<img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/layouts/singleline.png" width="800" />
+  <img src="media/configuration_examples/bash.png" width="800" />
 </p>
 <p align="center">
-<img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/layouts/half_pure.png" width="400" />
-<img src="https://raw.githubusercontent.com/reobin/typewritten/master/media/layouts/pure.png" width="400" />
+  <img src="media/configuration_examples/pure.png" width="400" />
+  <img src="media/configuration_examples/half_pure.png" width="400" />
 </p>
+
+
 
 ## Credits
 

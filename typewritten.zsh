@@ -38,6 +38,7 @@ _prompt="$_prompt_color$_return_code$_prompt_symbol %F{$colors[prompt]}"
 
 _current_directory="%F{$colors[current_directory]}%c"
 _verbose_current_directory="%F{$colors[current_directory]}%~"
+_arrow="%F{$colors[arrow]}->"
 
 _redraw() {
   local _virtualenv=""
@@ -55,7 +56,7 @@ _redraw() {
   else
     local _git_arrow_info=""
     if [ "$_git_info" != "" ]; then
-      _git_arrow_info=" %F{$colors[arrow]}-> $_git_info"
+      _git_arrow_info=" $_arrow $_git_info"
     fi;
     if [ "$_layout" = "pure" ]; then
       PROMPT="$BREAK_LINE$_verbose_current_directory$_git_arrow_info$BREAK_LINE$_env_prompt"

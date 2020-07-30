@@ -19,42 +19,30 @@ source "$TYPEWRITTEN_ROOT/lib/git.zsh"
 BREAK_LINE="
 "
 
-# TODO Implement these color options
-# symbol
-# symbol_error
-# right_prompt_prefix
-# host
-# host_user_connector
-# user
-# prompt
-# virtualenv
-# branch
-# current_directory
-# git home
-# all status elements
-# arrow
-
-_right_prompt_prefix="%F{default}$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
+_right_prompt_prefix="%F{$colors[right_prompt_prefix]}$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
 
 local _prompt_symbol="❯"
 if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
   _prompt_symbol="$TYPEWRITTEN_SYMBOL"
 fi;
 
-local _prompt_color="%(?,%F{$colors[prompt]},%F{$colors[error]})"
-local _return_code="%(?,,%F{$colors[error]}%? )"
+local _prompt_color="%(?,%F{$colors[symbol]},%F{$colors[error_code]})"
+local _return_code="%(?,,%F{$colors[symbol_error]}%? )"
 if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
   _prompt_color="%F{$colors[prompt]}"
   _return_code=""
 fi;
 
-_user_host="%F{yellow}%n%F{default}@%F{yellow}%m"
-_prompt="$_prompt_color$_return_code$_prompt_symbol %F{default}"
+_user_host="%F{$colors[host]}%n%F{$colors[host_user_connector]}@%F{$colors[user]}%m"
+_prompt="$_prompt_color$_return_code$_prompt_symbol %F{$colors[prompt]}"
+
+_current_directory="%F{$colors[current_directory]}%c"
+_verbose_current_directory="%F{$colors[current_directory]}%~"
 
 _redraw() {
   local _virtualenv=""
   if [[ ! -z $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    _virtualenv="%F{default}($(basename $VIRTUAL_ENV)) "
+    _virtualenv="%F{$colors[virtualenv]}($(basename $VIRTUAL_ENV)) "
   fi;
 
   _env_prompt="$_virtualenv$_prompt"
@@ -62,15 +50,15 @@ _redraw() {
   _layout="$TYPEWRITTEN_PROMPT_LAYOUT"
   _git_info="$prompt_data[_git_branch]$prompt_data[_git_status]"
   if [ "$_layout" = "half_pure" ]; then
-    PROMPT="$BREAK_LINE%F{magenta}$_git_info$BREAK_LINE$_env_prompt"
-    RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c"
+    PROMPT="$BREAK_LINE$_git_info$BREAK_LINE$_env_prompt"
+    RPROMPT="$_right_prompt_prefix$prompt_data[_git_home]$_current_directory"
   else
     local _git_arrow_info=""
     if [ "$_git_info" != "" ]; then
-      _git_arrow_info=" %F{default}-> %F{magenta}$_git_info"
+      _git_arrow_info=" %F{$colors[arrow]}-> $_git_info"
     fi;
     if [ "$_layout" = "pure" ]; then
-      PROMPT="$BREAK_LINE%F{magenta}%~%F{magenta}$_git_arrow_info$BREAK_LINE$_env_prompt"
+      PROMPT="$BREAK_LINE$_verbose_current_directory$_git_arrow_info$BREAK_LINE$_env_prompt"
       RPROMPT=""
     else
       if [ "$_layout" = "singleline_verbose" ]; then
@@ -80,7 +68,7 @@ _redraw() {
       else
         PROMPT="$_env_prompt"
       fi;
-      RPROMPT="$_right_prompt_prefix%F{magenta}$prompt_data[_git_home]%c$_git_arrow_info"
+      RPROMPT="$_right_prompt_prefix$prompt_data[_git_home]$_git_arrow_info"
     fi;
   fi;
 
@@ -99,8 +87,8 @@ async_register_callback _worker _prompt_callback
 _prompt_precmd() {
   typeset -Ag prompt_data
 
-  local _current_directory="$PWD"
-  async_worker_eval _worker builtin cd -q $_current_directory
+  local _current_pwd="$PWD"
+  async_worker_eval _worker builtin cd -q $_current_pwd
 
   local _git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
   if [[ "$_git_hide_status" != "1" ]]; then
@@ -111,15 +99,15 @@ _prompt_precmd() {
       prompt_data[_git_status]=
     fi;
 
-    if [[ "$_current_directory" != $prompt_data[_current_directory] ]]; then
+    if [[ "$_current_pwd" != $prompt_data[_current_pwd] ]]; then
       async_flush_jobs _worker
       prompt_data[_git_home]=
     fi;
 
     prompt_data[_git_toplevel]="$_git_toplevel"
-    prompt_data[_current_directory]="$_current_directory"
+    prompt_data[_current_pwd]="$_current_pwd"
     if [[ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]]; then
-      async_job _worker _git_home $_current_directory $_git_toplevel
+      async_job _worker _git_home $_current_pwd $_git_toplevel
     fi;
     async_job _worker _git_branch
     async_job _worker _git_status
@@ -149,4 +137,4 @@ add-zsh-hook precmd _prompt_precmd
 
 PROMPT="$_prompt"
 
-zle_highlight=( default:fg=default )
+zle_highlight=( default:fg=$colors[prompt] )

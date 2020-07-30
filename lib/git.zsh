@@ -32,38 +32,38 @@ _git_status() {
 
   # rebasing
   if $(command grep "^## HEAD (no branch)" <<< "$STATUS" &> /dev/null); then
-    git_status="%F{magenta}rebasing"
+    git_status="%F{$colors[git_rebasing]}rebasing"
   else
     # staged changes
     if $(command grep "^A  " <<< "$STATUS" &> /dev/null) ||
       $(command grep "^M  " <<< "$STATUS" &> /dev/null) ||
       $(command grep "^D  " <<< "$STATUS" &> /dev/null); then
-          git_status+=" %F{green}+"
+          git_status+=" %F{$colors[git_status_staged]}+"
     fi
 
     # new file
     if $(command grep "?? " <<< "$STATUS" &> /dev/null); then
-      git_status+=" %F{blue}?"
+      git_status+=" %F{$colors[git_status_new]}?"
     fi
 
     # modified
     if $(command grep "^ M " <<< "$STATUS" &> /dev/null); then
-      git_status+=" %F{yellow}!"
+      git_status+=" %F{$colors[git_status_modified]}!"
     fi
 
     # renamed
     if $(command grep "^R  " <<< "$STATUS" &> /dev/null); then
-      git_status+=" %F{cyan}»"
+      git_status+=" %F{$colors[git_status_renamed]}»"
     fi
 
     # deleted
     if $(command grep "^ D " <<< "$STATUS" &> /dev/null); then
-      git_status+=" %F{red}—"
+      git_status+=" %F{$colors[git_status_deleted]}—"
     fi
 
     # unmerged
     if $(command grep "^UU " <<< "$STATUS" &> /dev/null); then
-      git_status+=" %F{default}#"
+      git_status+=" %F{$colors[git_status_unmerged]}#"
     fi
 
     local is_ahead=false
@@ -78,17 +78,17 @@ _git_status() {
 
     if [[ "$is_ahead" == true && "$is_behind" == true ]]; then
       # diverged
-      git_status+=" %F{blue}~"
+      git_status+=" %F{$colors[git_status_diverged]}~"
     elif [[ "$is_ahead" == true ]]; then
-      git_status+=" %F{blue}|•"
+      git_status+=" %F{$colors[git_status_ahead]}|•"
     elif [[ "$is_behind" == true ]]; then
-      git_status+=" %F{blue}•|"
+      git_status+=" %F{$colors[git_status_behind]}•|"
     fi
 
     # stashed
     local stash_count=`git stash list | wc -l`
     if [[ $stash_count -gt 0 ]]; then
-      git_status+=" %F{yellow}$"
+      git_status+=" %F{$colors[git_status_stash]}$"
     fi
   fi
 

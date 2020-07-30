@@ -36,8 +36,11 @@ fi;
 _user_host="%F{$colors[host]}%n%F{$colors[host_user_connector]}@%F{$colors[user]}%m"
 _prompt="$_prompt_color$_return_code$_prompt_symbol %F{$colors[prompt]}"
 
-_current_directory="%F{$colors[current_directory]}%c"
-_verbose_current_directory="%F{$colors[current_directory]}%~"
+_current_directory_color="$colors[git_branch]"
+_git_branch_color="$colors[git_branch]"
+
+_current_directory="%F{$_current_directory_color}%c"
+_verbose_current_directory="%F{$_current_directory_color]}%~"
 _arrow="%F{$colors[arrow]}->"
 
 _redraw() {
@@ -52,11 +55,11 @@ _redraw() {
   _git_info="$prompt_data[_git_branch]$prompt_data[_git_status]"
   if [ "$_layout" = "half_pure" ]; then
     PROMPT="$BREAK_LINE$_git_info$BREAK_LINE$_env_prompt"
-    RPROMPT="$_right_prompt_prefix$prompt_data[_git_home]$_current_directory"
+    RPROMPT="$_right_prompt_prefix%F{$_current_directory_color}$prompt_data[_git_home]$_current_directory"
   else
     local _git_arrow_info=""
     if [ "$_git_info" != "" ]; then
-      _git_arrow_info=" $_arrow $_git_info"
+      _git_arrow_info=" $_arrow %F{$_git_branch_color}$_git_info"
     fi;
     if [ "$_layout" = "pure" ]; then
       PROMPT="$BREAK_LINE$_verbose_current_directory$_git_arrow_info$BREAK_LINE$_env_prompt"
@@ -69,7 +72,7 @@ _redraw() {
       else
         PROMPT="$_env_prompt"
       fi;
-      RPROMPT="$_right_prompt_prefix$prompt_data[_git_home]$_current_directory$_git_arrow_info"
+      RPROMPT="$_right_prompt_prefix%F{$_current_directory_color}$prompt_data[_git_home]$_current_directory$_git_arrow_info"
     fi;
   fi;
 

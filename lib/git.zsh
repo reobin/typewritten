@@ -12,9 +12,9 @@ _git_home() {
     local repo_nesting="${git_toplevel//[^\/]}"
     local diff=`expr ${#current_nesting} - ${#repo_nesting}`
     if [ $diff -eq 1 ]; then
-      echo "%F{$colors[current_directory]}$git_home/"
+      echo "$git_home/"
     else
-      echo "%F{$colors[current_directory]}$git_home/.../"
+      echo "$git_home/.../"
     fi;
   else
     echo ""
@@ -22,7 +22,7 @@ _git_home() {
 }
 
 _git_branch() {
-  echo "%F{$colors[git_branch]}$(command git symbolic-ref --short -q HEAD)"
+  echo "$(command git symbolic-ref --short -q HEAD)"
 }
 
 _git_status() {

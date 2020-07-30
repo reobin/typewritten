@@ -69,7 +69,7 @@ _redraw() {
       else
         PROMPT="$_env_prompt"
       fi;
-      RPROMPT="$_right_prompt_prefix$prompt_data[_git_home]$_git_arrow_info"
+      RPROMPT="$_right_prompt_prefix$prompt_data[_git_home]$_current_directory$_git_arrow_info"
     fi;
   fi;
 

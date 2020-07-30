@@ -31,7 +31,7 @@ _setup_custom_colors() {
       color_definition=($(echo $value | tr ":" "\n"))
       colors[$color_definition[1]]="$color_definition[2]"
     done
-  else
+  elif [[ ! -z $TYPEWRITTEN_COLORS ]]; then
     echo "TYPEWRITTEN_COLORS is not formatted correctly.
 Format it like so: \"prompt:red;symbol:blue\", etc."
   fi

@@ -25,11 +25,16 @@ declare -A colors=(
 )
 
 _setup_custom_colors() {
-  custom_colors=($(echo $TYPEWRITTEN_COLORS | tr ";" "\n"))
-  for value in "${custom_colors[@]}"; do
-    color_definition=($(echo $value | tr ":" "\n"))
-    colors[$color_definition[1]]="$color_definition[2]"
-  done
+  if [[ $TYPEWRITTEN_COLORS =~ ^[a-z_]+:[a-z_]+(\;[a-z_]+:[a-z_]+)*$ ]]; then
+    custom_colors=($(echo $TYPEWRITTEN_COLORS | tr ";" "\n"))
+    for value in "${custom_colors[@]}"; do
+      color_definition=($(echo $value | tr ":" "\n"))
+      colors[$color_definition[1]]="$color_definition[2]"
+    done
+  else
+    echo "TYPEWRITTEN_COLORS is not formatted correctly.
+Format it like so: \"prompt:red;symbol:blue\", etc."
+  fi
 }
 
 _setup_custom_colors

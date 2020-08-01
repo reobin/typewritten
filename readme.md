@@ -87,5 +87,4 @@ A special thanks to all the contributors to this project
 
 ### Inspiration
 
-`pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure) it
-
+`pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)

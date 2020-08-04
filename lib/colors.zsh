@@ -9,8 +9,8 @@ declare -A color_mappings=(
   ["info_positive"]="green"
   ["info_negative"]="red"
 
-  ["info_neutral_2"]="blue"
   ["info_neutral_1"]="yellow"
+  ["info_neutral_2"]="blue"
 
   ["info_special"]="cyan"
 )

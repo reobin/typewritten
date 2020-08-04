@@ -36,7 +36,7 @@ fi;
 _user_host="%F{$colors[host]}%n%F{$colors[host_user_connector]}@%F{$colors[user]}%m"
 _prompt="$_prompt_color$_return_code$_prompt_symbol %F{$colors[prompt]}"
 
-_current_directory_color="$colors[git_branch]"
+_current_directory_color="$colors[current_directory]"
 _git_branch_color="$colors[git_branch]"
 
 _current_directory="%F{$_current_directory_color}%c"

@@ -52,7 +52,7 @@ _redraw() {
   _env_prompt="$_virtualenv$_prompt"
 
   _layout="$TYPEWRITTEN_PROMPT_LAYOUT"
-  _git_info="$prompt_data[_git_branch]$prompt_data[_git_status]"
+  _git_info="%F{$_git_branch_color}$prompt_data[_git_branch]$prompt_data[_git_status]"
   if [ "$_layout" = "half_pure" ]; then
     PROMPT="$BREAK_LINE$_git_info$BREAK_LINE$_env_prompt"
     RPROMPT="$_right_prompt_prefix%F{$_current_directory_color}$prompt_data[_git_home]$_current_directory"

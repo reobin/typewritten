@@ -1,9 +1,12 @@
-<h1 align="center">
-  <img src="media/logo.png" alt="typewritten" />
-  <p align="center">
-    A minimal zsh prompt
-  </p>
-</h1>
+<p align="center">
+  <img src="media/logo.svg" alt="typewritten" />
+</p>
+
+<h1 align="center">typewritten</h1>
+
+<p align="center">A minimal <a href="https://www.zsh.org/">zsh</a> prompt</p>
+
+<br />
 
 <p align="center">
   <a href="https://github.com/reobin/typewritten/blob/master/LICENSE">

@@ -18,6 +18,8 @@
   <a href="https://npmjs.com/package/typewritten">
     <img src="https://img.shields.io/npm/dm/typewritten?style=flat-square&logo=npm" />
   </a>
+</p>
+<p align="center">
   <a href="https://github.com/reobin/typewritten/stargazers">
     <img src="https://img.shields.io/github/stars/reobin/typewritten?style=flat-square&logo=github" />
   </a>

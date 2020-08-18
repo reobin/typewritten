@@ -1,6 +1,30 @@
-# `❯ _` typewritten - a minimal zsh prompt theme
+<h1 align="center">
+  <img src="media/logo.png" alt="typewritten" />
+  <p align="center">
+    A minimal zsh prompt
+  </p>
+</h1>
 
-Leaves all the room for what's important.
+<p align="center">
+  <a href="https://github.com/reobin/typewritten/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/reobin/typewritten?style=flat-square" />
+  </a>
+  <a href="https://github.com/reobin/typewritten/releases">
+    <img src="https://img.shields.io/github/v/release/reobin/typewritten?style=flat-square" />
+  </a>
+  <a href="https://npmjs.com/package/typewritten">
+    <img src="https://img.shields.io/npm/dm/typewritten?style=flat-square&logo=npm" />
+  </a>
+  <a href="https://github.com/reobin/typewritten/stargazers">
+    <img src="https://img.shields.io/github/stars/reobin/typewritten?style=flat-square&logo=github" />
+  </a>
+  <a href="https://github.com/reobin/typewritten/network/members">
+    <img src="https://img.shields.io/github/forks/reobin/typewritten?style=flat-square&logo=github" />
+  </a>
+  <a href="https://github.com/reobin/typewritten/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/reobin/typewritten?style=flat-square&logo=github" />
+  </a>
+</p>
 
 <p align="center">
   <img src="media/typewritten.gif?raw=true" alt="typewritten zsh prompt demo" />
@@ -68,8 +92,6 @@ The documentation is separated into two parts:
   <img src="media/configuration_examples/pure.png" width="400" />
   <img src="media/configuration_examples/half_pure.png" width="400" />
 </p>
-
-
 
 ## Credits
 

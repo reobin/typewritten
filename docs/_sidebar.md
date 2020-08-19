@@ -1,0 +1,7 @@
+* [Home](/ "typewritten | A minimal zsh prompt")
+* [Installation](installation.md "Installation | typewritten")
+* [Prompt customization](prompt_customization.md "Prompt customization | typewritten")
+* [Prompt color customization](prompt_color_customization.md "Prompt color customization | typewritten")
+* [git status indicators](git_status_indicators.md "git status indicators | typewritten")
+* [Return code](return_code.md "Return code display | typewritten")
+* [Credits](credits.md "Credits | typewritten")

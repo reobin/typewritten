@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="media/logo.svg" alt="typewritten" />
+  <img src="docs/_media/logo.svg" alt="typewritten" />
 </p>
 
 <h1 align="center">typewritten</h1>
@@ -32,7 +32,7 @@
 </p>
 
 <p align="center">
-  <img src="media/typewritten.gif?raw=true" alt="typewritten zsh prompt demo" />
+  <img src="docs/_media/typewritten.gif?raw=true" alt="typewritten zsh prompt demo" />
 </p>
 
 > Terminal is [iTerm2](https://iterm2.com/) — Font is [JetBrains Mono](https://www.jetbrains.com/lp/mono/) — Terminal theme is [Seoul256](https://github.com/junegunn/seoul256.vim)
@@ -41,12 +41,12 @@
 
 - Asynchronous git info
 - Fully customizable
-  - [Colors for any of the prompt sections](https://github.com/reobin/typewritten/wiki/Prompt-color-customization)
-  - [Prompt layout](https://github.com/reobin/typewritten/wiki/Prompt-customization#typewritten_prompt_layout)
-  - [Prompt symbol](https://github.com/reobin/typewritten/wiki/Prompt-customization#typewritten_symbol)
-  - [Constant display of git home directory](https://github.com/reobin/typewritten/wiki/Prompt-customization#typewritten_git_relative_path)
-  - [Cursor](https://github.com/reobin/typewritten/wiki/Prompt-customization#typewritten_cursor)
-  - [Prefix on right prompt](https://github.com/reobin/typewritten/wiki/Prompt-customization#typewritten_right_prompt_prefix)
+  - [Colors for any of the prompt sections](https://typewritten.dev/#/prompt_color_customization)
+  - [Prompt layout](https://typewritten.dev/#/prompt_customization?id=typewritten_prompt_layout)
+  - [Prompt symbol](https://typewritten.dev/#/prompt_customization?id=typewritten_symbol)
+  - [Constant display of git home directory](https://typewritten.dev/#/prompt_customization?id=typewritten_git_relative_path)
+  - [Cursor](https://typewritten.dev/#/prompt_customization?id=typewritten_cursor)
+  - [Prefix on right prompt](https://typewritten.dev/#/prompt_customization?id=typewritten_right_prompt_prefix)
 
 ## Quick start
 
@@ -77,25 +77,25 @@ prompt typewritten
 
 ### Other ways to install
 
-Many other ways to install typewritten are available in the [wiki](https://github.com/reobin/typewritten/wiki/Installation)
+Many other ways to install typewritten are available in the [docs](https://typewritten.dev/#/installation)
 
 ## Customization
 
-typewritten is customizable in many ways. To keep the readme file as lean as possible, the documentation was moved to the [wiki](https://github.com/reobin/typewritten/wiki).
+typewritten is customizable in many ways. To keep the readme file as lean as possible, the documentation was moved to [https://typewritten.dev](https://typewritten.dev).
 
 The documentation is separated into two parts:
 
-- [Prompt customization](https://github.com/reobin/typewritten/wiki/Prompt-customization), everything to do with how and where the info is displayed
-- [Prompt color customization](https://github.com/reobin/typewritten/wiki/Prompt-color-customization), set a custom color for any of the prompt sections
+- [Prompt customization](https://typewritten.dev/#/prompt_customization), everything to do with how and where the info is displayed
+- [Prompt color customization](https://typewritten.dev/#/prompt_color_customization), set a custom color for any of the prompt sections
 
 **Example of 3 customized typewritten prompts**
 
 <p align="center">
-  <img src="media/configuration_examples/bash.png" width="800" />
+  <img src="docs/_media/configuration_examples/bash.png" width="800" />
 </p>
 <p align="center">
-  <img src="media/configuration_examples/pure.png" width="400" />
-  <img src="media/configuration_examples/half_pure.png" width="400" />
+  <img src="docs/_media/configuration_examples/pure.png" width="400" />
+  <img src="docs/_media/configuration_examples/half_pure.png" width="400" />
 </p>
 
 ## Credits

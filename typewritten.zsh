@@ -79,7 +79,7 @@ _redraw() {
   zle && zle .reset-prompt
 }
 
-_async_init() {
+_async_init_worker() {
   async_start_worker _worker -n
   async_register_callback _worker _prompt_callback
 }
@@ -87,22 +87,20 @@ _async_init() {
 _prompt_callback() {
   local name=$1 code=$2 output=$3
   if (( code == 2 )) || (( code == 3 )) || (( code == 130 )); then
-    echo "workers died, renitializing..."
-    # reinit async workers
+    # reinit async workers and colors
     async_stop_worker _worker
-    _async_init
-    _async_tasks
+    _async_init_worker
+    _async_init_tasks
     _setup_color_mappings
     _setup_colors
   elif (( code )); then
-    echo "code, renitializing tasks..."
-    _async_tasks
+    _async_init_tasks
   fi;
   prompt_data[$name]=$output
   _redraw
 }
 
-_async_tasks() {
+_async_init_tasks() {
   typeset -Ag prompt_data
 
   local _current_pwd="$PWD"
@@ -137,10 +135,6 @@ _async_tasks() {
   _redraw
 }
 
-_prompt_precmd() {
-  _async_tasks
-}
-
 # prompt cursor fix when exiting vim
 _fix_cursor() {
   local cursor="\e[3 q"
@@ -153,13 +147,13 @@ _fix_cursor() {
 }
 
 _setup() {
-  _async_init
-  _async_tasks
+  _async_init_worker
+  _async_init_tasks
 
   zmodload zsh/zle
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd _fix_cursor
-  add-zsh-hook precmd _prompt_precmd
+  add-zsh-hook precmd _async_init_tasks
 
   PROMPT="$_prompt"
 }

@@ -1,14 +1,14 @@
 declare -A color_mappings=( 
-"foreground" "default"
-"primary" "magenta"
-"secondary" "blue"
-"accent" "default"
-
-"info_positive" "green"
-"info_negative" "red"
-"info_neutral_1" "yellow"
-"info_neutral_2" "blue"
-"info_special" "cyan"
+  "foreground" "default"
+  "primary" "magenta"
+  "secondary" "blue"
+  "accent" "default"
+  
+  "info_positive" "green"
+  "info_negative" "red"
+  "info_neutral_1" "yellow"
+  "info_neutral_2" "blue"
+  "info_special" "cyan"
 )
 
 if [[ $TYPEWRITTEN_COLOR_MAPPINGS =~ ^[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+(\;[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+)*$ ]]; then

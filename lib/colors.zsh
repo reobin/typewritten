@@ -3,7 +3,7 @@ declare -A color_mappings=(
   "primary" "magenta"
   "secondary" "blue"
   "accent" "default"
-  
+
   "info_positive" "green"
   "info_negative" "red"
   "info_neutral_1" "yellow"
@@ -20,7 +20,7 @@ _setup_color_mappings() {
     done
   elif [[ ! -z $TYPEWRITTEN_COLOR_MAPPINGS ]]; then
     echo "$TYPEWRITTEN_COLOR_MAPPINGS is not formatted correctly.
-  Format it like so: \"value:#009090;value:red\", etc."
+Format it like so: \"value:#009090;value:red\", etc."
   fi
 }
 _setup_color_mappings
@@ -61,7 +61,7 @@ _setup_colors() {
     done
   elif [[ ! -z $TYPEWRITTEN_COLORS ]]; then
     echo "$TYPEWRITTEN_COLORS is not formatted correctly.
-  Format it like so: \"value:#009090;value:red\", etc."
+Format it like so: \"value:#009090;value:red\", etc."
   fi
 }
 _setup_colors

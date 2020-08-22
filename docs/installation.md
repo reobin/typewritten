@@ -1,6 +1,6 @@
 # Installation
 
-## [npm](https://www.npmjs.com/get-npm)
+## npm
 
 ```shell
 npm install -g typewritten
@@ -27,7 +27,7 @@ prompt typewritten
 
 Note: if using `oh-my-zsh`, set `ZSH_THEME=""` in your `.zshrc` to disable oh-my-zsh themes.
 
-## [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+## oh-my-zsh
 
 Clone the repository into your custom oh-my-zsh themes directory:
 
@@ -46,18 +46,18 @@ Set `ZSH_THEME="typewritten"` in your `.zshrc` file.
 
 Note: If creating the symlinks is a problem, you can skip the step and set `ZSH_THEME="typewritten/typewritten"` instead.
 
-## [antibody](https://github.com/getantibody/antibody)
+## antibody
 
 Add `antibody bundle reobin/typewritten` to your `.zshrc`.
 
-## [zgen](https://github.com/tarjoilija/zgen)
+## zgen
 
 Add `zgen load reobin/typewritten typewritten` to your `.zshrc`.
 
-## [zim](https://github.com/Eriner/zim)
+## zim
 
 Add `zmodule reobin/typewritten --name typewritten` to your `.zimrc` and run `zimfw install`.
 
-## [zplug](https://github.com/zplug/zplug)
+## zplug
 
 Add `zplug reobin/typewritten, as:theme` to your `.zshrc`.

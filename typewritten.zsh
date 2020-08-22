@@ -92,6 +92,8 @@ _prompt_callback() {
     async_stop_worker _worker
     _async_init
     _async_tasks
+    _setup_color_mappings
+    _setup_colors
   elif (( code )); then
     echo "code, renitializing tasks..."
     _async_tasks

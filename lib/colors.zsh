@@ -15,16 +15,19 @@ declare -A color_mappings=(
   ["info_special"]="cyan"
 )
 
-if [[ $TYPEWRITTEN_COLOR_MAPPINGS =~ ^[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+(\;[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+)*$ ]]; then
-  values=($(echo $TYPEWRITTEN_COLOR_MAPPINGS | tr ";" "\n"))
-  for value in $values; do
-    value_definition=($(echo $value | tr ":" "\n"))
-    color_mappings[$value_definition[1]]=$value_definition[2]
-  done
-elif [[ ! -z $TYPEWRITTEN_COLOR_MAPPINGS ]]; then
-  echo "$TYPEWRITTEN_COLOR_MAPPINGS is not formatted correctly.
-Format it like so: \"value:#009090;value:red\", etc."
-fi
+_setup_color_mappings() {
+  if [[ $TYPEWRITTEN_COLOR_MAPPINGS =~ ^[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+(\;[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+)*$ ]]; then
+    values=($(echo $TYPEWRITTEN_COLOR_MAPPINGS | tr ";" "\n"))
+    for value in $values; do
+      value_definition=($(echo $value | tr ":" "\n"))
+      color_mappings[$value_definition[1]]=$value_definition[2]
+    done
+  elif [[ ! -z $TYPEWRITTEN_COLOR_MAPPINGS ]]; then
+    echo "$TYPEWRITTEN_COLOR_MAPPINGS is not formatted correctly.
+  Format it like so: \"value:#009090;value:red\", etc."
+  fi
+}
+_setup_color_mappings
 
 declare -A colors=(
   ["prompt"]=$color_mappings[foreground]
@@ -60,13 +63,16 @@ declare -A colors=(
   ["git_status_unmerged"]=$color_mappings[info_special]
 )
 
-if [[ $TYPEWRITTEN_COLORS =~ ^[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+(\;[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+)*$ ]]; then
-  values=($(echo $TYPEWRITTEN_COLORS | tr ";" "\n"))
-  for value in $values; do
-    value_definition=($(echo $value | tr ":" "\n"))
-    colors[$value_definition[1]]=$value_definition[2]
-  done
-elif [[ ! -z $TYPEWRITTEN_COLORS ]]; then
-  echo "$TYPEWRITTEN_COLORS is not formatted correctly.
-Format it like so: \"value:#009090;value:red\", etc."
-fi
+_setup_colors() {
+  if [[ $TYPEWRITTEN_COLORS =~ ^[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+(\;[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+)*$ ]]; then
+    values=($(echo $TYPEWRITTEN_COLORS | tr ";" "\n"))
+    for value in $values; do
+      value_definition=($(echo $value | tr ":" "\n"))
+      colors[$value_definition[1]]=$value_definition[2]
+    done
+  elif [[ ! -z $TYPEWRITTEN_COLORS ]]; then
+    echo "$TYPEWRITTEN_COLORS is not formatted correctly.
+  Format it like so: \"value:#009090;value:red\", etc."
+  fi
+}
+_setup_colors

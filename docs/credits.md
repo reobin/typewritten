@@ -11,6 +11,7 @@ A special thanks to all the contributors to this project
 - [@jletey](https://github.com/jletey)
 - [@pfandzelter](https://github.com/pfandzelter)
 - [@eleven4y](https://github.com/eleven4y)
+- [@ninja18](https://github.com/ninja18)
 
 ## Inspiration
 

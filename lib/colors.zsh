@@ -1,4 +1,4 @@
-declare -A color_mappings=( 
+declare -Ag color_mappings=(
   "foreground" "default"
   "primary" "magenta"
   "secondary" "blue"
@@ -25,7 +25,7 @@ Format it like so: \"value:#009090;value:red\", etc."
 }
 _setup_color_mappings
 
-declare -A colors=(
+declare -Ag colors=(
   "prompt" $color_mappings[foreground]
   "current_directory" $color_mappings[primary]
   "symbol" $color_mappings[secondary]

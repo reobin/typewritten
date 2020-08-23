@@ -87,10 +87,7 @@ _async_init_worker() {
 _prompt_callback() {
   local name=$1 code=$2 output=$3
   if (( code == 2 )) || (( code == 3 )) || (( code == 130 )); then
-    # reinit async workers and colors
-    _setup_color_mappings
-    _setup_colors
-
+    # reinit async workers
     async_stop_worker _worker
     _async_init_worker
     _async_init_tasks

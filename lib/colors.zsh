@@ -1,9 +1,9 @@
-declare -A color_mappings=( 
+declare -Ag color_mappings=(
   "foreground" "default"
   "primary" "magenta"
   "secondary" "blue"
   "accent" "default"
-  
+
   "info_positive" "green"
   "info_negative" "red"
   "info_neutral_1" "yellow"
@@ -22,7 +22,7 @@ elif [[ ! -z $TYPEWRITTEN_COLOR_MAPPINGS ]]; then
 Format it like so: \"value:#009090;value:red\", etc."
 fi
 
-declare -A colors=(
+declare -Ag colors=(
   "prompt" $color_mappings[foreground]
   "current_directory" $color_mappings[primary]
   "symbol" $color_mappings[secondary]

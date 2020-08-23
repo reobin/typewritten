@@ -79,16 +79,26 @@ _redraw() {
   zle && zle .reset-prompt
 }
 
+_async_init_worker() {
+  async_start_worker _worker -n
+  async_register_callback _worker _prompt_callback
+}
+
 _prompt_callback() {
-  local name=$1 output=$3
+  local name=$1 code=$2 output=$3
+  if (( code == 2 )) || (( code == 3 )) || (( code == 130 )); then
+    # reinit async workers
+    async_stop_worker _worker
+    _async_init_worker
+    _async_init_tasks
+  elif (( code )); then
+    _async_init_tasks
+  fi;
   prompt_data[$name]=$output
   _redraw
 }
 
-async_start_worker _worker -n
-async_register_callback _worker _prompt_callback
-
-_prompt_precmd() {
+_async_init_tasks() {
   typeset -Ag prompt_data
 
   local _current_pwd="$PWD"
@@ -134,11 +144,17 @@ _fix_cursor() {
   echo -ne "$cursor"
 }
 
-zmodload zsh/zle
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd _fix_cursor
-add-zsh-hook precmd _prompt_precmd
+_setup() {
+  _async_init_worker
+  _async_init_tasks
 
-PROMPT="$_prompt"
+  zmodload zsh/zle
+  autoload -Uz add-zsh-hook
+  add-zsh-hook precmd _fix_cursor
+  add-zsh-hook precmd _async_init_tasks
 
+  PROMPT="$_prompt"
+}
+
+_setup
 zle_highlight=( default:fg=$colors[prompt] )

@@ -14,10 +14,10 @@ To ease the process of changing around the colors in typewritten, semantic names
 | ---------------- | -------------------------------------------------------------------------------------------- | ------------- |
 | `primary`        | The current directory and git branch.                                                        | `magenta`     |
 | `secondary`      | The prompt symbol.                                                                           | `blue`        |
-| `accent`         | The arrow, the host-user connector and the right prompt prefix.                              | `default`     |
+| `accent`         | The arrow, the host-user connector, the virtual env, and the right prompt prefix.                              | `default`     |
 | `info_negative`  | The symbol when there is an error, the return error code, and the git status deleted symbol. | `red`         |
 | `info_positive`  | The git status staged symbol.                                                                | `green`       |
-| `info_neutral_1` | The host, the user, the virtualenv, and the git status stash and modified symbols.           | `yellow`      |
+| `info_neutral_1` | The host, the user, and the git status stash and modified symbols.           | `yellow`      |
 | `info_neutral_2` | The git status new, diverged, ahead and behind symbols                                       | `blue`        |
 | `info_special`   | The git status renamed and unmerged symbols.                                                 | `cyan`        |
 
@@ -74,7 +74,7 @@ Both `TYPEWRITTEN_COLORS` and `TYPEWRITTEN_COLOR_MAPPINGS` use the same [format]
 | `host`                | The current host on `multiline` or `singleline_verbose` layouts.                                     | `yellow`      |
 | `host_user_connector` | The `@` between host and user on `multiline` or `singleline_verbose` layouts.                        | `default`     |
 | `user`                | The user between on `multiline` or `singleline_verbose` layouts.                                     | `yellow`      |
-| `virtualenv`          | The current python virtual environment.                                                              | `default`     |
+| `virtual_env`          | The current python virtual environment.                                                              | `default`     |
 | `git_rebasing`        | The word `rebasing` replaces the git status when the current git repository in is currently rebasing | `magenta`     |
 | `git_status_staged`   | The displayed `+` symbol coming from git status.                                                     | `green`       |
 | `git_status_new`      | The displayed `?` symbol coming from git status.                                                     | `blue`        |

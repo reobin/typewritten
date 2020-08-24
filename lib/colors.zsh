@@ -26,14 +26,17 @@ declare -Ag tw_colors=(
   "prompt" $tw_color_mappings[foreground]
   "current_directory" $tw_color_mappings[primary]
   "symbol" $tw_color_mappings[secondary]
+
   "arrow" $tw_color_mappings[accent]
-  "host_user_connector" $tw_color_mappings[accent]
   "right_prompt_prefix" $tw_color_mappings[accent]
+  "virtual_env" $tw_color_mappings[accent]
+
   "symbol_error" $tw_color_mappings[info_negative]
   "error_code" $tw_color_mappings[info_negative]
+
+  "host_user_connector" $tw_color_mappings[accent]
   "host" $tw_color_mappings[info_neutral_1]
   "user" $tw_color_mappings[info_neutral_1]
-  "virtualenv" $tw_color_mappings[info_neutral_1]
 
   "git_branch" $tw_color_mappings[primary]
   "git_rebasing" $tw_color_mappings[primary]

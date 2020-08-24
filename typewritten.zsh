@@ -46,7 +46,7 @@ tw_arrow="%F{$tw_colors[arrow]}->"
 tw_redraw() {
   local tw_virtual_env=""
   if [[ ! -z $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    tw_virtual_env="%F{$tw_colors[virtualenv]}($(basename $VIRTUAL_ENV)) "
+    tw_virtual_env="%F{$tw_colors[virtual_env]}($(basename $VIRTUAL_ENV)) "
   fi;
 
   tw_env_prompt="$tw_virtual_env$tw_prompt"

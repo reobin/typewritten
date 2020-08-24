@@ -19,142 +19,142 @@ source "$TYPEWRITTEN_ROOT/lib/git.zsh"
 BREAK_LINE="
 "
 
-_right_prompt_prefix="%F{$colors[right_prompt_prefix]}$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
+tw_right_prompt_prefix="%F{$tw_colors[right_prompt_prefix]}$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
 
-local _prompt_symbol="❯"
+local tw_prompt_symbol="❯"
 if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
-  _prompt_symbol="$TYPEWRITTEN_SYMBOL"
+  tw_prompt_symbol="$TYPEWRITTEN_SYMBOL"
 fi;
 
-local _prompt_color="%(?,%F{$colors[symbol]},%F{$colors[error_code]})"
-local _return_code="%(?,,%F{$colors[symbol_error]}%? )"
-if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
-  _prompt_color="%F{$colors[prompt]}"
-  _return_code=""
+local tw_prompt_color="%(?,%F{$tw_colors[symbol]},%F{$tw_colors[error_code]})"
+local tw_return_code="%(?,,%F{$tw_colors[symbol_error]}%? )"
+if [ "$TYPEWRITTEN_DISABLEtw_return_code" = true ]; then
+  tw_prompt_color="%F{$tw_colors[prompt]}"
+  tw_return_code=""
 fi;
 
-_user_host="%F{$colors[host]}%n%F{$colors[host_user_connector]}@%F{$colors[user]}%m"
-_prompt="$_prompt_color$_return_code$_prompt_symbol %F{$colors[prompt]}"
+tw_user_host="%F{$tw_colors[host]}%n%F{$tw_colors[host_user_connector]}@%F{$tw_colors[user]}%m"
+tw_prompt="$tw_prompt_color$tw_return_code$tw_prompt_symbol %F{$tw_colors[prompt]}"
 
-_current_directory_color="$colors[current_directory]"
-_git_branch_color="$colors[git_branch]"
+tw_current_directory_color="$tw_colors[current_directory]"
+tw_git_branch_color="$tw_colors[git_branch]"
 
-_current_directory="%F{$_current_directory_color}%c"
-_verbose_current_directory="%F{$_current_directory_color]}%~"
-_arrow="%F{$colors[arrow]}->"
+tw_current_directory="%F{$tw_current_directory_color}%c"
+tw_verbose_current_directory="%F{$tw_current_directory_color]}%~"
+tw_arrow="%F{$tw_colors[arrow]}->"
 
-_redraw() {
-  local _virtualenv=""
+tw_redraw() {
+  local tw_virtual_env=""
   if [[ ! -z $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    _virtualenv="%F{$colors[virtualenv]}($(basename $VIRTUAL_ENV)) "
+    tw_virtual_env="%F{$tw_colors[virtualenv]}($(basename $VIRTUAL_ENV)) "
   fi;
 
-  _env_prompt="$_virtualenv$_prompt"
+  tw_env_prompt="$tw_virtual_env$tw_prompt"
 
-  _layout="$TYPEWRITTEN_PROMPT_LAYOUT"
-  _git_info="$prompt_data[_git_branch]$prompt_data[_git_status]"
-  if [ "$_layout" = "half_pure" ]; then
-    PROMPT="$BREAK_LINE%F{$_git_branch_color}$_git_info$BREAK_LINE$_env_prompt"
-    RPROMPT="$_right_prompt_prefix%F{$_current_directory_color}$prompt_data[_git_home]$_current_directory"
+  tw_layout="$TYPEWRITTEN_PROMPT_LAYOUT"
+  tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"
+  if [ "$tw_layout" = "half_pure" ]; then
+    PROMPT="$BREAK_LINE%F{$tw_git_branch_color}$tw_git_info$BREAK_LINE$tw_env_prompt"
+    RPROMPT="$tw_right_prompt_prefix%F{$tw_current_directory_color}$tw_prompt_data[tw_git_home]$tw_current_directory"
   else
-    local _git_arrow_info=""
-    if [ "$_git_info" != "" ]; then
-      _git_arrow_info=" $_arrow %F{$_git_branch_color}$_git_info"
+    local tw_git_arrow_info=""
+    if [ "$tw_git_info" != "" ]; then
+      tw_git_arrow_info=" $tw_arrow %F{$tw_git_branch_color}$tw_git_info"
     fi;
-    if [ "$_layout" = "pure" ]; then
-      PROMPT="$BREAK_LINE$_verbose_current_directory$_git_arrow_info$BREAK_LINE$_env_prompt"
+    if [ "$tw_layout" = "pure" ]; then
+      PROMPT="$BREAK_LINE$tw_verbose_current_directory$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
       RPROMPT=""
     else
-      if [ "$_layout" = "singleline_verbose" ]; then
-        PROMPT="$_user_host $_env_prompt"
-      elif [ "$_layout" = "multiline" ]; then
-        PROMPT="$BREAK_LINE$_user_host$BREAK_LINE$_env_prompt"
+      if [ "$tw_layout" = "singleline_verbose" ]; then
+        PROMPT="$tw_user_host $tw_env_prompt"
+      elif [ "$tw_layout" = "multiline" ]; then
+        PROMPT="$BREAK_LINE$tw_user_host$BREAK_LINE$tw_env_prompt"
       else
-        PROMPT="$_env_prompt"
+        PROMPT="$tw_env_prompt"
       fi;
-      RPROMPT="$_right_prompt_prefix%F{$_current_directory_color}$prompt_data[_git_home]$_current_directory$_git_arrow_info"
+      RPROMPT="$tw_right_prompt_prefix%F{$tw_current_directory_color}$tw_prompt_data[tw_git_home]$tw_current_directory$tw_git_arrow_info"
     fi;
   fi;
 
   zle && zle .reset-prompt
 }
 
-_async_init_worker() {
-  async_start_worker _worker -n
-  async_register_callback _worker _prompt_callback
+tw_async_init_worker() {
+  async_start_worker tw_worker -n
+  async_register_callback tw_worker tw_prompt_callback
 }
 
-_prompt_callback() {
-  local name=$1 code=$2 output=$3
-  if (( code == 2 )) || (( code == 3 )) || (( code == 130 )); then
+tw_prompt_callback() {
+  local tw_name=$1 tw_code=$2 tw_output=$3
+  if (( tw_code == 2 )) || (( tw_code == 3 )) || (( tw_code == 130 )); then
     # reinit async workers
-    async_stop_worker _worker
-    _async_init_worker
-    _async_init_tasks
+    async_stop_worker tw_worker
+    tw_async_init_worker
+    tw_async_init_tasks
   elif (( code )); then
-    _async_init_tasks
+    tw_async_init_tasks
   fi;
-  prompt_data[$name]=$output
-  _redraw
+  tw_prompt_data[$tw_name]=$tw_output
+  tw_redraw
 }
 
-_async_init_tasks() {
-  typeset -Ag prompt_data
+tw_async_init_tasks() {
+  typeset -Ag tw_prompt_data
 
-  local _current_pwd="$PWD"
-  async_worker_eval _worker builtin cd -q $_current_pwd
+  local tw_current_pwd="$PWD"
+  async_worker_eval tw_worker builtin cd -q $tw_current_pwd
 
-  local _git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
-  if [[ "$_git_hide_status" != "1" ]]; then
-    local _git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
-    if [[ "$_git_toplevel" != $prompt_data[_git_toplevel] ]]; then
-      async_flush_jobs _worker
-      prompt_data[_git_branch]=
-      prompt_data[_git_status]=
+  local tw_git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
+  if [[ "$tw_git_hide_status" != "1" ]]; then
+    local tw_git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
+    if [[ "$tw_git_toplevel" != $tw_prompt_data[tw_git_toplevel] ]]; then
+      async_flush_jobs tw_worker
+      tw_prompt_data[tw_git_branch]=
+      tw_prompt_data[tw_git_status]=
     fi;
 
-    if [[ "$_current_pwd" != $prompt_data[_current_pwd] ]]; then
-      async_flush_jobs _worker
-      prompt_data[_git_home]=
+    if [[ "$tw_current_pwd" != $tw_prompt_data[tw_current_pwd] ]]; then
+      async_flush_jobs tw_worker
+      tw_prompt_data[tw_git_home]=
     fi;
 
-    prompt_data[_git_toplevel]="$_git_toplevel"
-    prompt_data[_current_pwd]="$_current_pwd"
+    tw_prompt_data[tw_git_toplevel]="$tw_git_toplevel"
+    tw_prompt_data[tw_current_pwd]="$tw_current_pwd"
     if [[ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]]; then
-      async_job _worker _git_home $_current_pwd $_git_toplevel
+      async_job tw_worker tw_git_home $tw_current_pwd $tw_git_toplevel
     fi;
-    async_job _worker _git_branch
-    async_job _worker _git_status
+    async_job tw_worker tw_git_branch
+    async_job tw_worker tw_git_status
   else
-    prompt_data[_git_branch]=
-    prompt_data[_git_status]=
+    tw_prompt_data[tw_git_branch]=
+    tw_prompt_data[tw_git_status]=
   fi;
 
-  _redraw
+  tw_redraw
 }
 
 # prompt cursor fix when exiting vim
-_fix_cursor() {
-  local cursor="\e[3 q"
+tw_fix_cursor() {
+  local tw_cursor="\e[3 q"
   if [ "$TYPEWRITTEN_CURSOR" = "block" ]; then
-    cursor="\e[1 q"
+    tw_cursor="\e[1 q"
   elif [ "$TYPEWRITTEN_CURSOR" = "beam" ]; then
-    cursor="\e[5 q"
+    tw_cursor="\e[5 q"
   fi;
-  echo -ne "$cursor"
+  echo -ne "$tw_cursor"
 }
 
-_setup() {
-  _async_init_worker
-  _async_init_tasks
+tw_setup() {
+  tw_async_init_worker
+  tw_async_init_tasks
 
   zmodload zsh/zle
   autoload -Uz add-zsh-hook
-  add-zsh-hook precmd _fix_cursor
-  add-zsh-hook precmd _async_init_tasks
+  add-zsh-hook precmd tw_fix_cursor
+  add-zsh-hook precmd tw_async_init_tasks
 
-  PROMPT="$_prompt"
+  PROMPT="$tw_prompt"
 }
+tw_setup
 
-_setup
-zle_highlight=( default:fg=$colors[prompt] )
+zle_highlight=( default:fg=$tw_colors[prompt] )

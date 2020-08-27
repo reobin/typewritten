@@ -25,6 +25,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "erikr",
+      "name": "Erik Reinertsen",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1253422?v=4",
+      "profile": "http://erikreinertsen.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

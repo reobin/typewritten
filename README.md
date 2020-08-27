@@ -128,7 +128,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/oniGino"><img src="https://avatars3.githubusercontent.com/u/33404137?v=4" width="100px;" alt=""/><br /><sub><b>Gino</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3AoniGino" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/frdrk"><img src="https://avatars3.githubusercontent.com/u/3447600?v=4" width="100px;" alt=""/><br /><sub><b>frdrk</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3Afrdrk" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/frdrk"><img src="https://avatars3.githubusercontent.com/u/3447600?v=4" width="100px;" alt=""/><br /><sub><b>frdrk</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3Afrdrk" title="Bug reports">🐛</a> 📓</td>
   </tr>
 </table>
 

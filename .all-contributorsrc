@@ -99,6 +99,16 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "eleven4y",
+      "name": "Konstantin Petrov",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/51177852?v=4",
+      "profile": "http://k.petrov4y@outlook.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

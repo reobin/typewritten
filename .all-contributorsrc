@@ -4,6 +4,7 @@
   ],
   "imageSize": 100,
   "commit": false,
+  "badgeTemplate": "<img src='https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square' alt='All contributors />",
   "contributors": [
     {
       "login": "reobin",
@@ -14,6 +15,15 @@
         "code",
         "maintenance",
         "doc"
+      ]
+    },
+    {
+      "login": "thbe",
+      "name": "thbe",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/495530?v=4",
+      "profile": "https://www.thbe.org/",
+      "contributions": [
+        "code"
       ]
     }
   ],

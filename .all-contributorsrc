@@ -65,6 +65,15 @@
       ]
     },
     {
+      "login": "ninja18",
+      "name": "Niranjan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19199814?v=4",
+      "profile": "http://www.linkedin.com/in/ninja18",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "mrillusi0n",
       "name": "Nikhil",
       "avatar_url": "https://avatars1.githubusercontent.com/u/37063502?v=4",
@@ -72,7 +81,7 @@
       "contributions": [
         "ideas"
       ]
-    }
+    },
   ],
   "contributorsPerLine": 7,
   "projectName": "typewritten",

@@ -1,7 +1,4 @@
 <p align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <img src="docs/_media/logo.svg" alt="typewritten" />
 </p>
 
@@ -29,8 +26,10 @@
   <a href="https://github.com/reobin/typewritten/network/members">
     <img src="https://img.shields.io/github/forks/reobin/typewritten?style=flat-square&logo=github" />
   </a>
-  <a href="https://github.com/reobin/typewritten/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/reobin/typewritten?style=flat-square&logo=github" />
+  <a href="#contributors">
+    <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+    <img src="https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square" />
+    <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
 

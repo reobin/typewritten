@@ -100,25 +100,6 @@ The documentation is separated into two parts:
   <img src="docs/_media/configuration_examples/half_pure.png" width="400" />
 </p>
 
-## Credits
-
-### Contributors
-
-A special thanks to all the contributors to this project
-
-- [@thbe](https://github.com/thbe)
-- [@erikr](https://github.com/erikr)
-- [@artem-zinnatullin](https://github.com/artem-zinnatullin)
-- [@nizarmah](https://github.com/nizarmah)
-- [@jletey](https://github.com/jletey)
-- [@pfandzelter](https://github.com/pfandzelter)
-- [@eleven4y](https://github.com/eleven4y)
-- [@ninja18](https://github.com/ninja18)
-
-### Inspiration
-
-`pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -137,3 +118,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Inspiration
+
+`pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)
+

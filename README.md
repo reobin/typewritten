@@ -26,8 +26,10 @@
   <a href="https://github.com/reobin/typewritten/network/members">
     <img src="https://img.shields.io/github/forks/reobin/typewritten?style=flat-square&logo=github" />
   </a>
-  <a href="https://github.com/reobin/typewritten/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/reobin/typewritten?style=flat-square&logo=github" />
+  <a href="#contributors">
+    <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+    <img src="https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square" />
+    <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
 
@@ -98,21 +100,26 @@ The documentation is separated into two parts:
   <img src="docs/_media/configuration_examples/half_pure.png" width="400" />
 </p>
 
-## Credits
+## Contributors ✨
 
-### Contributors
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-A special thanks to all the contributors to this project
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/reobin"><img src="https://avatars1.githubusercontent.com/u/5920450?v=4" width="100px;" alt=""/><br /><sub><b>Robin Gagnon</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=reobin" title="Code">💻</a> <a href="#maintenance-reobin" title="Maintenance">🚧</a> <a href="https://github.com/reobin/typewritten/commits?author=reobin" title="Documentation">📖</a></td>
+  </tr>
+</table>
 
-- [@thbe](https://github.com/thbe)
-- [@erikr](https://github.com/erikr)
-- [@artem-zinnatullin](https://github.com/artem-zinnatullin)
-- [@nizarmah](https://github.com/nizarmah)
-- [@jletey](https://github.com/jletey)
-- [@pfandzelter](https://github.com/pfandzelter)
-- [@eleven4y](https://github.com/eleven4y)
-- [@ninja18](https://github.com/ninja18)
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-### Inspiration
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Inspiration
 
 `pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)
+

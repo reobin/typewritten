@@ -28,8 +28,8 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square" alt="All contributors" />
-    <!-- ALL-CONTRIBUTORS-BADGE:END -->
+    <img src="https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square" alt="All contributors" />
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
 
@@ -112,6 +112,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/reobin"><img src="https://avatars1.githubusercontent.com/u/5920450?v=4" width="100px;" alt=""/><br /><sub><b>Robin Gagnon</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=reobin" title="Code">💻</a> <a href="#maintenance-reobin" title="Maintenance">🚧</a> <a href="https://github.com/reobin/typewritten/commits?author=reobin" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.thbe.org/"><img src="https://avatars3.githubusercontent.com/u/495530?v=4" width="100px;" alt=""/><br /><sub><b>thbe</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=thbe" title="Code">💻</a></td>
     <td align="center"><a href="http://erikreinertsen.com"><img src="https://avatars2.githubusercontent.com/u/1253422?v=4" width="100px;" alt=""/><br /><sub><b>Erik Reinertsen</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=erikr" title="Code">💻</a> <a href="https://github.com/reobin/typewritten/commits?author=erikr" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://twitter.com/artem_zin"><img src="https://avatars0.githubusercontent.com/u/967132?v=4" width="100px;" alt=""/><br /><sub><b>Artem Zinnatullin :slowpoke:</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=artem-zinnatullin" title="Code">💻</a> <a href="https://github.com/reobin/typewritten/commits?author=artem-zinnatullin" title="Documentation">📖</a></td>
   </tr>
 </table>
 

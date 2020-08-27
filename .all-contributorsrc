@@ -136,6 +136,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "oniGino",
+      "name": "Gino",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/33404137?v=4",
+      "profile": "https://github.com/oniGino",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

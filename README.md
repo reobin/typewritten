@@ -28,7 +28,7 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square" alt="All contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square" alt="All contributors" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
@@ -124,6 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://k.petrov4y@outlook.com"><img src="https://avatars2.githubusercontent.com/u/51177852?v=4" width="100px;" alt=""/><br /><sub><b>Konstantin Petrov</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=eleven4y" title="Code">💻</a> <a href="https://github.com/reobin/typewritten/commits?author=eleven4y" title="Documentation">📖</a></td>
     <td align="center"><a href="https://rechtlogisch.de"><img src="https://avatars0.githubusercontent.com/u/2451083?v=4" width="100px;" alt=""/><br /><sub><b>Krzysztof Tomasz Zembrowski</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=zembrowski" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Ivan-Velickovic"><img src="https://avatars0.githubusercontent.com/u/10481259?v=4" width="100px;" alt=""/><br /><sub><b>Ivan Velickovic</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=Ivan-Velickovic" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/barischrooneyj"><img src="https://avatars0.githubusercontent.com/u/6631452?v=4" width="100px;" alt=""/><br /><sub><b>Jeremy Barisch-Rooney</b></sub></a><br /><a href="#ideas-barischrooneyj" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 

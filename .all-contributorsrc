@@ -45,6 +45,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "nizarmah",
+      "name": "Nizar",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5631091?v=4",
+      "profile": "https://nizarmah.me/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

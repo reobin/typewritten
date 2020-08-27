@@ -1,7 +1,5 @@
 {
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "commit": false,
   "badgeTemplate": "    <img src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square\" alt=\"All contributors\" />",
@@ -11,77 +9,57 @@
       "name": "Robin Gagnon",
       "avatar_url": "https://avatars1.githubusercontent.com/u/5920450?v=4",
       "profile": "https://github.com/reobin",
-      "contributions": [
-        "code",
-        "maintenance",
-        "doc"
-      ]
+      "contributions": ["code", "maintenance", "doc"]
     },
     {
       "login": "thbe",
       "name": "thbe",
       "avatar_url": "https://avatars3.githubusercontent.com/u/495530?v=4",
       "profile": "https://www.thbe.org/",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "erikr",
       "name": "Erik Reinertsen",
       "avatar_url": "https://avatars2.githubusercontent.com/u/1253422?v=4",
       "profile": "http://erikreinertsen.com",
-      "contributions": [
-        "code",
-        "doc"
-      ]
+      "contributions": ["code", "doc"]
     },
     {
       "login": "artem-zinnatullin",
       "name": "Artem Zinnatullin :slowpoke:",
       "avatar_url": "https://avatars0.githubusercontent.com/u/967132?v=4",
       "profile": "https://twitter.com/artem_zin",
-      "contributions": [
-        "code",
-        "doc"
-      ]
+      "contributions": ["code", "doc"]
     },
     {
       "login": "nizarmah",
       "name": "Nizar",
       "avatar_url": "https://avatars1.githubusercontent.com/u/5631091?v=4",
       "profile": "https://nizarmah.me/",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "johnletey",
       "name": "John Letey",
       "avatar_url": "https://avatars1.githubusercontent.com/u/62398724?v=4",
       "profile": "https://github.com/johnletey",
-      "contributions": [
-        "doc"
-      ]
+      "contributions": ["doc"]
     },
     {
       "login": "ninja18",
       "name": "Niranjan",
       "avatar_url": "https://avatars2.githubusercontent.com/u/19199814?v=4",
       "profile": "http://www.linkedin.com/in/ninja18",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "mrillusi0n",
       "name": "Nikhil",
       "avatar_url": "https://avatars1.githubusercontent.com/u/37063502?v=4",
       "profile": "https://github.com/mrillusi0n",
-      "contributions": [
-        "ideas"
-      ]
-    },
+      "contributions": ["ideas"]
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "typewritten",

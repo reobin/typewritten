@@ -28,7 +28,7 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square" alt="All contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square" alt="All contributors" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
@@ -120,6 +120,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/mrillusi0n"><img src="https://avatars1.githubusercontent.com/u/37063502?v=4" width="100px;" alt=""/><br /><sub><b>Nikhil</b></sub></a><br /><a href="#ideas-mrillusi0n" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="http://tdeekens.name"><img src="https://avatars3.githubusercontent.com/u/1877073?v=4" width="100px;" alt=""/><br /><sub><b>Tobias Deekens</b></sub></a><br /><a href="#ideas-tdeekens" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://xenoterracide.com"><img src="https://avatars3.githubusercontent.com/u/5517?v=4" width="100px;" alt=""/><br /><sub><b>Caleb Cushing</b></sub></a><br /><a href="#ideas-xenoterracide" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 

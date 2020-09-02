@@ -9,7 +9,7 @@ Click on an option's name to see more info.
 | [TYPEWRITTEN_PROMPT_LAYOUT](#typewritten_prompt_layout)             | Defines how the prompt is displayed.                                                               | `singleline`, `half_pure` , `pure`, `singleline_verbose`, and `multiline` | `singleline`  |
 | [TYPEWRITTEN_SYMBOL](#typewritten_symbol)                           | Defines the prompt symbol.                                                                         | Any string value                                                          | `>`           |
 | [TYPEWRITTEN_GIT_RELATIVE_PATH](#typewritten_git_relative_path)     | If `true`, the current git home directory name is always shown next to the current directory name. | `true` or `false`                                                         | `false`       |
-| [TYPEWRITTEN_CURSOR](#typewritten_cursor)                           | Defines the used cursor.                                                                           | `underscore`, `beam`, or `block`                                          | `underscore`  |
+| [TYPEWRITTEN_CURSOR](#typewritten_cursor)                           | Defines the used cursor.                                                                           | `underscore`, `beam`, `block`, or `terminal`                              | `underscore`  |
 | [TYPEWRITTEN_RIGHT_PROMPT_PREFIX](#typewritten_right_prompt_prefix) | Defines what is displayed just before the right part of the prompt.                                | Any string                                                                |               |
 
 > All of these options are configurable through your `.zshrc` file like this:
@@ -110,6 +110,10 @@ To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELA
 <p align="center">
   <img src="_media/cursors/block.png" alt="block cursor" />
 </p>
+
+**Terminal (`TYPEWRITTEN_CURSOR="terminal"`)**
+
+By using this option, typewritten stops managing cursor preference. The cursor used will be the one configured by your terminal emulator.
 
 ## TYPEWRITTEN_RIGHT_PROMPT_PREFIX
 

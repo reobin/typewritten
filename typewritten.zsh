@@ -150,7 +150,9 @@ tw_setup() {
 
   zmodload zsh/zle
   autoload -Uz add-zsh-hook
-  add-zsh-hook precmd tw_fix_cursor
+  if [ "$TYPEWRITTEN_CURSOR" != "terminal" ]; then
+    add-zsh-hook precmd tw_fix_cursor
+  fi;
   add-zsh-hook precmd tw_async_init_tasks
 
   PROMPT="$tw_prompt"

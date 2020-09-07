@@ -35,9 +35,9 @@ tw_git_status() {
     tw_git_status_display="%F{$tw_colors[git_rebasing]}rebasing"
   else
     # staged changes
-    if $(command grep "^A  " <<< "$tw_git_status_response" &> /dev/null) ||
-      $(command grep "^M  " <<< "$tw_git_status_response" &> /dev/null) ||
-      $(command grep "^D  " <<< "$tw_git_status_response" &> /dev/null); then
+    if $(command grep "^A. " <<< "$tw_git_status_response" &> /dev/null) ||
+      $(command grep "^M. " <<< "$tw_git_status_response" &> /dev/null) ||
+      $(command grep "^D. " <<< "$tw_git_status_response" &> /dev/null); then
           tw_git_status_display+=" %F{$tw_colors[git_status_staged]}+"
     fi
 
@@ -47,17 +47,17 @@ tw_git_status() {
     fi
 
     # modified
-    if $(command grep "^ M " <<< "$tw_git_status_response" &> /dev/null); then
+    if $(command grep "^.M " <<< "$tw_git_status_response" &> /dev/null); then
       tw_git_status_display+=" %F{$tw_colors[git_status_modified]}!"
     fi
 
     # renamed
-    if $(command grep "^R  " <<< "$tw_git_status_response" &> /dev/null); then
+    if $(command grep "^R. " <<< "$tw_git_status_response" &> /dev/null); then
       tw_git_status_display+=" %F{$tw_colors[git_status_renamed]}»"
     fi
 
     # deleted
-    if $(command grep "^ D " <<< "$tw_git_status_response" &> /dev/null); then
+    if $(command grep "^.D " <<< "$tw_git_status_response" &> /dev/null); then
       tw_git_status_display+=" %F{$tw_colors[git_status_deleted]}—"
     fi
 

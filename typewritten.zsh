@@ -91,7 +91,7 @@ tw_prompt_callback() {
     async_stop_worker tw_worker
     tw_async_init_worker
     tw_async_init_tasks
-  elif (( code )); then
+  elif (( tw_code )); then
     tw_async_init_tasks
   fi;
   tw_prompt_data[$tw_name]=$tw_output

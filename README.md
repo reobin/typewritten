@@ -28,7 +28,7 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square" alt="All contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square" alt="All contributors" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
@@ -132,6 +132,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/huy-ha"><img src="https://avatars0.githubusercontent.com/u/33562579?v=4" width="100px;" alt=""/><br /><sub><b>Huy Ha</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3Ahuy-ha" title="Bug reports">🐛</a> <a href="#userTesting-huy-ha" title="User Testing">📓</a></td>
     <td align="center"><a href="https://github.com/foruniverse"><img src="https://avatars3.githubusercontent.com/u/32241199?v=4" width="100px;" alt=""/><br /><sub><b>yanyan</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=foruniverse" title="Code">💻</a></td>
     <td align="center"><a href="http://louisdecharson.github.io"><img src="https://avatars1.githubusercontent.com/u/3234544?v=4" width="100px;" alt=""/><br /><sub><b>Louis de Charsonville</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3Alouisdecharson" title="Bug reports">🐛</a> <a href="https://github.com/reobin/typewritten/commits?author=louisdecharson" title="Code">💻</a></td>
+    <td align="center"><a href="https://jack-chapman.com"><img src="https://avatars1.githubusercontent.com/u/38158363?v=4" width="100px;" alt=""/><br /><sub><b>Jack Chapman</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=crepppy" title="Code">💻</a> <a href="https://github.com/reobin/typewritten/issues?q=author%3Acrepppy" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

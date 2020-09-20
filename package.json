@@ -1,6 +1,6 @@
 {
   "name": "typewritten",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "A minimal, lightweight, informative zsh prompt theme",
   "files": [
     "typewritten.zsh",

@@ -28,8 +28,8 @@ fi;
 
 local tw_prompt_color="%(?,%F{$tw_colors[symbol]},%F{$tw_colors[error_code]})"
 local tw_return_code="%(?,,%F{$tw_colors[symbol_error]}%? )"
-if [ "$TYPEWRITTEN_DISABLEtw_return_code" = true ]; then
-  tw_prompt_color="%F{$tw_colors[prompt]}"
+if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
+  tw_prompt_color="%F{$tw_colors[symbol]}"
   tw_return_code=""
 fi;
 

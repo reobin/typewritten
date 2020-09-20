@@ -184,6 +184,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "crepppy",
+      "name": "Jack Chapman",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/38158363?v=4",
+      "profile": "https://jack-chapman.com",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

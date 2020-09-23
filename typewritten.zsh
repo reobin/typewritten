@@ -47,6 +47,8 @@ tw_redraw() {
   local tw_virtual_env=""
   if [[ ! -z $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
     tw_virtual_env="%F{$tw_colors[virtual_env]}($(basename $VIRTUAL_ENV)) "
+  elif [[ ! -z $CONDA_PREFIX ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+    tw_virtual_env="%F{$tw_colors[virtual_env]}($(basename $CONDA_PREFIX)) "
   fi;
 
   tw_env_prompt="$tw_virtual_env$tw_prompt"

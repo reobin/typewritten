@@ -43,15 +43,23 @@ tw_current_directory="%F{$tw_current_directory_color}%c"
 tw_verbose_current_directory="%F{$tw_current_directory_color]}%~"
 tw_arrow="%F{$tw_colors[arrow]}->"
 
-tw_redraw() {
-  local tw_virtual_env=""
-  if [[ ! -z $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    tw_virtual_env="%F{$tw_colors[virtual_env]}($(basename $VIRTUAL_ENV)) "
-  elif [[ ! -z $CONDA_PREFIX ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    tw_virtual_env="%F{$tw_colors[virtual_env]}($(basename $CONDA_PREFIX)) "
-  fi;
+tw_get_virtual_env() {
+  if [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+    local tw_virtual_env=""
+    if [[ ! -z $VIRTUAL_ENV ]]; then
+      tw_virtual_env="$VIRTUAL_ENV"
+    elif [[ ! -z $CONDA_PREFIX ]]; then
+      tw_virtual_env="$CONDA_PREFIX"
+    fi;
 
-  tw_env_prompt="$tw_virtual_env$tw_prompt"
+    if [[ $tw_virtual_env != "" ]]; then
+      echo "%F{$tw_colors[virtual_env]}($(basename $tw_virtual_env)) "
+    fi;
+  fi;
+}
+
+tw_redraw() {
+  tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
 
   tw_layout="$TYPEWRITTEN_PROMPT_LAYOUT"
   tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"

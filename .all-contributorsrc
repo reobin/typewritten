@@ -194,6 +194,16 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "GPSBach",
+      "name": "GPSBach",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/35227624?v=4",
+      "profile": "https://github.com/GPSBach",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,

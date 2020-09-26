@@ -12,7 +12,7 @@ declare -Ag tw_color_mappings=(
 )
 
 if [[ $(id -u ) -eq 0 ]]; then
-  tw_color_mappings+=( [secondary]=orange )
+  tw_color_mappings+=( [secondary]=yellow )
 fi
 
 if [[ $TYPEWRITTEN_COLOR_MAPPINGS =~ ^[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+(\;[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+)*$ ]]; then

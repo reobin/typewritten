@@ -11,6 +11,10 @@ declare -Ag tw_color_mappings=(
   "info_special" "cyan"
 )
 
+if [[ $(id -u ) -eq 0 ]]; then
+  tw_color_mappings+=( [secondary]=orange )
+fi
+
 if [[ $TYPEWRITTEN_COLOR_MAPPINGS =~ ^[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+(\;[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+)*$ ]]; then
   tw_values=($(echo $TYPEWRITTEN_COLOR_MAPPINGS | tr ";" "\n"))
   for tw_value in $tw_values; do

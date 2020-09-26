@@ -78,7 +78,7 @@ tw_redraw() {
       if [ "$tw_layout" = "singleline_verbose" ]; then
         PROMPT="$tw_user_host $tw_env_prompt"
       elif [ "$tw_layout" = "multiline" ]; then
-        PROMPT="$BREAK_LINE$tw_user_host$BREAK_LINE$tw_env_prompt"
+        PROMPT="$tw_user_host$BREAK_LINE$tw_env_prompt"
       else
         PROMPT="$tw_env_prompt"
       fi;

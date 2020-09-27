@@ -2,7 +2,9 @@ declare -Ag tw_color_mappings=(
   "foreground" "default"
   "primary" "magenta"
   "secondary" "blue"
+  "notice" "yellow"
   "accent" "default"
+
 
   "info_positive" "green"
   "info_negative" "red"
@@ -11,9 +13,9 @@ declare -Ag tw_color_mappings=(
   "info_special" "cyan"
 )
 
-if [[ $(id -u ) -eq 0 ]]; then
-  tw_color_mappings+=( [secondary]=yellow )
-fi
+# if [[ $(id -u ) -eq 0 ]]; then
+#   tw_color_mappings+=( [secondary]=yellow )
+# fi
 
 if [[ $TYPEWRITTEN_COLOR_MAPPINGS =~ ^[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+(\;[#_0-9a-zA-Z]+:[#_0-9a-zA-Z]+)*$ ]]; then
   tw_values=($(echo $TYPEWRITTEN_COLOR_MAPPINGS | tr ";" "\n"))
@@ -30,6 +32,7 @@ declare -Ag tw_colors=(
   "prompt" $tw_color_mappings[foreground]
   "current_directory" $tw_color_mappings[primary]
   "symbol" $tw_color_mappings[secondary]
+  "symbol_root" $tw_color_mappings[notice]
 
   "arrow" $tw_color_mappings[accent]
   "right_prompt_prefix" $tw_color_mappings[accent]

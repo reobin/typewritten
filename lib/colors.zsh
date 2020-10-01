@@ -2,7 +2,9 @@ declare -Ag tw_color_mappings=(
   "foreground" "default"
   "primary" "magenta"
   "secondary" "blue"
+  "notice" "yellow"
   "accent" "default"
+
 
   "info_positive" "green"
   "info_negative" "red"
@@ -26,6 +28,7 @@ declare -Ag tw_colors=(
   "prompt" $tw_color_mappings[foreground]
   "current_directory" $tw_color_mappings[primary]
   "symbol" $tw_color_mappings[secondary]
+  "symbol_root" $tw_color_mappings[notice]
 
   "arrow" $tw_color_mappings[accent]
   "right_prompt_prefix" $tw_color_mappings[accent]

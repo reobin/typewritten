@@ -26,15 +26,15 @@ if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
   tw_prompt_symbol="$TYPEWRITTEN_SYMBOL"
 fi;
 
-local tw_prompt_symbol_color="%F{$tw_colors[symbol]}"
+local tw_base_symbol_color="%F{$tw_colors[symbol]}"
 if [[ $(id -u) -eq 0 ]]; then
-  tw_prompt_symbol_color="%F{$tw_colors[symbol_root]}"
+  tw_base_symbol_color="%F{$tw_colors[symbol_root]}"
 fi
 
-local tw_prompt_color="%(?,$tw_prompt_symbol_color,%F{$tw_colors[error_code]})"
-local tw_return_code="%(?,,%F{$tw_colors[symbol_error]}%? )"
+local tw_prompt_color="%(?,$tw_base_symbol_color,%F{$tw_colors[symbol_error]})"
+local tw_return_code="%(?,,%F{$tw_colors[error_code]}%? )"
 if [ "$TYPEWRITTEN_DISABLE_RETURN_CODE" = true ]; then
-  tw_prompt_color="$tw_prompt_symbol_color"
+  tw_prompt_color="$tw_base_symbol_color"
   tw_return_code=""
 fi;
 

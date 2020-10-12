@@ -77,6 +77,8 @@ autoload -U promptinit; promptinit
 prompt typewritten
 ```
 
+Note: if using `oh-my-zsh`, set `ZSH_THEME=""` in your `.zshrc` to disable oh-my-zsh themes.
+
 ### Other ways to install
 
 Many other ways to install typewritten are available in the [docs](https://typewritten.dev/#/installation)

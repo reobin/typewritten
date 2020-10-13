@@ -28,7 +28,7 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square" alt="All contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-22-orange.svg?style=flat-square" alt="All contributors" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
@@ -136,6 +136,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://louisdecharson.github.io"><img src="https://avatars1.githubusercontent.com/u/3234544?v=4" width="100px;" alt=""/><br /><sub><b>Louis de Charsonville</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3Alouisdecharson" title="Bug reports">🐛</a> <a href="https://github.com/reobin/typewritten/commits?author=louisdecharson" title="Code">💻</a></td>
     <td align="center"><a href="https://jack-chapman.com"><img src="https://avatars1.githubusercontent.com/u/38158363?v=4" width="100px;" alt=""/><br /><sub><b>Jack Chapman</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=crepppy" title="Code">💻</a> <a href="https://github.com/reobin/typewritten/issues?q=author%3Acrepppy" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/GPSBach"><img src="https://avatars1.githubusercontent.com/u/35227624?v=4" width="100px;" alt=""/><br /><sub><b>GPSBach</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=GPSBach" title="Code">💻</a> <a href="#ideas-GPSBach" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://williamlorey.com"><img src="https://avatars3.githubusercontent.com/u/22795803?v=4" width="100px;" alt=""/><br /><sub><b>Will Lorey</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=wwlorey" title="Documentation">📖</a></td>
   </tr>
 </table>
 

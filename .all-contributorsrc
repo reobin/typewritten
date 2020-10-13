@@ -204,6 +204,15 @@
         "code",
         "ideas"
       ]
+    },
+    {
+      "login": "wwlorey",
+      "name": "Will Lorey",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22795803?v=4",
+      "profile": "http://williamlorey.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

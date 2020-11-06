@@ -91,7 +91,7 @@ tw_redraw() {
     fi;
   fi;
 
-  zle && zle .reset-prompt
+  zle && zle reset-prompt
 }
 
 tw_async_init_worker() {

@@ -45,7 +45,7 @@ tw_current_directory_color="$tw_colors[current_directory]"
 tw_git_branch_color="$tw_colors[git_branch]"
 
 tw_current_directory="%F{$tw_current_directory_color}%c"
-tw_verbose_current_directory="%F{$tw_current_directory_color]}%~"
+tw_verbose_current_directory="%F{$tw_current_directory_color}%~"
 tw_arrow="%F{$tw_colors[arrow]}->"
 
 tw_get_virtual_env() {
@@ -91,7 +91,7 @@ tw_redraw() {
     fi;
   fi;
 
-  zle && zle .reset-prompt
+  zle && zle reset-prompt
 }
 
 tw_async_init_worker() {

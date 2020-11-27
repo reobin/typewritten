@@ -61,13 +61,32 @@ tw_get_virtual_env() {
   fi;
 }
 
-tw_redraw() {
-  tw_full_wd="%F{$tw_current_directory_color}%~"
-  tw_git_relative_wd="%F{$tw_current_directory_color}$tw_prompt_data[tw_git_home]%c"
+tw_get_home_relative_wd() {
+  echo "%F{$tw_current_directory_color}%~"
+}
+
+tw_get_git_relative_wd() {
+  tw_home_relative_wd=$1
+  tw_git_home=$2
+
+  tw_git_relative_wd="%F{$tw_current_directory_color}$tw_git_home%c"
 
   if [[ "$TYPEWRITTEN_HOME_RELATIVE_PATH" = true ]]; then
-    tw_git_relative_wd=$tw_full_wd
+    tw_git_relative_wd=$tw_home_relative_wd
   fi;
+
+  if [[ "$TYPEWRITTEN_TEST" = true ]]; then
+    if [[ "$tw_git_home" = "" ]]; then
+      tw_git_relative_wd=$tw_home_relative_wd
+    fi;
+  fi;
+
+  echo $tw_git_relative_wd
+}
+
+tw_redraw() {
+  tw_home_relative_wd="$(tw_get_home_relative_wd)"
+  tw_git_relative_wd="$(tw_get_git_relative_wd $tw_home_relative_wd $tw_prompt_data[tw_git_home])"
 
   tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
 
@@ -82,7 +101,7 @@ tw_redraw() {
       tw_git_arrow_info=" $tw_arrow %F{$tw_git_branch_color}$tw_git_info"
     fi;
     if [ "$tw_layout" = "pure" ]; then
-      PROMPT="$BREAK_LINE$tw_full_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
+      PROMPT="$BREAK_LINE$tw_home_relative_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
       RPROMPT=""
     else
       if [ "$tw_layout" = "singleline_verbose" ]; then
@@ -127,15 +146,16 @@ tw_async_init_tasks() {
   local tw_git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
   if [[ "$tw_git_hide_status" != "1" ]]; then
     local tw_git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
-    if [[ "$tw_git_toplevel" != $tw_prompt_data[tw_git_toplevel] ]]; then
-      async_flush_jobs tw_worker
-      tw_prompt_data[tw_git_branch]=
-      tw_prompt_data[tw_git_status]=
-    fi;
 
     if [[ "$tw_current_pwd" != $tw_prompt_data[tw_current_pwd] ]]; then
       async_flush_jobs tw_worker
       tw_prompt_data[tw_git_home]=
+    fi;
+
+    if [[ "$tw_git_toplevel" != $tw_prompt_data[tw_git_toplevel] ]]; then
+      async_flush_jobs tw_worker
+      tw_prompt_data[tw_git_branch]=
+      tw_prompt_data[tw_git_status]=
     fi;
 
     tw_prompt_data[tw_git_toplevel]="$tw_git_toplevel"

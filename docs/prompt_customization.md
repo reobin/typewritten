@@ -97,10 +97,10 @@ To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELA
 **Bash comment prefix (`TYPEWRITTEN_HOME_RELATIVE_PATH=true`)**
 
 <p align="center">
-  <img src="_media/typewritten_home_relative_path.png" alt="display path relative to home" />
+  <img src="_media/home_relative_path.png" alt="display path relative to home" />
 </p>
 
-> Note: This option will override the `TYPEWRITTEN_GIT_RELATIVE_PATH` option
+> Note: This option may override the `TYPEWRITTEN_GIT_RELATIVE_PATH` option
 
 ## TYPEWRITTEN_CURSOR
 

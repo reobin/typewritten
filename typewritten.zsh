@@ -44,8 +44,6 @@ tw_prompt="$tw_prompt_color$tw_return_code$tw_prompt_symbol %F{$tw_colors[prompt
 tw_current_directory_color="$tw_colors[current_directory]"
 tw_git_branch_color="$tw_colors[git_branch]"
 
-tw_current_directory="%F{$tw_current_directory_color}%c"
-tw_verbose_current_directory="%F{$tw_current_directory_color}%~"
 tw_arrow="%F{$tw_colors[arrow]}->"
 
 tw_get_virtual_env() {
@@ -64,20 +62,27 @@ tw_get_virtual_env() {
 }
 
 tw_redraw() {
+  tw_full_wd="%F{$tw_current_directory_color}%~"
+  tw_git_relative_wd="%F{$tw_current_directory_color}$tw_prompt_data[tw_git_home]%c"
+
+  if [[ "$TYPEWRITTEN_HOME_RELATIVE_PATH" = true ]]; then
+    tw_git_relative_wd=$tw_full_wd
+  fi;
+
   tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
 
   tw_layout="$TYPEWRITTEN_PROMPT_LAYOUT"
   tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"
   if [ "$tw_layout" = "half_pure" ]; then
     PROMPT="$BREAK_LINE%F{$tw_git_branch_color}$tw_git_info$BREAK_LINE$tw_env_prompt"
-    RPROMPT="$tw_right_prompt_prefix%F{$tw_current_directory_color}$tw_prompt_data[tw_git_home]$tw_current_directory"
+    RPROMPT="$tw_right_prompt_prefix$tw_git_relative_wd"
   else
     local tw_git_arrow_info=""
     if [ "$tw_git_info" != "" ]; then
       tw_git_arrow_info=" $tw_arrow %F{$tw_git_branch_color}$tw_git_info"
     fi;
     if [ "$tw_layout" = "pure" ]; then
-      PROMPT="$BREAK_LINE$tw_verbose_current_directory$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
+      PROMPT="$BREAK_LINE$tw_full_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
       RPROMPT=""
     else
       if [ "$tw_layout" = "singleline_verbose" ]; then
@@ -87,7 +92,7 @@ tw_redraw() {
       else
         PROMPT="$tw_env_prompt"
       fi;
-      RPROMPT="$tw_right_prompt_prefix%F{$tw_current_directory_color}$tw_prompt_data[tw_git_home]$tw_current_directory$tw_git_arrow_info"
+      RPROMPT="$tw_right_prompt_prefix$tw_git_relative_wd$tw_git_arrow_info"
     fi;
   fi;
 

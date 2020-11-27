@@ -9,6 +9,7 @@ Click on an option's name to see more info.
 | [TYPEWRITTEN_PROMPT_LAYOUT](#typewritten_prompt_layout)             | Defines how the prompt is displayed.                                                               | `singleline`, `half_pure` , `pure`, `singleline_verbose`, and `multiline` | `singleline`  |
 | [TYPEWRITTEN_SYMBOL](#typewritten_symbol)                           | Defines the prompt symbol.                                                                         | Any string value                                                          | `>`           |
 | [TYPEWRITTEN_GIT_RELATIVE_PATH](#typewritten_git_relative_path)     | If `true`, the current git home directory name is always shown next to the current directory name. | `true` or `false`                                                         | `false`       |
+| [TYPEWRITTEN_HOME_RELATIVE_PATH](#typewritten_home_relative_path)   | If `true`, the path displayed is at all times relative to `$HOME`, instead of the git root        | `true` or `false`                                                         | `false`       |
 | [TYPEWRITTEN_CURSOR](#typewritten_cursor)                           | Defines the used cursor.                                                                           | `underscore`, `beam`, `block`, or `terminal`                              | `underscore`  |
 | [TYPEWRITTEN_RIGHT_PROMPT_PREFIX](#typewritten_right_prompt_prefix) | Defines what is displayed just before the right part of the prompt.                                | Any string                                                                |               |
 
@@ -90,6 +91,16 @@ To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELA
 <p align="center">
   <img src="_media/git_relative_path/git_no_relative_path.png" alt="hide git home directory" />
 </p>
+
+## TYPEWRITTEN_HOME_RELATIVE_PATH
+
+**Bash comment prefix (`TYPEWRITTEN_HOME_RELATIVE_PATH=true`)**
+
+<p align="center">
+  <img src="_media/typewritten_home_relative_path.png" alt="display path relative to home" />
+</p>
+
+> Note: This option will override the `TYPEWRITTEN_GIT_RELATIVE_PATH` option
 
 ## TYPEWRITTEN_CURSOR
 

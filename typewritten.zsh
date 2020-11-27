@@ -66,17 +66,18 @@ tw_get_home_relative_wd() {
 }
 
 tw_get_git_relative_wd() {
-  tw_home_relative_wd=$1
-  tw_git_home=$2
+  local tw_home_relative_wd="$1"
+  local tw_git_branch="$2"
+  local tw_git_home="$3"
 
-  tw_git_relative_wd="%F{$tw_current_directory_color}$tw_git_home%c"
+  local tw_git_relative_wd="%F{$tw_current_directory_color}$tw_git_home%c"
 
-  if [[ "$TYPEWRITTEN_HOME_RELATIVE_PATH" = true ]]; then
+  if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "home" ]]; then
     tw_git_relative_wd=$tw_home_relative_wd
   fi;
 
-  if [[ "$TYPEWRITTEN_TEST" = true ]]; then
-    if [[ "$tw_git_home" = "" ]]; then
+  if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "adaptive" ]]; then
+    if [[ "$tw_git_branch" = "" ]]; then
       tw_git_relative_wd=$tw_home_relative_wd
     fi;
   fi;
@@ -86,7 +87,7 @@ tw_get_git_relative_wd() {
 
 tw_redraw() {
   tw_home_relative_wd="$(tw_get_home_relative_wd)"
-  tw_git_relative_wd="$(tw_get_git_relative_wd $tw_home_relative_wd $tw_prompt_data[tw_git_home])"
+  tw_git_relative_wd="$(tw_get_git_relative_wd $tw_home_relative_wd $tw_prompt_data[tw_git_branch] $tw_prompt_data[tw_git_home])"
 
   tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
 
@@ -160,7 +161,7 @@ tw_async_init_tasks() {
 
     tw_prompt_data[tw_git_toplevel]="$tw_git_toplevel"
     tw_prompt_data[tw_current_pwd]="$tw_current_pwd"
-    if [[ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]]; then
+    if [[ "$TYPEWRITTEN_RELATIVE_PATH" != "off" ]]; then
       async_job tw_worker tw_git_home $tw_current_pwd $tw_git_toplevel
     fi;
     async_job tw_worker tw_git_branch

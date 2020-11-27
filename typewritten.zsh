@@ -161,7 +161,7 @@ tw_async_init_tasks() {
 
     tw_prompt_data[tw_git_toplevel]="$tw_git_toplevel"
     tw_prompt_data[tw_current_pwd]="$tw_current_pwd"
-    if [[ "$TYPEWRITTEN_RELATIVE_PATH" != "off" ]]; then
+    if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "git" || "$TYPEWRITTEN_RELATIVE_PATH" = "adaptive" ]]; then
       async_job tw_worker tw_git_home $tw_current_pwd $tw_git_toplevel
     fi;
     async_job tw_worker tw_git_branch

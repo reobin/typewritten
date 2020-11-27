@@ -4,14 +4,13 @@ Here lie all the options related to how or where the information is displayed on
 
 Click on an option's name to see more info.
 
-| Option                                                              | Description                                                                                        | Available options                                                         | Default value |
-| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------- |
-| [TYPEWRITTEN_PROMPT_LAYOUT](#typewritten_prompt_layout)             | Defines how the prompt is displayed.                                                               | `singleline`, `half_pure` , `pure`, `singleline_verbose`, and `multiline` | `singleline`  |
-| [TYPEWRITTEN_SYMBOL](#typewritten_symbol)                           | Defines the prompt symbol.                                                                         | Any string value                                                          | `>`           |
-| [TYPEWRITTEN_GIT_RELATIVE_PATH](#typewritten_git_relative_path)     | If `true`, the current git home directory name is always shown next to the current directory name. | `true` or `false`                                                         | `false`       |
-| [TYPEWRITTEN_HOME_RELATIVE_PATH](#typewritten_home_relative_path)   | If `true`, the path displayed is at all times relative to `$HOME`, instead of the git root        | `true` or `false`                                                         | `false`       |
-| [TYPEWRITTEN_CURSOR](#typewritten_cursor)                           | Defines the used cursor.                                                                           | `underscore`, `beam`, `block`, or `terminal`                              | `underscore`  |
-| [TYPEWRITTEN_RIGHT_PROMPT_PREFIX](#typewritten_right_prompt_prefix) | Defines what is displayed just before the right part of the prompt.                                | Any string                                                                |               |
+| Option                                                              | Description                                                         | Available options                                                         | Default value |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------- |
+| [TYPEWRITTEN_PROMPT_LAYOUT](#typewritten_prompt_layout)             | Defines how the prompt is displayed.                                | `singleline`, `half_pure` , `pure`, `singleline_verbose`, and `multiline` | `singleline`  |
+| [TYPEWRITTEN_SYMBOL](#typewritten_symbol)                           | Defines the prompt symbol.                                          | Any string value                                                          | `>`           |
+| [TYPEWRITTEN_RELATIVE_PATH](#typewritten_relative_path)             | Defines what the current directory display is relative to.          | `git`, `home`, `adaptive`, or `off`                                       | `git`         |
+| [TYPEWRITTEN_CURSOR](#typewritten_cursor)                           | Defines the used cursor.                                            | `underscore`, `beam`, `block`, or `terminal`                              | `underscore`  |
+| [TYPEWRITTEN_RIGHT_PROMPT_PREFIX](#typewritten_right_prompt_prefix) | Defines what is displayed just before the right part of the prompt. | Any string                                                                |               |
 
 > All of these options are configurable through your `.zshrc` file like this:
 >
@@ -73,12 +72,11 @@ Here are some examples of customized prompt symbols.
   <img src="_media/symbols/arrow.png" alt="arrow symbol" />
 </p>
 
-## TYPEWRITTEN_GIT_RELATIVE_PATH
+## TYPEWRITTEN_RELATIVE_PATH
 
-By default, the git root directory is always displayed no matter how far you are inside it.
-To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELATIVE_PATH` to `false`.
+By default, when in a git repository, the git root directory is always displayed no matter how far you are inside it.
 
-**Default behaviour (`TYPEWRITTEN_GIT_RELATIVE_PATH=true`)**
+**Default behaviour (`TYPEWRITTEN_RELATIVE_PATH="git"`)**
 
 `/.../` is displayed when the nesting gets more than one level deep.
 
@@ -86,21 +84,41 @@ To turn it off and display only the current directory, set `TYPEWRITTEN_GIT_RELA
   <img src="_media/git_relative_path/git_relative_path.png" alt="default git relative path" />
 </p>
 
-**Hide git home directory (`TYPEWRITTEN_GIT_RELATIVE_PATH=false`)**
+When outside of a git repository, only the basename of the current directory is displayed.
 
 <p align="center">
-  <img src="_media/git_relative_path/git_no_relative_path.png" alt="hide git home directory" />
+ <img src="_media/relative_path_off.png" alt="relative path off" />
 </p>
 
-## TYPEWRITTEN_HOME_RELATIVE_PATH
+**Relative to `$HOME` (`TYPEWRITTEN_RELATIVE_PATH="home"`)**
 
-**Bash comment prefix (`TYPEWRITTEN_HOME_RELATIVE_PATH=true`)**
+When set to `home`, the full directory path relative to `$HOME` is displayed at all times.
 
 <p align="center">
   <img src="_media/home_relative_path.png" alt="display path relative to home" />
 </p>
 
-> Note: This option may override the `TYPEWRITTEN_GIT_RELATIVE_PATH` option
+**Adaptive (`git` and `home`) (`TYPEWRITTEN_RELATIVE_PATH="adaptive"`)**
+
+Adaptive display means that if you are in a git repository, the current directory will show the current path relative to the git root directory.
+
+<p align="center">
+  <img src="_media/git_relative_path/git_relative_path.png" alt="default git relative path" />
+</p>
+
+If you are outside of a git repository, the path will be displayed relative to `$HOME`.
+
+<p align="center">
+  <img src="_media/adaptive_home_relative_path.png" alt="display path relative to home" />
+</p>
+
+**Off (`TYPEWRITTEN_RELATIVE_PATH="off"`)**
+
+This option being off means that at all times, the current directory display only shows the basename of the current directory.
+
+<p align="center">
+  <img src="_media/git_relative_path/git_no_relative_path.png" alt="hide git home directory" />
+</p>
 
 ## TYPEWRITTEN_CURSOR
 

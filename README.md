@@ -28,7 +28,7 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-23-orange.svg?style=flat-square" alt="All contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square" alt="All contributors" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
@@ -140,6 +140,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://williamlorey.com"><img src="https://avatars3.githubusercontent.com/u/22795803?v=4" width="100px;" alt=""/><br /><sub><b>Will Lorey</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=wwlorey" title="Documentation">📖</a></td>
     <td align="center"><a href="https://gartunius.github.io"><img src="https://avatars0.githubusercontent.com/u/27605237?v=4" width="100px;" alt=""/><br /><sub><b>Gabriel Ataide</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3Agartunius" title="Bug reports">🐛</a> <a href="https://github.com/reobin/typewritten/commits?author=gartunius" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Scupake"><img src="https://avatars0.githubusercontent.com/u/61241021?v=4" width="100px;" alt=""/><br /><sub><b>Scupake</b></sub></a><br /><a href="#ideas-Scupake" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/reobin/typewritten/commits?author=Scupake" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

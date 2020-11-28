@@ -44,8 +44,6 @@ tw_prompt="$tw_prompt_color$tw_return_code$tw_prompt_symbol %F{$tw_colors[prompt
 tw_current_directory_color="$tw_colors[current_directory]"
 tw_git_branch_color="$tw_colors[git_branch]"
 
-tw_current_directory="%F{$tw_current_directory_color}%c"
-tw_verbose_current_directory="%F{$tw_current_directory_color}%~"
 tw_arrow="%F{$tw_colors[arrow]}->"
 
 tw_get_virtual_env() {
@@ -63,21 +61,48 @@ tw_get_virtual_env() {
   fi;
 }
 
+tw_get_home_relative_wd() {
+  echo "%F{$tw_current_directory_color}%~"
+}
+
+tw_get_git_relative_wd() {
+  local tw_home_relative_wd="$1"
+  local tw_git_branch="$2"
+  local tw_git_home="$3"
+
+  local tw_git_relative_wd="%F{$tw_current_directory_color}$tw_git_home%c"
+
+  if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "home" ]]; then
+    tw_git_relative_wd=$tw_home_relative_wd
+  fi;
+
+  if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "adaptive" ]]; then
+    if [[ "$tw_git_branch" = "" ]]; then
+      tw_git_relative_wd=$tw_home_relative_wd
+    fi;
+  fi;
+
+  echo $tw_git_relative_wd
+}
+
 tw_redraw() {
+  tw_home_relative_wd="$(tw_get_home_relative_wd)"
+  tw_git_relative_wd="$(tw_get_git_relative_wd $tw_home_relative_wd $tw_prompt_data[tw_git_branch] $tw_prompt_data[tw_git_home])"
+
   tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
 
   tw_layout="$TYPEWRITTEN_PROMPT_LAYOUT"
   tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"
   if [ "$tw_layout" = "half_pure" ]; then
     PROMPT="$BREAK_LINE%F{$tw_git_branch_color}$tw_git_info$BREAK_LINE$tw_env_prompt"
-    RPROMPT="$tw_right_prompt_prefix%F{$tw_current_directory_color}$tw_prompt_data[tw_git_home]$tw_current_directory"
+    RPROMPT="$tw_right_prompt_prefix$tw_git_relative_wd"
   else
     local tw_git_arrow_info=""
     if [ "$tw_git_info" != "" ]; then
       tw_git_arrow_info=" $tw_arrow %F{$tw_git_branch_color}$tw_git_info"
     fi;
     if [ "$tw_layout" = "pure" ]; then
-      PROMPT="$BREAK_LINE$tw_verbose_current_directory$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
+      PROMPT="$BREAK_LINE$tw_home_relative_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
       RPROMPT=""
     else
       if [ "$tw_layout" = "singleline_verbose" ]; then
@@ -87,7 +112,7 @@ tw_redraw() {
       else
         PROMPT="$tw_env_prompt"
       fi;
-      RPROMPT="$tw_right_prompt_prefix%F{$tw_current_directory_color}$tw_prompt_data[tw_git_home]$tw_current_directory$tw_git_arrow_info"
+      RPROMPT="$tw_right_prompt_prefix$tw_git_relative_wd$tw_git_arrow_info"
     fi;
   fi;
 
@@ -122,20 +147,21 @@ tw_async_init_tasks() {
   local tw_git_hide_status="$(git config --get oh-my-zsh.hide-status 2>/dev/null)"
   if [[ "$tw_git_hide_status" != "1" ]]; then
     local tw_git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
-    if [[ "$tw_git_toplevel" != $tw_prompt_data[tw_git_toplevel] ]]; then
-      async_flush_jobs tw_worker
-      tw_prompt_data[tw_git_branch]=
-      tw_prompt_data[tw_git_status]=
-    fi;
 
     if [[ "$tw_current_pwd" != $tw_prompt_data[tw_current_pwd] ]]; then
       async_flush_jobs tw_worker
       tw_prompt_data[tw_git_home]=
     fi;
 
+    if [[ "$tw_git_toplevel" != $tw_prompt_data[tw_git_toplevel] ]]; then
+      async_flush_jobs tw_worker
+      tw_prompt_data[tw_git_branch]=
+      tw_prompt_data[tw_git_status]=
+    fi;
+
     tw_prompt_data[tw_git_toplevel]="$tw_git_toplevel"
     tw_prompt_data[tw_current_pwd]="$tw_current_pwd"
-    if [[ "$TYPEWRITTEN_GIT_RELATIVE_PATH" != false ]]; then
+    if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "git" || "$TYPEWRITTEN_RELATIVE_PATH" = "adaptive" ]]; then
       async_job tw_worker tw_git_home $tw_current_pwd $tw_git_toplevel
     fi;
     async_job tw_worker tw_git_branch

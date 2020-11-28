@@ -223,6 +223,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "Scupake",
+      "name": "Scupake",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/61241021?v=4",
+      "profile": "https://github.com/Scupake",
+      "contributions": [
+        "ideas",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,

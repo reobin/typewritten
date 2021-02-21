@@ -72,6 +72,10 @@ tw_get_git_relative_wd() {
 
   local tw_git_relative_wd="%F{$tw_current_directory_color}$tw_git_home%c"
 
+  if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "" &&  "$TYPEWRITTEN_PROMPT_LAYOUT" = "pure" ]]; then
+      tw_git_relative_wd=$tw_home_relative_wd
+    fi;
+
   if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "home" ]]; then
     tw_git_relative_wd=$tw_home_relative_wd
   fi;

@@ -102,7 +102,7 @@ tw_redraw() {
       tw_git_arrow_info=" $tw_arrow %F{$tw_git_branch_color}$tw_git_info"
     fi;
     if [ "$tw_layout" = "pure" ]; then
-      PROMPT="$BREAK_LINE$tw_home_relative_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
+      PROMPT="$BREAK_LINE$tw_git_relative_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
       RPROMPT=""
     else
       if [ "$tw_layout" = "singleline_verbose" ]; then

@@ -61,19 +61,17 @@ tw_get_virtual_env() {
   fi;
 }
 
-tw_get_home_relative_wd() {
-  echo "%F{$tw_current_directory_color}%~"
-}
-
 tw_get_displayed_wd() {
-  local tw_home_relative_wd="$1"
-  local tw_git_branch="$2"
-  local tw_git_home="$3"
+  local tw_git_branch=$tw_prompt_data[tw_git_branch]
+  local tw_git_home=$tw_prompt_data[tw_git_home]
 
-  local tw_displayed_wd="%F{$tw_current_directory_color}$tw_git_home%c"
+  local tw_home_relative_wd="%~"
+  local tw_git_relative_wd="$tw_git_home%c"
 
-# The pure layout defaults to home relative working directory, but allows customization
-  if [[  "$TYPEWRITTEN_PROMPT_LAYOUT" = "pure" && "$TYPEWRITTEN_RELATIVE_PATH" = "" ]]; then
+  local tw_displayed_wd="$tw_git_relative_wd"
+
+  # The pure layout defaults to home relative working directory, but allows customization
+  if [[ "$TYPEWRITTEN_PROMPT_LAYOUT" = "pure" && "$TYPEWRITTEN_RELATIVE_PATH" = "" ]]; then
     tw_displayed_wd=$tw_home_relative_wd
   fi;
 
@@ -87,12 +85,11 @@ tw_get_displayed_wd() {
     fi;
   fi;
 
-  echo $tw_displayed_wd
+  echo "%F{$tw_current_directory_color}$tw_displayed_wd"
 }
 
 tw_redraw() {
-  tw_home_relative_wd="$(tw_get_home_relative_wd)"
-  tw_displayed_wd="$(tw_get_displayed_wd $tw_home_relative_wd $tw_prompt_data[tw_git_branch] $tw_prompt_data[tw_git_home])"
+  tw_displayed_wd="$(tw_get_displayed_wd)"
 
   tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
 

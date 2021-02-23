@@ -61,33 +61,35 @@ tw_get_virtual_env() {
   fi;
 }
 
-tw_get_home_relative_wd() {
-  echo "%F{$tw_current_directory_color}%~"
-}
+tw_get_displayed_wd() {
+  local tw_git_branch=$tw_prompt_data[tw_git_branch]
+  local tw_git_home=$tw_prompt_data[tw_git_home]
 
-tw_get_git_relative_wd() {
-  local tw_home_relative_wd="$1"
-  local tw_git_branch="$2"
-  local tw_git_home="$3"
+  local tw_home_relative_wd="%~"
+  local tw_git_relative_wd="$tw_git_home%c"
 
-  local tw_git_relative_wd="%F{$tw_current_directory_color}$tw_git_home%c"
+  local tw_displayed_wd="$tw_git_relative_wd"
+
+  # The pure layout defaults to home relative working directory, but allows customization
+  if [[ "$TYPEWRITTEN_PROMPT_LAYOUT" = "pure" && "$TYPEWRITTEN_RELATIVE_PATH" = "" ]]; then
+    tw_displayed_wd=$tw_home_relative_wd
+  fi;
 
   if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "home" ]]; then
-    tw_git_relative_wd=$tw_home_relative_wd
+    tw_displayed_wd=$tw_home_relative_wd
   fi;
 
   if [[ "$TYPEWRITTEN_RELATIVE_PATH" = "adaptive" ]]; then
     if [[ "$tw_git_branch" = "" ]]; then
-      tw_git_relative_wd=$tw_home_relative_wd
+      tw_displayed_wd=$tw_home_relative_wd
     fi;
   fi;
 
-  echo $tw_git_relative_wd
+  echo "%F{$tw_current_directory_color}$tw_displayed_wd"
 }
 
 tw_redraw() {
-  tw_home_relative_wd="$(tw_get_home_relative_wd)"
-  tw_git_relative_wd="$(tw_get_git_relative_wd $tw_home_relative_wd $tw_prompt_data[tw_git_branch] $tw_prompt_data[tw_git_home])"
+  tw_displayed_wd="$(tw_get_displayed_wd)"
 
   tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
 
@@ -95,14 +97,14 @@ tw_redraw() {
   tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"
   if [ "$tw_layout" = "half_pure" ]; then
     PROMPT="$BREAK_LINE%F{$tw_git_branch_color}$tw_git_info$BREAK_LINE$tw_env_prompt"
-    RPROMPT="$tw_right_prompt_prefix$tw_git_relative_wd"
+    RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd"
   else
     local tw_git_arrow_info=""
     if [ "$tw_git_info" != "" ]; then
       tw_git_arrow_info=" $tw_arrow %F{$tw_git_branch_color}$tw_git_info"
     fi;
     if [ "$tw_layout" = "pure" ]; then
-      PROMPT="$BREAK_LINE$tw_home_relative_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
+      PROMPT="$BREAK_LINE$tw_displayed_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
       RPROMPT=""
     else
       if [ "$tw_layout" = "singleline_verbose" ]; then
@@ -112,7 +114,7 @@ tw_redraw() {
       else
         PROMPT="$tw_env_prompt"
       fi;
-      RPROMPT="$tw_right_prompt_prefix$tw_git_relative_wd$tw_git_arrow_info"
+      RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd$tw_git_arrow_info"
     fi;
   fi;
 

@@ -233,6 +233,16 @@
         "ideas",
         "test"
       ]
+    },
+    {
+      "login": "CrystalJewell",
+      "name": "Crystal Adkins",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21298255?v=4",
+      "profile": "https://github.com/CrystalJewell",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,

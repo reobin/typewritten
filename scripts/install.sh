@@ -106,10 +106,10 @@ main() {
 
   # Link prompt entry point to fpath
   info "Linking $SOURCE to $DEST/prompt_typewritten_setup..."
-  info "Linking $ASYNC_SOURCE to $DEST/async_typewritten..."
+  info "Linking $ASYNC_SOURCE to $DEST/async..."
   mkdir -p "$DEST"
   ln -sf "$SOURCE" "$DEST/prompt_typewritten_setup"
-  ln -sf "$ASYNC_SOURCE" "$DEST/async_typewritten"
+  ln -sf "$ASYNC_SOURCE" "$DEST/async"
 
   # If 'prompt typewritten' is already present in .zshrc, then skip
   if sed 's/#.*//' "$ZSHRC" | grep -q "prompt typewritten"; then

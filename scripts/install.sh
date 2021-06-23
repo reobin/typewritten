@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 #
 # This script is a clone/fork of the spaceship-prompt install script and it was
-# changed in order to install the Typewritten prompt instead.
+# changed in order to install the typewritten prompt instead.
 #
 # Original author: Denys Dovhan, denysdovhan.com
 # From: https://github.com/spaceship-prompt/spaceship-prompt
@@ -55,11 +55,11 @@ paint() {
 # Colon at the end is required: https://askubuntu.com/a/521942
 # USAGE:
 #   info|warn|error|success|code [...text]
-info()    { paint "$cyan"   "TYPEWRITTEN: $@" ; }
-warn()    { paint "$yellow" "TYPEWRITTEN: $@" ; }
-error()   { paint "$red"    "TYPEWRITTEN: $@" ; }
-success() { paint "$green"  "TYPEWRITTEN: $@" ; }
-code()    { paint "$bold"   "TYPEWRITTEN: $@" ; }
+info()    { paint "$cyan"   "typewritten: $@" ; }
+warn()    { paint "$yellow" "typewritten: $@" ; }
+error()   { paint "$red"    "typewritten: $@" ; }
+success() { paint "$green"  "typewritten: $@" ; }
+code()    { paint "$bold"   "typewritten: $@" ; }
 
 # Append text in .zshrc
 # USAGE:
@@ -76,17 +76,17 @@ append_zshrc() {
 # ------------------------------------------------------------------------------
 
 main() {
-  # How we install Typewritten:
+  # How we install typewritten:
   #   1. Install via NPM
   #   2. Install via curl or wget
   if [[ ! -f "$SOURCE" ]]; then
-    warn "Typewritten is not present in current directory"
+    warn "typewritten is not present in current directory"
     # Clone repo into the ${ZDOTDIR:-$HOME}/.typewritten-prompt and change SOURCE
     git clone "$REPO" "$USER_SOURCE"
     SOURCE="$USER_SOURCE/typewritten.zsh"
     ASYNC_SOURCE="$USER_SOURCE/async.zsh"
   else
-    info "Typewritten is present in current directory"
+    info "typewritten is present in current directory"
   fi
 
   # If we can't symlink to the site-functions, then try to use .zfunctions instead
@@ -113,14 +113,14 @@ main() {
 
   # If 'prompt typewritten' is already present in .zshrc, then skip
   if sed 's/#.*//' "$ZSHRC" | grep -q "prompt typewritten"; then
-    warn "Typewritten is already present in .zshrc!"
+    warn "typewritten is already present in .zshrc!"
     exit
   fi
 
   # Enabling statements for .zshrc
-  msg="\n# Set Typewritten ZSH as a prompt"
+  msg="\n# Set typewritten ZSH as a prompt"
   msg+="\nautoload -U promptinit; promptinit"
-  msg+="\nprompt spaceship"
+  msg+="\nprompt typewritten"
 
   # Check if appending was successful and perform corresponding actions
   if append_zshrc "$msg"; then

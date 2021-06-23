@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
 #
-# Author: Denys Dovhan, denysdovhan.com
-# https://github.com/spaceship-prompt/spaceship-prompt
+# This script is a clone/fork of the spaceship-prompt uninstall script and it was
+# changed in order to install the typewritten prompt instead.
+#
+# Original author: Denys Dovhan, denysdovhan.com
+# From: https://github.com/spaceship-prompt/spaceship-prompt
 
 # ------------------------------------------------------------------------------
 # Colors
@@ -54,11 +57,11 @@ paint() {
 # Colon at the end is required: https://askubuntu.com/a/521942
 # USAGE:
 #   info|warn|error|success|code [...text]
-info()    { paint "$cyan"   "Typewritten: $@" ; }
-warn()    { paint "$yellow" "Typewritten: $@" ; }
-error()   { paint "$red"    "Typewritten: $@" ; }
-success() { paint "$green"  "Typewritten: $@" ; }
-code()    { paint "$bold"   "Typewritten: $@" ; }
+info()    { paint "$cyan"   "typewritten: $@" ; }
+warn()    { paint "$yellow" "typewritten: $@" ; }
+error()   { paint "$red"    "typewritten: $@" ; }
+success() { paint "$green"  "typewritten: $@" ; }
+code()    { paint "$bold"   "typewritten: $@" ; }
 
 # Check if symlink is exists and remove it
 # USAGE:
@@ -76,25 +79,48 @@ rmln() {
 # Checkings and uninstalling process
 # ------------------------------------------------------------------------------
 
+remove_zshrc_content() {
+  info "Removing typewritten from \"${ZDOTDIR:-$HOME}/.zshrc\""
+  # Remove enabling statements from .zshrc
+  # and remove typewritten configuration
+  sed '/^# Set typewritten ZSH as a prompt$/d' "$ZSHRC" | \
+  sed '/^autoload -U promptinit; promptinit$/d' | \
+  sed '/^prompt typewritten$/d' | \
+  sed '/.*TYPEWRITTEN_.*=.*$/d' > "$ZSHRC.bak" && \
+  mv -- "$ZSHRC.bak" "$ZSHRC"
+}
+
 main() {
   # Remove prompt setup symlink
   if [[ -L "$GLOBAL_DEST_SETUP" || -L "$USER_DEST_SETUP" ]]; then
     rmln "$GLOBAL_DEST_SETUP"
     rmln "$USER_DEST_SETUP"
   else
-    warn "Symlinks to Typewritten setup are not found."
+    warn "Symlinks to typewritten setup are not found."
   fi
 
   # Remove prompt async symlink
   if [[ -L "$GLOBAL_DEST_ASYNC" || -L "$USER_DEST_ASYNC" ]]; then
-    rmln "$GLOBAL_DEST_ASYNC"
-    rmln "$USER_DEST_ASYNC"
+    rmln "$GLOBAL_DEST_ASYNC" rmln "$USER_DEST_ASYNC"
   else
-    warn "Symlinks to Typewritten async are not found."
+    warn "Symlinks to typewritten async are not found."
   fi
 
-  success "Done! Typewritten installation has been removed!"
-  info "Don't forget to remove Typewritten config lines in ~/.zshrc"
+  # Remove typewritten from .zshrc
+  if grep -q "typewritten" "$ZSHRC"; then
+    if [[ '-y' == $1 ]]; then
+      remove_zshrc_content
+    else
+      read "answer?Would you like to remove you typewritten ZSH configuration from .zshrc? (y/N)"
+      if [[ 'y' == ${answer:l} ]]; then
+        remove_zshrc_content
+      fi
+    fi
+  else
+    warn "typewritten configuration not found in \"${ZDOTDIR:-$HOME}/.zshrc\"!"
+  fi
+
+  success "Done! typewritten installation has been removed!"
   success "Please, reload your terminal."
 }
 

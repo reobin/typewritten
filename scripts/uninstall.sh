@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-#
+
 # This script is a clone/fork of the spaceship-prompt uninstall script and it was
 # changed in order to install the typewritten prompt instead.
 #
@@ -101,7 +101,8 @@ main() {
 
   # Remove prompt async symlink
   if [[ -L "$GLOBAL_DEST_ASYNC" || -L "$USER_DEST_ASYNC" ]]; then
-    rmln "$GLOBAL_DEST_ASYNC" rmln "$USER_DEST_ASYNC"
+    rmln "$GLOBAL_DEST_ASYNC"
+    rmln "$USER_DEST_ASYNC"
   else
     warn "Symlinks to typewritten async are not found."
   fi

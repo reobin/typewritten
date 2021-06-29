@@ -114,7 +114,10 @@ main() {
     else
       read "answer?Would you like to remove you typewritten ZSH configuration from .zshrc? (y/N)"
       if [[ 'y' == ${answer:l} ]]; then
-        remove_zshrc_content
+        read "answer?Are you sure? Any symlinks to your ZSH configuration file might be removed? (y/N)"
+        if [[ 'y' == ${answer:l} ]]; then
+          remove_zshrc_content
+        fi
       fi
     fi
   else

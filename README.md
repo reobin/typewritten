@@ -158,6 +158,8 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 [![Forkers repo roster for @reobin/typewritten](https://reporoster.com/forks/reobin/typewritten)](https://github.com/reobin/typewritten/network/members)
 
-## Inspiration
+## Credits
 
-`pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)
+- `pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)
+- `npm` install and uninstall scripts are from [Spaceship prompt](https://github.com/spaceship-prompt/spaceship-prompt)
+

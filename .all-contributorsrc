@@ -243,6 +243,16 @@
         "code",
         "ideas"
       ]
+    },
+    {
+      "login": "juanCortelezzi",
+      "name": "J.B.C",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57237705?v=4",
+      "profile": "https://github.com/juanCortelezzi",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

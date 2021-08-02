@@ -3,12 +3,12 @@
 #
 # zsh-async
 #
-# version: 1.8.3
+# version: v1.8.5
 # author: Mathias Fredriksson
 # url: https://github.com/mafredri/zsh-async
 #
 
-typeset -g ASYNC_VERSION=1.8.3
+typeset -g ASYNC_VERSION=1.8.5
 # Produce debug output from zsh-async when set to 1.
 typeset -g ASYNC_DEBUG=${ASYNC_DEBUG:-0}
 
@@ -20,7 +20,7 @@ _async_eval() {
 	# simplicity, this could be improved in the future.
 	{
 		eval "$@"
-	} &> >(ASYNC_JOB_NAME=[async/eval] _async_job 'cat')
+	} &> >(ASYNC_JOB_NAME=[async/eval] _async_job 'command -p cat')
 }
 
 # Wrapper for jobs executed by the async worker, gives output in parseable format with execution time
@@ -44,9 +44,8 @@ _async_job() {
 			stdout=$(eval "$@")
 			ret=$?
 			duration=$(( EPOCHREALTIME - duration ))  # Calculate duration.
-
 			print -r -n - $'\0'${(q)jobname} $ret ${(q)stdout} $duration
-		} 2> >(stderr=$(cat) && print -r -n - " "${(q)stderr}$'\0')
+		} 2> >(stderr=$(command -p cat) && print -r -n - " "${(q)stderr}$'\0')
 	)"
 	if [[ $out != $'\0'*$'\0' ]]; then
 		# Corrupted output (aborted job?), skipping.
@@ -232,7 +231,7 @@ _async_worker() {
 		# recreate it when there are no other jobs running.
 		if (( ! coproc_pid )); then
 			# Use coproc as a mutex for synchronized output between children.
-			coproc cat
+			coproc command -p cat
 			coproc_pid="$!"
 			# Insert token into coproc
 			print -n -p "t"
@@ -392,6 +391,9 @@ _async_send_job() {
 #
 # Start a new asynchronous job on specified worker, assumes the worker is running.
 #
+# Note if you are using a function for the job, it must have been defined before the worker was
+# started or you will get a `command not found` error.
+#
 # usage:
 # 	async_job <worker_name> <my_function> [<function_params>]
 #
@@ -531,7 +533,7 @@ async_flush_jobs() {
 # 	-p pid to notify (defaults to current pid)
 #
 async_start_worker() {
-	setopt localoptions noshwordsplit
+	setopt localoptions noshwordsplit noclobber
 
 	local worker=$1; shift
 	local -a args
@@ -541,13 +543,6 @@ async_start_worker() {
 	typeset -gA ASYNC_PTYS
 	typeset -h REPLY
 	typeset has_xtrace=0
-
-	# Make sure async worker is started without xtrace
-	# (the trace output interferes with the worker).
-	[[ -o xtrace ]] && {
-		has_xtrace=1
-		unsetopt xtrace
-	}
 
 	if [[ -o interactive ]] && [[ -o zle ]]; then
 		# Inform the worker to ignore the notify flag and that we're
@@ -567,17 +562,35 @@ async_start_worker() {
 	# reassigned to /dev/null by the reassignment done inside the async
 	# worker.
 	# See https://github.com/mafredri/zsh-async/issues/35.
-	integer errfd
-	exec {errfd}>&2
-	zpty -b $worker _async_worker -p $$ $args 2>&$errfd || {
-		exec {errfd}>& -
-		async_stop_worker $worker
-		return 1
+	integer errfd=-1
+
+	# Redirect of errfd is broken on zsh 5.0.2.
+	if is-at-least 5.0.8; then
+		exec {errfd}>&2
+	fi
+
+	# Make sure async worker is started without xtrace
+	# (the trace output interferes with the worker).
+	[[ -o xtrace ]] && {
+		has_xtrace=1
+		unsetopt xtrace
 	}
-	exec {errfd}>& -
+
+	if (( errfd != -1 )); then
+		zpty -b $worker _async_worker -p $$ $args 2>&$errfd
+	else
+		zpty -b $worker _async_worker -p $$ $args
+	fi
+	local ret=$?
 
 	# Re-enable it if it was enabled, for debugging.
 	(( has_xtrace )) && setopt xtrace
+	(( errfd != -1 )) && exec {errfd}>& -
+
+	if (( ret )); then
+		async_stop_worker $worker
+		return 1
+	fi
 
 	if ! is-at-least 5.0.8; then
 		# For ZSH versions older than 5.0.8 we delay a bit to give

@@ -253,6 +253,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "jeevatattva",
+      "name": "Jeeva K",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26855245?v=4",
+      "profile": "https://github.com/jeevatattva",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,

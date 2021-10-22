@@ -28,7 +28,7 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-27-orange.svg?style=flat-square" alt="All contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-28-orange.svg?style=flat-square" alt="All contributors" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
@@ -144,6 +144,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/CrystalJewell"><img src="https://avatars.githubusercontent.com/u/21298255?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Crystal Adkins</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=CrystalJewell" title="Code">💻</a> <a href="#ideas-CrystalJewell" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/juanCortelezzi"><img src="https://avatars.githubusercontent.com/u/57237705?v=4?s=100" width="100px;" alt=""/><br /><sub><b>J.B.C</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3AjuanCortelezzi" title="Bug reports">🐛</a> <a href="https://github.com/reobin/typewritten/commits?author=juanCortelezzi" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/jeevatattva"><img src="https://avatars.githubusercontent.com/u/26855245?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeeva K</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3Ajeevatattva" title="Bug reports">🐛</a> <a href="#ideas-jeevatattva" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/subhajit-halder"><img src="https://avatars.githubusercontent.com/u/54535412?v=4?s=100" width="100px;" alt=""/><br /><sub><b>awakened</b></sub></a><br /><a href="#ideas-subhajit-halder" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 

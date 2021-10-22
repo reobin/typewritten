@@ -44,7 +44,11 @@ tw_prompt="$tw_prompt_color$tw_return_code$tw_prompt_symbol %F{$tw_colors[prompt
 tw_current_directory_color="$tw_colors[current_directory]"
 tw_git_branch_color="$tw_colors[git_branch]"
 
-tw_arrow="%F{$tw_colors[arrow]}->"
+local tw_arrow_symbol="->"
+if [ ! -z "$TYPEWRITTEN_ARROW_SYMBOL" ]; then
+  tw_arrow_symbol="$TYPEWRITTEN_ARROW_SYMBOL"
+fi;
+tw_arrow="%F{$tw_colors[arrow]}$tw_arrow_symbol"
 
 tw_get_virtual_env() {
   if [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then

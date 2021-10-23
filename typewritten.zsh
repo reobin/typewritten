@@ -107,17 +107,27 @@ tw_redraw() {
     if [ "$tw_git_info" != "" ]; then
       tw_git_arrow_info=" $tw_arrow %F{$tw_git_branch_color}$tw_git_info"
     fi;
+
+    PROMPT="$tw_env_prompt"
+    RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd$tw_git_arrow_info"
+
     if [ "$tw_layout" = "pure" ]; then
       PROMPT="$BREAK_LINE$tw_displayed_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
       RPROMPT=""
-    else
-      if [ "$tw_layout" = "singleline_verbose" ]; then
-        PROMPT="$tw_user_host $tw_env_prompt"
-      elif [ "$tw_layout" = "multiline" ]; then
-        PROMPT="$BREAK_LINE$tw_user_host$BREAK_LINE$tw_env_prompt"
-      else
-        PROMPT="$tw_env_prompt"
-      fi;
+    fi;
+
+    if [ "$tw_layout" = "pure_verbose" ]; then
+      PROMPT="$BREAK_LINE$tw_user_host $tw_displayed_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
+      RPROMPT=""
+    fi;
+
+    if [ "$tw_layout" = "singleline_verbose" ]; then
+      PROMPT="$tw_user_host $tw_env_prompt"
+      RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd$tw_git_arrow_info"
+    fi;
+
+    if [ "$tw_layout" = "multiline" ]; then
+      PROMPT="$BREAK_LINE$tw_user_host$BREAK_LINE$tw_env_prompt"
       RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd$tw_git_arrow_info"
     fi;
   fi;

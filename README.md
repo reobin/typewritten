@@ -38,6 +38,8 @@
 </p>
 
 > Terminal is [iTerm2](https://iterm2.com/) — Font is [JetBrains Mono](https://www.jetbrains.com/lp/mono/) — Terminal theme is [Seoul256](https://github.com/junegunn/seoul256.vim)
+>
+> See how to make your terminal look exactly like the demo [here](https://github.com/reobin/typewritten/discussions/128)
 
 ## Features
 

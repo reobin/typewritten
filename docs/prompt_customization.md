@@ -39,6 +39,12 @@ Click on an option's name to see more info.
   <img src="_media/layouts/pure.png" alt="pure prompt layout" />
 </p>
 
+**Pure - verbose variation (`TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"`)**
+
+<p align="center">
+  <img src="_media/layouts/pure_verbose.png" alt="pure verbose prompt layout" />
+</p>
+
 **Single line - verbose variation (`TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"`)**
 
 <p align="center">

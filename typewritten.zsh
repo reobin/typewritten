@@ -75,7 +75,7 @@ tw_get_displayed_wd() {
   local tw_displayed_wd="$tw_git_relative_wd"
 
   # The pure layout defaults to home relative working directory, but allows customization
-  if [[ "$TYPEWRITTEN_PROMPT_LAYOUT" = "pure" && "$TYPEWRITTEN_RELATIVE_PATH" = "" ]]; then
+  if [[ "$TYPEWRITTEN_PROMPT_LAYOUT" = pure* && "$TYPEWRITTEN_RELATIVE_PATH" = "" ]]; then
     tw_displayed_wd=$tw_home_relative_wd
   fi;
 

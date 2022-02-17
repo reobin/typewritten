@@ -281,6 +281,16 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "Austin-Ray",
+      "name": "Austin Ray",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1640737?v=4",
+      "profile": "https://austinray.io",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

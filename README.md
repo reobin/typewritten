@@ -28,7 +28,7 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-30-orange.svg?style=flat-square" alt="All contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-31-orange.svg?style=flat-square" alt="All contributors" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
@@ -151,6 +151,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/spamwax"><img src="https://avatars.githubusercontent.com/u/1251233?v=4?s=100" width="100px;" alt=""/><br /><sub><b>spamwax</b></sub></a><br /><a href="#ideas-spamwax" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://austinray.io"><img src="https://avatars.githubusercontent.com/u/1640737?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Austin Ray</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=Austin-Ray" title="Code">💻</a> <a href="https://github.com/reobin/typewritten/issues?q=author%3AAustin-Ray" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/Pound-Hash"><img src="https://avatars.githubusercontent.com/u/51193876?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alan</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3APound-Hash" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

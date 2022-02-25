@@ -291,6 +291,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "Pound-Hash",
+      "name": "Alan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51193876?v=4",
+      "profile": "https://github.com/Pound-Hash",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

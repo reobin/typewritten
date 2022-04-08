@@ -50,6 +50,10 @@ Note: If creating the symlinks is a problem, you can skip the step and set `ZSH_
 
 Add `antibody bundle reobin/typewritten` to your `.zshrc`.
 
+## antigen
+
+Add `antigen bundle reobin/typewritten@main` to your `.zshrc`.
+
 ## zgen
 
 Add `zgen load reobin/typewritten typewritten` to your `.zshrc`.

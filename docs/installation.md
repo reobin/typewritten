@@ -46,6 +46,12 @@ Set `ZSH_THEME="typewritten"` in your `.zshrc` file.
 
 Note: If creating the symlinks is a problem, you can skip the step and set `ZSH_THEME="typewritten/typewritten"` instead.
 
+## Fig
+
+Install `Powerlevel10k` with [Fig](https://fig.io) in just one click.
+
+<a href="https://fig.io/plugins/other/zaw_zsh-users" target="_blank"><img src="https://fig.io/badges/install-with-fig.svg" /></a>
+
 ## antibody
 
 Add `antibody bundle reobin/typewritten` to your `.zshrc`.

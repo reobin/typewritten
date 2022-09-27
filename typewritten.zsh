@@ -65,6 +65,16 @@ tw_get_virtual_env() {
   fi;
 }
 
+tw_get_kube_context() {
+  if command -v kubectl > /dev/null; then
+    tw_kube_context="$(kubectl config current-context 2&>1 /dev/null)"
+
+    if [[ $tw_kube_context != "" ]]; then
+      echo "%F{$tw_colors[kube_context]}($(basename $tw_kube_context)) "
+    fi;
+  fi;
+}
+
 tw_get_displayed_wd() {
   local tw_git_branch=$tw_prompt_data[tw_git_branch]
   local tw_git_home=$tw_prompt_data[tw_git_home]
@@ -92,11 +102,12 @@ tw_get_displayed_wd() {
   echo "%F{$tw_current_directory_color}$tw_displayed_wd"
 }
 
+
 tw_redraw() {
   tw_displayed_wd="$(tw_get_displayed_wd)"
 
-  tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
-
+  tw_env_prompt="$(tw_get_virtual_env)$(tw_get_kube_context)$tw_prompt"
+  
   tw_layout="$TYPEWRITTEN_PROMPT_LAYOUT"
   tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"
   if [ "$tw_layout" = "half_pure" ]; then

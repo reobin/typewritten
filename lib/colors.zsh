@@ -33,6 +33,7 @@ declare -Ag tw_colors=(
   "arrow" $tw_color_mappings[accent]
   "right_prompt_prefix" $tw_color_mappings[accent]
   "virtual_env" $tw_color_mappings[accent]
+  "kube_context" $tw_color_mappings[accent]
 
   "symbol_error" $tw_color_mappings[info_negative]
   "error_code" $tw_color_mappings[info_negative]

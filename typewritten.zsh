@@ -50,29 +50,16 @@ if [ ! -z "$TYPEWRITTEN_ARROW_SYMBOL" ]; then
 fi;
 tw_arrow="%F{$tw_colors[arrow]}$tw_arrow_symbol"
 
-tw_get_virtual_env() {
-  if [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    local tw_virtual_env=""
-    if [[ ! -z $VIRTUAL_ENV ]]; then
-      tw_virtual_env="$VIRTUAL_ENV"
-    elif [[ ! -z $CONDA_PREFIX ]]; then
-      tw_virtual_env="$CONDA_PREFIX"
-    fi;
+tw_get_extra_env() {
+  if [[ ! -z $TYPEWRITTENN_EXTRA_ENV ]]; then
+    local extra_env=''
+    for each_extra_env in ${TYPEWRITTENN_EXTRA_ENV[@]}
+    do
+      extra_env+="$(zsh $TYPEWRITTEN_ROOT/$each_extra_env) " 
+    done
 
-    if [[ $tw_virtual_env != "" ]]; then
-      echo "%F{$tw_colors[virtual_env]}($(basename $tw_virtual_env)) "
-    fi;
-  fi;
-}
-
-tw_get_kube_context() {
-  if command -v kubectl > /dev/null; then
-    tw_kube_context="$(kubectl config current-context 2&>1 /dev/null)"
-
-    if [[ $tw_kube_context != "" ]]; then
-      echo "%F{$tw_colors[kube_context]}($(basename $tw_kube_context)) "
-    fi;
-  fi;
+    echo "%F{$tw_colors[extra_env]}$extra_env"
+  fi
 }
 
 tw_get_displayed_wd() {
@@ -106,7 +93,7 @@ tw_get_displayed_wd() {
 tw_redraw() {
   tw_displayed_wd="$(tw_get_displayed_wd)"
 
-  tw_env_prompt="$(tw_get_virtual_env)$(tw_get_kube_context)$tw_prompt"
+  tw_env_prompt="$(tw_get_extra_env)$tw_prompt"
   
   tw_layout="$TYPEWRITTEN_PROMPT_LAYOUT"
   tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"

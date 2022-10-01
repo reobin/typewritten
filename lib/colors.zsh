@@ -5,7 +5,6 @@ declare -Ag tw_color_mappings=(
   "notice" "yellow"
   "accent" "default"
 
-
   "info_positive" "green"
   "info_negative" "red"
   "info_neutral_1" "yellow"
@@ -32,6 +31,7 @@ declare -Ag tw_colors=(
 
   "arrow" $tw_color_mappings[accent]
   "right_prompt_prefix" $tw_color_mappings[accent]
+  "left_prompt_prefix" $tw_color_mappings[accent]
   "virtual_env" $tw_color_mappings[accent]
 
   "symbol_error" $tw_color_mappings[info_negative]

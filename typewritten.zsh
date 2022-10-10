@@ -91,33 +91,47 @@ tw_get_displayed_wd() {
 }
 
 tw_get_left_prompt_prefix() {
+  local tw_left_prompt_prefix=""
+
+  if [[ ! -z $TYPEWRITTEN_LEFT_PROMPT_PREFIX || ! -z $TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION ]]; then
+    tw_left_prompt_prefix="%F{$tw_colors[left_prompt_prefix]}"
+  fi;
+
   if [[ ! -z $TYPEWRITTEN_LEFT_PROMPT_PREFIX ]]; then
-    local value=$($TYPEWRITTEN_LEFT_PROMPT_PREFIX) 2>/dev/null
-    local tw_left_prompt_prefix="%F{$tw_colors[left_prompt_prefix]}"
+    tw_left_prompt_prefix="$tw_left_prompt_prefix$TYPEWRITTEN_LEFT_PROMPT_PREFIX "
+  fi;
+
+  if [[ ! -z $TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION ]]; then
+    local value=$($TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION) 2>/dev/null
 
     if [[ ! -z $value ]]; then
       tw_left_prompt_prefix="$tw_left_prompt_prefix$value "
-    else
-      tw_left_prompt_prefix="$tw_left_prompt_prefix$TYPEWRITTEN_LEFT_PROMPT_PREFIX "
     fi;
-
-    echo $tw_left_prompt_prefix
   fi;
+
+  echo $tw_left_prompt_prefix
 }
 
 tw_get_right_prompt_prefix() {
+  local tw_right_prompt_prefix=""
+
+  if [[ ! -z $TYPEWRITTEN_RIGHT_PROMPT_PREFIX || ! -z $TYPEWRITTEN_RIGHT_PROMPT_PREFIX_FUNCTION ]]; then
+    tw_right_prompt_prefix="%F{$tw_colors[right_prompt_prefix]}"
+  fi;
+
   if [[ ! -z $TYPEWRITTEN_RIGHT_PROMPT_PREFIX ]]; then
-    local tw_right_prompt_prefix="%F{$tw_colors[right_prompt_prefix]}"
-    local value=$($TYPEWRITTEN_RIGHT_PROMPT_PREFIX) 2>/dev/null
+    tw_right_prompt_prefix="$tw_right_prompt_prefix$TYPEWRITTEN_RIGHT_PROMPT_PREFIX "
+  fi;
+
+  if [[ ! -z $TYPEWRITTEN_RIGHT_PROMPT_PREFIX_FUNCTION ]]; then
+    local value=$($TYPEWRITTEN_RIGHT_PROMPT_PREFIX_FUNCTION) 2>/dev/null
 
     if [[ ! -z $value ]]; then
       tw_right_prompt_prefix="$tw_right_prompt_prefix$value "
-    else
-      tw_right_prompt_prefix="$tw_right_prompt_prefix$TYPEWRITTEN_RIGHT_PROMPT_PREFIX "
     fi;
-
-    echo $tw_right_prompt_prefix
   fi;
+
+  echo $tw_right_prompt_prefix
 }
 
 tw_redraw() {

@@ -235,7 +235,7 @@ Display kube_context:
 
 ```sh
 display_kube_context() {
-  tw_kube_context="$(kubectl config current-context 2&>1 /dev/null)"
+  tw_kube_context="$(kubectl config current-context 2> /dev/null)"
 
   if [[ $tw_kube_context != "" ]]; then
     echo "($(basename $tw_kube_context))"

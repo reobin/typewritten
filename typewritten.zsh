@@ -19,8 +19,6 @@ source "$TYPEWRITTEN_ROOT/lib/git.zsh"
 BREAK_LINE="
 "
 
-tw_right_prompt_prefix="%F{$tw_colors[right_prompt_prefix]}$TYPEWRITTEN_RIGHT_PROMPT_PREFIX"
-
 local tw_prompt_symbol="❯"
 if [ ! -z "$TYPEWRITTEN_SYMBOL" ]; then
   tw_prompt_symbol="$TYPEWRITTEN_SYMBOL"
@@ -92,42 +90,89 @@ tw_get_displayed_wd() {
   echo "%F{$tw_current_directory_color}$tw_displayed_wd"
 }
 
+tw_get_left_prompt_prefix() {
+  local tw_left_prompt_prefix=""
+
+  if [[ ! -z $TYPEWRITTEN_LEFT_PROMPT_PREFIX || ! -z $TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION ]]; then
+    tw_left_prompt_prefix="%F{$tw_colors[left_prompt_prefix]}"
+  fi;
+
+  if [[ ! -z $TYPEWRITTEN_LEFT_PROMPT_PREFIX ]]; then
+    tw_left_prompt_prefix="$tw_left_prompt_prefix$TYPEWRITTEN_LEFT_PROMPT_PREFIX "
+  fi;
+
+  if [[ ! -z $TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION ]]; then
+    local value=$($TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION) 2>/dev/null
+
+    if [[ ! -z $value ]]; then
+      tw_left_prompt_prefix="$tw_left_prompt_prefix$value "
+    fi;
+  fi;
+
+  echo $tw_left_prompt_prefix
+}
+
+tw_get_right_prompt_prefix() {
+  local tw_right_prompt_prefix=""
+
+  if [[ ! -z $TYPEWRITTEN_RIGHT_PROMPT_PREFIX || ! -z $TYPEWRITTEN_RIGHT_PROMPT_PREFIX_FUNCTION ]]; then
+    tw_right_prompt_prefix="%F{$tw_colors[right_prompt_prefix]}"
+  fi;
+
+  if [[ ! -z $TYPEWRITTEN_RIGHT_PROMPT_PREFIX ]]; then
+    tw_right_prompt_prefix="$tw_right_prompt_prefix$TYPEWRITTEN_RIGHT_PROMPT_PREFIX "
+  fi;
+
+  if [[ ! -z $TYPEWRITTEN_RIGHT_PROMPT_PREFIX_FUNCTION ]]; then
+    local value=$($TYPEWRITTEN_RIGHT_PROMPT_PREFIX_FUNCTION) 2>/dev/null
+
+    if [[ ! -z $value ]]; then
+      tw_right_prompt_prefix="$tw_right_prompt_prefix$value "
+    fi;
+  fi;
+
+  echo $tw_right_prompt_prefix
+}
+
 tw_redraw() {
-  tw_displayed_wd="$(tw_get_displayed_wd)"
+  local tw_displayed_wd="$(tw_get_displayed_wd)"
 
-  tw_env_prompt="$(tw_get_virtual_env)$tw_prompt"
+  local tw_full_prompt="$(tw_get_virtual_env)$(tw_get_left_prompt_prefix)$tw_prompt"
 
-  tw_layout="$TYPEWRITTEN_PROMPT_LAYOUT"
-  tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"
+  local tw_layout="$TYPEWRITTEN_PROMPT_LAYOUT"
+  local tw_git_info="$tw_prompt_data[tw_git_branch]$tw_prompt_data[tw_git_status]"
+
   if [ "$tw_layout" = "half_pure" ]; then
-    PROMPT="$BREAK_LINE%F{$tw_git_branch_color}$tw_git_info$BREAK_LINE$tw_env_prompt"
-    RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd"
+    PROMPT="$BREAK_LINE%F{$tw_git_branch_color}$tw_git_info$BREAK_LINE$tw_full_prompt"
+    RPROMPT="$(tw_get_right_prompt_prefix)$tw_displayed_wd"
   else
     local tw_git_arrow_info=""
     if [ "$tw_git_info" != "" ]; then
       tw_git_arrow_info=" $tw_arrow %F{$tw_git_branch_color}$tw_git_info"
     fi;
 
-    PROMPT="$tw_env_prompt"
+    local tw_right_prompt_prefix="$(tw_get_right_prompt_prefix)"
+
+    PROMPT="$tw_full_prompt"
     RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd$tw_git_arrow_info"
 
     if [ "$tw_layout" = "pure" ]; then
-      PROMPT="$BREAK_LINE$tw_displayed_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
+      PROMPT="$BREAK_LINE$tw_displayed_wd$tw_git_arrow_info$BREAK_LINE$tw_full_prompt"
       RPROMPT=""
     fi;
 
     if [ "$tw_layout" = "pure_verbose" ]; then
-      PROMPT="$BREAK_LINE$tw_user_host $tw_displayed_wd$tw_git_arrow_info$BREAK_LINE$tw_env_prompt"
+      PROMPT="$BREAK_LINE$tw_user_host $tw_displayed_wd$tw_git_arrow_info$BREAK_LINE$tw_full_prompt"
       RPROMPT=""
     fi;
 
     if [ "$tw_layout" = "singleline_verbose" ]; then
-      PROMPT="$tw_user_host $tw_env_prompt"
+      PROMPT="$tw_user_host $tw_full_prompt"
       RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd$tw_git_arrow_info"
     fi;
 
     if [ "$tw_layout" = "multiline" ]; then
-      PROMPT="$BREAK_LINE$tw_user_host$BREAK_LINE$tw_env_prompt"
+      PROMPT="$BREAK_LINE$tw_user_host$BREAK_LINE$tw_full_prompt"
       RPROMPT="$tw_right_prompt_prefix$tw_displayed_wd$tw_git_arrow_info"
     fi;
   fi;

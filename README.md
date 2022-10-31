@@ -62,6 +62,19 @@ npm install -g typewritten
 
 That's it. The script will make the necessary symlinks to `fpath` and set the prompt in your `.zshrc`.
 
+### [Homebrew](https://brew.sh)
+
+```shell
+brew install typewritten
+```
+
+Then load typewritten in your `.zshrc` by using zsh prompinit:
+
+```shell
+autoload -U promptinit; promptinit
+prompt typewritten
+```
+
 ### Manual
 
 Clone the typewritten repository somewhere you can easily link. I recommend creating a `.zsh` directory at root.
@@ -177,4 +190,3 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 - `pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)
 - `npm` install and uninstall scripts are from [Spaceship prompt](https://github.com/spaceship-prompt/spaceship-prompt)
-

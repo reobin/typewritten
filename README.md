@@ -28,7 +28,7 @@
   </a>
   <a href="#contributors">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img src="https://img.shields.io/badge/all_contributors-33-orange.svg?style=flat-square" alt="All contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-34-orange.svg?style=flat-square" alt="All contributors" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   </a>
 </p>
@@ -155,6 +155,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/Pound-Hash"><img src="https://avatars.githubusercontent.com/u/51193876?v=4?s=100" width="100px;" alt="Alan"/><br /><sub><b>Alan</b></sub></a><br /><a href="https://github.com/reobin/typewritten/issues?q=author%3APound-Hash" title="Bug reports">🐛</a></td>
       <td align="center"><a href="http://vedantnandwana.me"><img src="https://avatars.githubusercontent.com/u/70624701?v=4?s=100" width="100px;" alt="Vedant Nandwana"/><br /><sub><b>Vedant Nandwana</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=vedantnn71" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/KEDLogic"><img src="https://avatars.githubusercontent.com/u/9738036?v=4?s=100" width="100px;" alt="Kyle Dozier"/><br /><sub><b>Kyle Dozier</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=KEDLogic" title="Documentation">📖</a> <a href="#ideas-KEDLogic" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="http://vimeo.com/danielbayley"><img src="https://avatars.githubusercontent.com/u/7797479?v=4?s=100" width="100px;" alt="Daniel Bayley"/><br /><sub><b>Daniel Bayley</b></sub></a><br /><a href="https://github.com/reobin/typewritten/commits?author=danielbayley" title="Code">💻</a> <a href="https://github.com/reobin/typewritten/commits?author=danielbayley" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>

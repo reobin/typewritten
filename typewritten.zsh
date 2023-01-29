@@ -52,13 +52,13 @@ tw_get_virtual_env() {
   if [[ -z $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
     local tw_virtual_env=""
     if [[ ! -z $VIRTUAL_ENV ]]; then
-      tw_virtual_env="$VIRTUAL_ENV"
-    elif [[ ! -z $CONDA_PREFIX ]]; then
-      tw_virtual_env="$CONDA_PREFIX"
+      tw_virtual_env="($(basename $VIRTUAL_ENV)) "
+    elif [[ ! -z $CONDA_PROMPT_MODIFIER ]]; then
+      tw_virtual_env="$(basename $CONDA_PROMPT_MODIFIER)"
     fi;
 
     if [[ $tw_virtual_env != "" ]]; then
-      echo "%F{$tw_colors[virtual_env]}($(basename $tw_virtual_env)) "
+      echo "%F{$tw_colors[virtual_env]}$tw_virtual_env"
     fi;
   fi;
 }

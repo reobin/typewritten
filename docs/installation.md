@@ -78,3 +78,12 @@ Add `zmodule reobin/typewritten --name typewritten` to your `.zimrc` and run `zi
 ## zplug
 
 Add `zplug reobin/typewritten, as:theme` to your `.zshrc`.
+
+## zinit
+
+Add the following config to your `.zshrc`:
+
+```sh
+zinit ice compile'(typewritten|async).zsh' pick'async.zsh' src'typewritten.zsh'
+zinit light reobin/typewritten
+```

@@ -3,6 +3,8 @@
 emulate -LR zsh
 setopt err_return no_unset pipe_fail
 
+trap 'print -u2 -- "ERR at ${(%):-%N}:${(%):-%I}: $?";' ERR
+
 ROOT=${0:A:h:h}
 
 typeset -gi TESTS_PASSED=0

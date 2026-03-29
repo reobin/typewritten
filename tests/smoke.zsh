@@ -3,8 +3,6 @@
 emulate -LR zsh
 setopt err_return no_unset pipe_fail
 
-trap 'print -u2 -- "ERR at ${(%):-%N}:${(%):-%I}: $?";' ERR
-
 ROOT=${0:A:h:h}
 
 typeset -gi TESTS_PASSED=0
@@ -78,16 +76,16 @@ test_git_status_signals() {
   source "$ROOT/lib/colors.zsh"
   source "$ROOT/lib/git.zsh"
 
-  local branch status git_home
+  local branch git_status git_home
   branch=$(tw_git_branch)
-  status=$(tw_git_status)
+  git_status=$(tw_git_status)
   git_home=$(tw_git_home "$repo/nested/child" "$repo")
   popd >/dev/null || fail "popd failed"
 
   assert_eq "main" "$branch" "branch name resolves in a fresh git repository"
-  assert_contains "$status" "?" "git status includes untracked marker"
-  assert_contains "$status" "!" "git status includes modified marker"
-  assert_contains "$status" "$" "git status includes stash marker"
+  assert_contains "$git_status" "?" "git status includes untracked marker"
+  assert_contains "$git_status" "!" "git status includes modified marker"
+  assert_contains "$git_status" "\$" "git status includes stash marker"
   assert_eq "${repo:t}/.../" "$git_home" "git home shortens deep repository paths"
 
   rm -rf "$repo"

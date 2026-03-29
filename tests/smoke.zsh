@@ -3,7 +3,11 @@
 emulate -LR zsh
 setopt err_return no_unset pipe_fail
 
+trap 'print -u2 -- "ERR at line $LINENO"; exit 1;' ERR ZERR
+
 ROOT=${0:A:h:h}
+
+print -- "Smoke tests starting"
 
 typeset -gi TESTS_PASSED=0
 

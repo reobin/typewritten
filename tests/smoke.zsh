@@ -1,15 +1,13 @@
 #!/usr/bin/env zsh
 
 emulate -LR zsh
-setopt err_return no_unset pipe_fail
-
-trap 'print -u2 -- "ERR at line $LINENO"; exit 1;' ERR ZERR
+setopt err_return pipe_fail
 
 ROOT=${0:A:h:h}
 
-print -- "Smoke tests starting ROOT=$ROOT pwd=$PWD"
+trap 'print -u2 -- "ERR at line $LINENO"; exit 1;' ERR ZERR
 
-typeset -gi TESTS_PASSED=0
+typeset -g TESTS_PASSED=0
 
 fail() {
   print -u2 -- "FAIL: $1"
@@ -25,7 +23,7 @@ assert_eq() {
     fail "$message\nexpected: $expected\nactual:   $actual"
   fi
 
-  (( TESTS_PASSED++ ))
+  TESTS_PASSED=$(( TESTS_PASSED + 1 ))
 }
 
 assert_contains() {
@@ -37,7 +35,7 @@ assert_contains() {
     fail "$message\nmissing:  $needle\nin:       $haystack"
   fi
 
-  (( TESTS_PASSED++ ))
+  TESTS_PASSED=$(( TESTS_PASSED + 1 ))
 }
 
 reset_env() {
@@ -89,7 +87,7 @@ test_git_status_signals() {
   assert_eq "main" "$branch" "branch name resolves in a fresh git repository"
   assert_contains "$git_status" "?" "git status includes untracked marker"
   assert_contains "$git_status" "!" "git status includes modified marker"
-  assert_contains "$git_status" "\$" "git status includes stash marker"
+  assert_contains "$git_status" '$' "git status includes stash marker"
   assert_eq "${repo:t}/.../" "$git_home" "git home shortens deep repository paths"
 
   rm -rf "$repo"
@@ -110,7 +108,7 @@ test_zsh_syntax() {
     "$ROOT/scripts/uninstall.sh"
   do
     zsh -n "$file" || fail "zsh -n failed for $file"
-    (( TESTS_PASSED++ ))
+    TESTS_PASSED=$(( TESTS_PASSED + 1 ))
   done
 }
 

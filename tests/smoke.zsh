@@ -7,7 +7,7 @@ trap 'print -u2 -- "ERR at line $LINENO"; exit 1;' ERR ZERR
 
 ROOT=${0:A:h:h}
 
-print -- "Smoke tests starting"
+print -- "Smoke tests starting ROOT=$ROOT pwd=$PWD"
 
 typeset -gi TESTS_PASSED=0
 

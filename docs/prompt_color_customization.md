@@ -56,7 +56,7 @@ Named colors will follow your terminal color scheme.
 
 ## Customize the color of a single section
 
-Precise section color mappings are configured through `TYPEWRITTEN_COLOR`.
+Precise section color mappings are configured through `TYPEWRITTEN_COLORS`.
 
 To change the color of a single section, regardless of its semantic group, the `TYPEWRITTEN_COLORS` variable is used.
 

@@ -54,7 +54,7 @@ test_color_mappings() {
 
 test_git_status_signals() {
   local repo
-  repo=$(mktemp -d)
+  repo=$(mktemp -d "${TMPDIR:-/tmp}/typewritten-smoke.XXXXXX")
 
   git init -q -b main "$repo" || fail "git init failed"
   git -C "$repo" config user.name "Typewritten Tests" || fail "git config user.name failed"

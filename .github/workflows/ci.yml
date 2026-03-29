@@ -20,18 +20,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install zsh on Ubuntu
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y zsh
+
       - name: Run smoke tests
         shell: bash
         run: zsh tests/smoke.zsh
 
-  shellcheck:
-    name: ShellCheck
+  syntax:
+    name: Zsh syntax
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install ShellCheck
-        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Install zsh
+        run: sudo apt-get update && sudo apt-get install -y zsh
 
-      - name: Lint installer scripts
-        run: shellcheck scripts/install.sh scripts/uninstall.sh
+      - name: Check zsh syntax
+        run: zsh -n typewritten.zsh typewritten.plugin.zsh typewritten.zsh-theme prompt_typewritten_setup async async.zsh lib/colors.zsh lib/git.zsh scripts/install.sh scripts/uninstall.sh tests/smoke.zsh

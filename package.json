@@ -9,6 +9,8 @@
     "scripts"
   ],
   "scripts": {
+    "test": "zsh tests/smoke.zsh",
+    "lint:shell": "shellcheck scripts/install.sh scripts/uninstall.sh",
     "postinstall": "./scripts/install.sh",
     "postuninstall": "./scripts/uninstall.sh"
   },

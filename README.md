@@ -180,12 +180,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
-## Supporters 🌞
-
-[![Stargazers repo roster for @reobin/typewritten](https://reporoster.com/stars/reobin/typewritten)](https://github.com/reobin/typewritten/stargazers)
-
-[![Forkers repo roster for @reobin/typewritten](https://reporoster.com/forks/reobin/typewritten)](https://github.com/reobin/typewritten/network/members)
-
 ## Credits
 
 - `pure` layout is inspired by [Pure](https://github.com/sindresorhus/pure)
